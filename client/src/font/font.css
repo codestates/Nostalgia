@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'UUC';
+    font-display: fallback;
+    src: url("./Univers-UltraCondensed.woff")format("woff");
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Playfair";;
+    src: url("../fonts/Playfair.woff") format("woff");
+    font-weight: 200;
+    font-style: normal;
+}
