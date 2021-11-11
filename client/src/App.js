@@ -27,7 +27,6 @@ function App() {
         <Route path= '/ mainpage'>
           <Main/>
         </Route>
-        
       </Switch>
      </div>
     </BrowserRouter>

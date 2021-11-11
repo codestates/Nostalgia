@@ -6,7 +6,6 @@ body{
 .title_container {
     display: flex;
     flex-direction: row;
-    background-color: #ECE6CC;
     justify-content: center;
 }
 
@@ -34,7 +33,7 @@ body{
     display:flex;
     flex-direction: column;
     justify-content: center;
-    margin: 0 100px;
+    margin: 0 470px;
 }
 
 .login_btn{
@@ -45,7 +44,7 @@ body{
     font-size: 55px;
     text-align: flex;
     float: center;
-    width: 13%;
+    width: 38%;
     margin: 0 90px 0 0;
 }
 
@@ -54,7 +53,8 @@ body{
     flex-direction: column;
     justify-content: center;
     width: 36%;
-    margin: 10px 50px;
+    margin: -75px 600px;
+    
 }
 
 .signup_btn{
@@ -64,7 +64,7 @@ body{
     font-family: "Playfair";
     font-size: 55px;
     text-align: center;
-    width: 40%;
+    width: 45%;
     margin: 0 0 0 50px;
 }
 
@@ -81,6 +81,6 @@ body{
     cursor: pointer;
     border-radius: 10px;
     font-family: "Playfair";
-    font-size: 45px;
+    font-size: 27px;
     text-align: center;
 }
