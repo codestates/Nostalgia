@@ -11,7 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.perfume_info.belongsTo(models.brand,{foreignKey:'brand_id', targetKey:'id'});
+      perfume_info.belongsTo(models.brand,{foreignKey:'brand_id', targetKey:'id'});
+      perfume_info.belongsTo(models.note_info,{foreignKey:'top_note_id', targetKey:'id'});
+      perfume_info.belongsTo(models.note_info,{foreignKey:'middle_note_id', targetKey:'id'});
+      perfume_info.belongsTo(models.note_info,{foreignKey:'base_note_id', targetKey:'id'});
     }
   };
   

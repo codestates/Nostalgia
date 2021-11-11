@@ -6,6 +6,8 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const app = express();
 
+const { perfume_info,brand,user,favorite } = require('./models');
+
 const controllers = require('./controllers');
 
 app.use(express.json());
@@ -18,13 +20,22 @@ app.use(
   })
 );
 app.use(cookieParser());
-app.get('/user/userinfo', controllers.userinfo);
+
+app.get('/', async(req,res)=>{
+  const data = await favorite.destroy({where:{'id':2}})
+
+  res.json(data);
+})
+
+
+/*app.get('/user/userinfo', controllers.userinfo);
 app.post('/user/signup', controllers.signup);
 app.post('/user/login', controllers.login);
 app.post('/user/signout', controllers.signout);
 app.post('/user/change-password',controllers.changepassword);
 app.post('/user/change-username',controllers.changeusername);
 app.post('/user/change-image', controllers.changeimage);
+app.get('/user/check-username',controllers.checkusername);
 app.post('/user/delete-account', controllers.deleteaccount);
 
 app.post('/favorite/add-favorite', controllers.addfavorite);
@@ -42,7 +53,7 @@ app.get('/review/myreview', controllers.myreview);
 app.get('/search/recent-search', controllers.recentsearch);
 
 app.get('/brand/logo', controllers.logo);
-
+*/
 const HTTPS_PORT = process.env.HTTPS_PORT || 4000;
 
 let server;

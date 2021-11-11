@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      note_info.hasMany(models.perfume_info,{foreignKey:'top_note_id', sourceKey:'id'});
+      note_info.hasMany(models.perfume_info,{foreignKey:'middle_note_id', sourceKey:'id'});
+      note_info.hasMany(models.perfume_info,{foreignKey:'base_note_id', sourceKey:'id'});
     }
   };
   note_info.init({
