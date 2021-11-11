@@ -16,7 +16,6 @@ export const RendererCon = styled.body`
     justify-content: center;
     background-color: #ece6cc;
     background-size: cover;
-    height: 150rem;
 `
 
 export const Title = styled.div`
@@ -65,8 +64,8 @@ export const LoginBtn = styled.div`
     font-size: 55px;
     text-align: flex;
     padding-right: 0%;
-    width: 40%;
-    margin: 0 50px 0 0;
+    width: 30%;
+    margin: 0 90px 0 0;
 
     &:hover {
         box-shadow: gray 2px 2px 2px;

@@ -1,11 +1,12 @@
 module.exports = {
-    userinfo: require('./user/userinfo'),
+    /*userinfo: require('./user/userinfo'),
     signup: require('./user/signup'),
     login: require('./user/login'),
     signout: require('./user/signout'),
     changepassword: require('./user/change-password'),
     changeusername: require('./user/change-username'),
     changeimage: require('./user/change-image'),
+    checkusername: require('./user/check-username),
     deleteaccount: require('./user/delete-account'),
 
     addfavorite: require('./favorite/add-favorite'),
@@ -22,6 +23,6 @@ module.exports = {
 
     recentsearch: require('./search/recent-search'),
     logo: require('./brand/logo'),
-
+*/
   };
   

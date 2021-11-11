@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      user.hasMany(models.favorite,{ foreignKey:'user_id', sourceKey: 'id'})
+      user.hasMany(models.recent_search,{ foreignKey:'user_id', sourceKey: 'id'})
+      user.hasMany(models.review_like,{ foreignKey:'user_id', sourceKey: 'id'})
+      user.hasMany(models.review,{ foreignKey:'user_id', sourceKey: 'id'})
     }
   };
   user.init({
