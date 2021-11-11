@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class resent_search extends Model {
+  class recent_search extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,14 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      recent_search.belongsTo(models.user, {foreignKey:'user_id', targetKey:'id',onDelete: 'CASCADE'})
     }
   };
-  resent_search.init({
+  recent_search.init({
     user_id: DataTypes.INTEGER,
     search_word: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'resent_search',
+    modelName: 'recent_search',
   });
-  return resent_search;
+  return recent_search;
 };

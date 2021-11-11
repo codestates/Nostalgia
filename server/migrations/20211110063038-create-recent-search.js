@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('resent_searche', {
+    await queryInterface.createTable('recent_searches', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -9,7 +9,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       user_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'users',
+          key:'id'
+        }
       },
       search_word: {
         type: Sequelize.STRING
@@ -25,6 +30,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('resent_searches');
+    await queryInterface.dropTable('recent_searches');
   }
 };

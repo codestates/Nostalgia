@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('review', {
+    await queryInterface.createTable('reviews', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,10 +10,19 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
-        
+        onDelete: 'CASCADE',
+        references:{
+          model:'users',
+          key:'id'
+        }
       },
       perfume_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references:{
+          model:'perfume_infos',
+          key:'id'
+        }
       },
       comment: {
         type: Sequelize.STRING
