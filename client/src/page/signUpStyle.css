@@ -1,0 +1,163 @@
+
+:root {
+
+    --hue-color: 0;
+    --font-color: hsl(var(--hue-color), 15%, 30%);
+    --font-color-warning: hsl(var(--hue-color), 89%, 59%);
+
+
+}
+
+
+.font_color {
+    color:var(--font-color)
+}
+
+.font_color_warning {
+    color:var(--font-color-warning)
+}
+
+
+
+
+
+
+
+body {
+    background-color: #ece6cc;
+}
+
+.sign_main {
+    padding: 0px 200px;
+    margin: 250px auto;
+}
+
+.sign_container {
+    background-color: white;
+    max-width: 1200px;
+    height: 700px;
+    margin: 0 auto;
+}
+
+.sign_flexbox {
+    display: flex;
+    height: 100%;
+}
+
+.sign_aside {
+    flex: 1 1;
+    height: auto;
+    position: relative;
+    max-width: 100%;
+    width: inherit;
+}
+
+.sign_menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1;
+    flex-direction: column;
+}
+
+.sign_title_font {
+    margin-bottom: 50px;
+    font-size: 50px;
+    border-bottom: 2px solid var(--font-color);
+}
+
+.sign_info_font {
+    margin-bottom: 20px;
+}
+
+.sign_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sign_inputbox {
+    margin-bottom: 40px;
+}
+
+.font_box_top {
+    margin-top: 20px
+}
+
+.sign_line {
+    font-weight: 100;
+    padding: 10px 20px;
+    border: 2px solid #8a8a8a!important;
+    height: 30px;
+    width: 300px;
+    font-size: 20px;
+    border-radius: 30px;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    align-items:flex-end;
+}
+
+.sign_btn {
+    display: block;
+    font-weight: 400;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    background-color: black;
+    height: 50px;
+    width: 300px;
+    
+}
+
+.sign_btn_username {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    padding: 4px 5px;
+}
+
+.notice_message {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgba(0,0,0,.85);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    font-feature-settings: "tnum","tnum";
+    position: fixed;
+    top: 8px;
+    left: 0;
+    z-index: 1010;
+    width: 100%;
+    pointer-events: none;   
+}
+
+.notice_message_design{
+    position: fixed;
+    margin: 5px auto;
+    text-align: center;
+    
+    height: 70px;
+    width: 150px;
+    background-color: white;
+}
+
+.notification-container {
+    display: block;
+    background: rgba(0,0,0,.3);
+    border-radius: 0 0 10px 10px ;
+    padding: 15px 20px;
+    position: absolute;
+    right: 800px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .notification-container.show {
+    display: block;
+  }
