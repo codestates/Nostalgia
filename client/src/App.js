@@ -2,6 +2,8 @@ import './App.css';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import Render from './page/Render';
 import Footer from './components/Footer';
+import SignUp from './page/SignUp';
+import Login from './page/Login';
 
 
 function App() {
@@ -12,7 +14,7 @@ function App() {
       <Switch>
         <Route 
         exact path= '/'
-        render={() => <Render />}
+        render={() => <SignUp />}
         />
         <Route path= '/main'/>
 

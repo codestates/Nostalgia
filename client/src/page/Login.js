@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import styled from 'styled-components';
 import './loginStyle.css';
 import axios from "axios";
 
@@ -44,7 +43,7 @@ function Login() {
     useEffect(() => {
         if(password === '' && email === '') {
             setNotNull(true)
-        }
+        } 
     }, [email, password])
 
     console.log(email)
