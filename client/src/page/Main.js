@@ -21,7 +21,7 @@ const inMouseDisplay = (index) =>{
     return (
         <body>
             <div className="brand_logo_container"/>
-            <div className="brand_logo_list"/>
+            {<div className="brand_logo_list"/>}
         </body>
     )
 }
