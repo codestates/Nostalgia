@@ -31,6 +31,11 @@ function App() {
         <Route 
         path= '/mainpage'
         component={Main}/>
+
+        <Route
+        path='/mypage'
+        component={Mypage}/>
+
       </Switch>
      </div>
     </BrowserRouter>

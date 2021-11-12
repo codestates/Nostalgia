@@ -8,18 +8,18 @@ const Footer = () => {
                 <div className="footer_div">
                     <div className="member_container">
                         <div className="footer_col">
-                            <h4>Team Members</h4>
+                            <h4 className="team_members">Team Members</h4>
                                 <ul>
-                                    <li>
+                                    <li className="li_container">
                                         <a className="member_name">손승우(Son)</a>
                                     </li>
-                                    <li>
+                                    <li className="li_container">
                                         <a className="member_name">이상현 (Henry Lee)</a>
                                     </li>
-                                    <li>
+                                    <li className="li_container">
                                          <a className="member_name">이진성 (Luka Lee)</a>
                                     </li>
-                                    <li>
+                                    <li className="li_container">
                                          <a className="member_name">이진희(Zeenii Lee)</a>
                                     </li>
                                 </ul>
