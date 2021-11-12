@@ -29,30 +29,30 @@ app.use(cookieParser());
 })*/
 
 
-/*app.get('/user/userinfo', controllers.userinfo);
+app.get('/user/userinfo', controllers.userinfo);
 app.post('/user/signup', controllers.signup);
 app.post('/user/login', controllers.login);
 app.post('/user/signout', controllers.signout);
 app.post('/user/change-password',controllers.changepassword);
 app.post('/user/change-username',controllers.changeusername);
-app.post('/user/change-image', controllers.changeimage);
-app.post('/user/delete-account', controllers.deleteaccount);*/
+app.post('/user/change-image', upload.single('image'), uploadProfile);
+app.post('/user/delete-account', controllers.deleteaccount);
 app.get('/user/check-username',controllers.checkusername);
 
 //app.post('/favorite/add-favorite', controllers.addfavorite);
 //app.get('/favorite/get-favorite', controllers.getfavorite);
 
-app.get('/perfume/get-perfume-info', controllers.getperfumeinfo);
-app.get('/perfume/get-perfume-info-all', controllers.getperfumeinfoall);
+// app.get('/perfume/get-perfume-info', controllers.getperfumeinfo);
+// app.get('/perfume/get-perfume-info-all', controllers.getperfumeinfoall);
 
 //app.post('/review/add-review', controllers.addreview);
-app.get('/review/get-review-info', controllers.getreviewinfo);
+// app.get('/review/get-review-info', controllers.getreviewinfo);
 //app.post('/review/likereview', controllers.like-review);
 //app.get('/review/number-of-like', controllers.numberoflike);
 //app.get('/review/myreview', controllers.myreview);
 
 //app.get('/search/recent-search', controllers.recentsearch);
-app.get('/brand/logo', controllers.logo);
+// app.get('/brand/logo', controllers.logo);
 
 const HTTPS_PORT = process.env.HTTPS_PORT || 4000;
 
