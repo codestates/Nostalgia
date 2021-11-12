@@ -1,9 +1,14 @@
 import './App.css';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
-import Render from './page/Render';
-import Footer from './components/Footer';
+
 import SignUp from './page/SignUp';
 import Login from './page/Login';
+import Mypage from './page/Mypage';
+
+import Footer from "../src/components/Footer"
+import Landerpage from "../src/page/Landerpage"
+import Main from '../src/page/Main'
+
 
 
 function App() {
@@ -14,10 +19,13 @@ function App() {
       <Switch>
         <Route 
         exact path= '/'
-        render={() => <SignUp />}
+        render={() => <Mypage />}
         />
         <Route path= '/main'/>
-
+          <Landerpage/>
+        <Route path= '/ mainpage'>
+          <Main/>
+        </Route>
       </Switch>
      </div>
     </BrowserRouter>

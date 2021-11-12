@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-
+      favorite.belongsTo(models.user, {foreignKey:'user_id', targetKey:'id',onDelete: 'CASCADE'})
     }
   };
   favorite.init({
     user_id: DataTypes.INTEGER,
-    perfume_name: DataTypes.STIRNG,
+    perfume_name: DataTypes.STRING,
     perfume_img: DataTypes.BLOB,
     brand_name: DataTypes.STRING
   }, {

@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      review.hasMany(models.review_like,{foreignKey:'review_id', sourceKey:'id'});
+      review.belongsTo(models.user, {foreignKey:'user_id', targetKey:'id',onDelete: 'CASCADE'})
+      review.belongsTo(models.perfume_info, {foreignKey:'perfume_id', targetKey:'id'})
     }
   };
   review.init({
@@ -24,3 +27,4 @@ module.exports = (sequelize, DataTypes) => {
   });
   return review;
 };
+

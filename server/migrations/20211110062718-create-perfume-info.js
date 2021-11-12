@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('perfume_info', {
+    await queryInterface.createTable('perfume_infos', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -16,18 +16,6 @@ module.exports = {
       },
       comment: {
         type: Sequelize.STRING
-      },
-      top_note_id: {
-        type: Sequelize.INTEGER
-      },
-      middle_note_id: {
-        type: Sequelize.INTEGER
-      },
-      base_note_id: {
-        type: Sequelize.INTEGER
-      },
-      brand_id: {
-        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

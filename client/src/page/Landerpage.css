@@ -1,0 +1,86 @@
+body{
+    background-color: #ECE6CC;
+    height: 100%;
+}
+
+.title_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.landpage_title{
+    display: flex;
+    justify-content: center;
+    font-family: "UUC";
+    font-size: 150px;
+    border-bottom: 3px solid #000000;
+    margin: 130px 50%;
+};
+
+.btn_container{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #000000;
+    background-color: #ece6cc;
+    float: center;
+    justify-content: center;
+    padding: 0 100px;
+    width: 20%;
+}
+
+.login_btn_container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 470px;
+}
+
+.login_btn{
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Playfair";
+    font-size: 55px;
+    text-align: flex;
+    float: center;
+    width: 38%;
+    margin: 0 90px 0 0;
+}
+
+.signup_btn_container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 36%;
+    margin: -75px 600px;
+    
+}
+
+.signup_btn{
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Playfair";
+    font-size: 55px;
+    text-align: center;
+    width: 45%;
+    margin: 0 0 0 50px;
+}
+
+.guestInto_btn_container{
+    display: flex;
+    background-color: #ece6cc;
+    float: center;
+    justify-content: center;
+    margin: auto;
+    padding-top: 10%;
+}
+
+.guestInto_btn{
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: "Playfair";
+    font-size: 27px;
+    text-align: center;
+}
