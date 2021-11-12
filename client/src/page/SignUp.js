@@ -9,10 +9,12 @@ function SignUp() {
     const [password, setPassword] = useState('')
     const [pwCheck, setPwCheck] = useState('')
     const [username, setUsername] = useState('')
+    const [image, setImage] = useState()
 
     const [pwConfirm, setPwConfirm] = useState(false)
     const [notsame, setNotsame] = useState(false)
     const [nameConfirm, setnameConfirm] = useState(false)
+    const [antMessage, setAntMessage] = useState(false)
 
     let checkEmail = (e) => {
         setEmail(e.target.value)
@@ -45,8 +47,10 @@ function SignUp() {
                         email: email,
                         password: password,
                         user_name: username,
+                        // ################# 이미지 전송에 대해 보류 #################
                     },
                     {
+                        // ################# Content-Type form 형식에 대해 보류 #################
                         headers: { "Content-Type": "application/json" }, 
                         withCredentials: true
                     }
@@ -54,9 +58,18 @@ function SignUp() {
         }
     }
 
+
     const handleUserName = async () => {
+    
+        setAntMessage(true) 
+    
+        setTimeout(() => {
+            // 6초가 지나야 아래 기능이 발생하는게 setTimeOut 메커니즘 동작법이다!!!!!!!!!!!!
+            setAntMessage(false)
+        }, 6000);
+
         const data = await axios
-        // 경로 보류
+        // ################# 경로 보류 ################# 
         .get("https://nostalgia.com/user/",
             {
                 user_name: username,
@@ -69,8 +82,34 @@ function SignUp() {
 
         if(data) {
             setnameConfirm(true)
+        } else {
+            // 닉네임이 없으면 개미 메세지 On
+            // setAntMessage(true)
+            // console.log(antMessage)
+            // setTimeout(() => {
+            //     setAntMessage(false)
+            // }, 3000);
+
         }
     }
+
+    const handleImg = (e) => {
+        e.preventDefault();
+  
+        if(e.target.files){
+            const uploadFile = e.target.files[0]
+            // 전송한 이미지가 담겨줘 있음.
+            console.log(uploadFile)
+            // js 내장객체인 FormData를 사용하여 이미지파일을 formData형식으로 
+            const formData = new FormData()
+            // append 메서드를 활용하여 key에 files, value에 uploadFile 각각 담아둔다.
+            formData.append('files',uploadFile)
+            console.log(formData)
+        }
+    }
+
+   
+      
 
     useEffect(() => {
         // 비밀번호와 비밀번호 확인 검사 합격 여부
@@ -121,30 +160,43 @@ function SignUp() {
                                 </div>
                                 <div className="sign_inputbox flex">
                                     <input placeholder="닉네임" className="sign_line" onChange={checkUsername}/>
-                                    <button type="button" className="sign_btn_username" onClick={()=> handleUserName}>
+                                    <button type="button" className="sign_btn_username" onClick={()=> handleUserName()}>
                                     닉네임 중복 검사    
                                     </button>
+                                </div>
+
+                                <div className="profile_container">
+                                    <h4 className="sign_info_font"> 🖼 아래 원하시는 프로필 이미지를 등록해주세요. </h4>
+                                    <div className="profile_box">
+                                        <label htmlFor="profile-upload" />
+                                        <input type="file" id="profile-upload" accept="image/*" onChange={handleImg} />
+                                    </div>
                                 </div>
 
                                 <button type="button" className="sign_btn hover1" onClick={()=> handleLogin}>
                                     회원가입    
                                 </button> 
-                            </form>      
+                            </form>
+                                  
                         </div>
                         <aside className="sign_aside">
-                            <img src="/perfume.jpeg"/>
+                            <img className="sign_img" src="/perfume.jpeg"/>
                         </aside>
                     </div>
                 </section>
             </main>
             <div>
+                {antMessage ?
                 <div className="notice_message" >
                     <div>
-                        <div class="notification-container" id="notification-container">
-                            <p>You have already entered the letter</p>
+                        <div class="notification-container">
+                            <p> ✅ 사용하셔도 되는 닉네임입니다. </p>
                         </div>
                     </div>
-                </div>
+                </div> : ""
+                }
+
+                {/* ################# 닉네임 있을 경우에 대한 모달창 보류 ################# */}
             </div>
         </>
     )

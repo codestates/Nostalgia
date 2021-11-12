@@ -35,7 +35,7 @@ body {
 .sign_container {
     background-color: white;
     max-width: 1200px;
-    height: 700px;
+    height: 780px;
     margin: 0 auto;
 }
 
@@ -50,6 +50,11 @@ body {
     position: relative;
     max-width: 100%;
     width: inherit;
+}
+
+.sign_img {
+    width: 100%;
+    height: 100%;
 }
 
 .sign_menu {
@@ -67,6 +72,8 @@ body {
 }
 
 .sign_info_font {
+    font-size: 15px;
+    color: black;
     margin-bottom: 20px;
 }
 
@@ -120,6 +127,19 @@ body {
     padding: 4px 5px;
 }
 
+
+
+.profile_container {
+    width: 300px;
+    margin-bottom: 40px;
+}
+
+.profile_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .notice_message {
     box-sizing: border-box;
     margin: 0;
@@ -138,26 +158,20 @@ body {
     pointer-events: none;   
 }
 
-.notice_message_design{
-    position: fixed;
-    margin: 5px auto;
-    text-align: center;
-    
-    height: 70px;
-    width: 150px;
-    background-color: white;
-}
 
 .notification-container {
-    display: block;
-    background: rgba(0,0,0,.3);
+    background: rgba(0,0,0,.4);
     border-radius: 0 0 10px 10px ;
-    padding: 15px 20px;
+    color: white;
+    font-size: 20px;
+    padding: 15px 45px;
     position: absolute;
-    right: 800px;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .notification-container.show {
-    display: block;
-  }
+    bottom: -700px;
+    animation: scale1 3s infinite alternate;
+}
+
+
+@keyframes scale1 { 
+    0%   { transform: scale(0) }
+    100%  { transform: scale(1) }
+}

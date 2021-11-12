@@ -2,6 +2,7 @@ import './App.css';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import SignUp from './page/SignUp';
 import Login from './page/Login';
+import Mypage from './page/Mypage';
 
 import Footer from "../src/components/Footer"
 import Landerpage from "../src/page/Landerpage"
