@@ -21,11 +21,12 @@ app.use(
 );
 app.use(cookieParser());
 
-app.get('/', async(req,res)=>{
-  const data = await favorite.destroy({where:{'id':2}})
+
+/*app.get('/', async(req,res)=>{
+  const data = await perfume_info.findOne({where:{'id':1} , include:[brand]});
 
   res.json(data);
-})
+})*/
 
 
 /*app.get('/user/userinfo', controllers.userinfo);
@@ -35,25 +36,24 @@ app.post('/user/signout', controllers.signout);
 app.post('/user/change-password',controllers.changepassword);
 app.post('/user/change-username',controllers.changeusername);
 app.post('/user/change-image', controllers.changeimage);
+app.post('/user/delete-account', controllers.deleteaccount);*/
 app.get('/user/check-username',controllers.checkusername);
-app.post('/user/delete-account', controllers.deleteaccount);
 
-app.post('/favorite/add-favorite', controllers.addfavorite);
-app.get('/favorite/get-favoite', controllers.getfavorite);
+//app.post('/favorite/add-favorite', controllers.addfavorite);
+//app.get('/favorite/get-favorite', controllers.getfavorite);
 
 app.get('/perfume/get-perfume-info', controllers.getperfumeinfo);
 app.get('/perfume/get-perfume-info-all', controllers.getperfumeinfoall);
 
-app.post('/review/add-review', controllers.addreview);
+//app.post('/review/add-review', controllers.addreview);
 app.get('/review/get-review-info', controllers.getreviewinfo);
-app.post('/review/likereview', controllers.like-review);
-app.get('/review/number-of-like', controllers.numberoflike);
-app.get('/review/myreview', controllers.myreview);
+//app.post('/review/likereview', controllers.like-review);
+//app.get('/review/number-of-like', controllers.numberoflike);
+//app.get('/review/myreview', controllers.myreview);
 
-app.get('/search/recent-search', controllers.recentsearch);
-
+//app.get('/search/recent-search', controllers.recentsearch);
 app.get('/brand/logo', controllers.logo);
-*/
+
 const HTTPS_PORT = process.env.HTTPS_PORT || 4000;
 
 let server;
