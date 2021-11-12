@@ -1,6 +1,5 @@
 import './App.css';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
-
 import SignUp from './page/SignUp';
 import Login from './page/Login';
 
@@ -18,19 +17,22 @@ function App() {
       <Switch>
         <Route 
         exact path= '/'
-        render={() => <Login />}
+        render={() => <Landerpage />}
         />
-        <Route path= '/main'/>
-        >
-          <Landerpage/>
-        </Route>
-        <Route path= '/ mainpage'>
-          <Main/>
-        </Route>
+        <Route 
+        path= '/login'
+        component={Login}
+        />
+        <Route 
+        path='/signup'
+        component={SignUp}
+        />
+        <Route 
+        path= '/mainpage'
+        component={Main}/>
       </Switch>
      </div>
     </BrowserRouter>
-
   );
 }
 
