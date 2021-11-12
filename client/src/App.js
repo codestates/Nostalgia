@@ -14,7 +14,7 @@ function App() {
       <Switch>
         <Route 
         exact path= '/'
-        render={() => <Login />}
+        render={() => <SignUp />}
         />
         <Route path= '/main'/>
 
