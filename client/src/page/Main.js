@@ -27,16 +27,34 @@ const inMouseDisplay = (index) =>{
 }
 
     return (
-        <body>
+        <body className="body">
             <div className="main_container">
             <Header/>
                 <div className="brand_logo_container">
-                        <a className="logo_list"></a>
-                        <a className="logo_list"></a>
-                        <a className="logo_list"></a>
-                        <a className="logo_list"></a>
-                        <a className="logo_list"></a>
-                        <a className="logo_list"></a>
+                        <a className="logo_list">
+                            <img className="chanel_logo"
+                            src='../image/chanel-logo.jpeg'/>
+                        </a>
+                        <a className="logo_list">
+                            <img className="ck_logo"
+                            src='../image/ck-logo.png'/>
+                        </a>
+                        <a className="logo_list">
+                            <img className="davidoff_logo"
+                            src='../image/davidoff-logo-vector.png'/>
+                        </a>
+                        <a className="logo_list">
+                            <img className="guerlain_logo"
+                            src='../image/guerlain-logo-vector.jpeg'/>
+                        </a>
+                        <a className="logo_list">
+                            <img className="jo_malone_logo"
+                            src="../image/jomalone-black.jpeg"/>
+                        </a>
+                        <a className="logo_list">
+                            <img className="versace_logo"
+                            src="../image/versace-logo.jpeg"/>
+                        </a>
                 </div>
 
                     <div className="filterwithcount_container">
