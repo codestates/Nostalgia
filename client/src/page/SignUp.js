@@ -1,7 +1,10 @@
 import './signUpStyle.css';
 import { useEffect, useState } from "react";
 import { UilCheckCircle } from '@iconscout/react-unicons'
+import useImageHook from '../components/ImageTime'
 import axios from "axios";
+import LukaHeader from '../components/LukaHeader';
+import Footer from '../components/Footer';
 
 function SignUp() { 
 
@@ -9,12 +12,18 @@ function SignUp() {
     const [password, setPassword] = useState('')
     const [pwCheck, setPwCheck] = useState('')
     const [username, setUsername] = useState('')
-    const [image, setImage] = useState()
+
+    // 이미지 애니메이션 훅 
+    const [inClass, setIn] = useState('fade-in-bck')
+    const [count, setCount] = useState(1);
 
     const [pwConfirm, setPwConfirm] = useState(false)
     const [notsame, setNotsame] = useState(false)
     const [nameConfirm, setnameConfirm] = useState(false)
     const [antMessage, setAntMessage] = useState(false)
+
+
+    const [blanck, setBlank] = useState(false)
 
     let checkEmail = (e) => {
         setEmail(e.target.value)
@@ -39,18 +48,19 @@ function SignUp() {
 
 
     const handleLogin = async () => {   
-        // 비밀번호와 비밀번호 확인이 같아야 하고, nameConfirm 중복 닉네임 검사까지 합격 받아야 로그인 가능
-        if(password === pwCheck && nameConfirm) {
+        // 비밀번호와 비밀번호 확인이 같아야 하고, nameConfirm 중복 닉네임 검사
+        // 그리고 유효성 검사까지 합격 받아야 로그인 가능
+        if(password === pwCheck && nameConfirm && pwConfirm) {
             const data = await axios
                 .post("https://nostalgia.com/user/signup",
                     {
                         email: email,
                         password: password,
                         user_name: username,
-                        // ################# 이미지 전송에 대해 보류 #################
+                        // ################################## 이미지 전송에 대해 보류 ##################################
                     },
                     {
-                        // ################# Content-Type form 형식에 대해 보류 #################
+                        // ################################## Content-Type form 형식에 대해 보류 ##################################
                         headers: { "Content-Type": "application/json" }, 
                         withCredentials: true
                     }
@@ -68,8 +78,10 @@ function SignUp() {
             setAntMessage(false)
         }, 6000);
 
+
+
         const data = await axios
-        // ################# 경로 보류 ################# 
+        // ################################## 닉네임 중복 검사 경로 보류 ##################################
         .get("https://nostalgia.com/user/",
             {
                 user_name: username,
@@ -80,7 +92,7 @@ function SignUp() {
             }
         )
 
-        if(data) {
+        if(data && !blanck) {
             setnameConfirm(true)
         } else {
             // 닉네임이 없으면 개미 메세지 On
@@ -127,12 +139,49 @@ function SignUp() {
         }
         
     }, [password, pwCheck])
+
+
+
+    useEffect(() => {
+        for(let i = 0; i < username.length; i++) {
+            if(username[i] === ' ') {
+                setBlank(true);
+                break;
+            } else {
+                setBlank(false);
+            }
+        }
+    }, [username])
     
 
 
 
+    
+ // ################################### 이미지 애니메이션 효과 훅으로 제작함 ################################### //
+ 
+    useImageHook(() => {
+        setCount(count + 1);
+        setIn('fade-in-bck')
+    }, 4000);
+  
+    useEffect(() => {
+        setTimeout(()=> {
+          setIn('')
+        }, 1000)
+    }, [count])
+      
+    if(count > 3) {
+        setCount(1)
+    }
+
+
+
+
+
+
+
     return(
-        <>
+        <>  <LukaHeader/>
             <main className="sign_main">
                 <section className="sign_container">
                     <div className="sign_flexbox">
@@ -145,24 +194,29 @@ function SignUp() {
                                 </div>
                                 <div className="sign_inputbox">
                                     <input type='password' placeholder="비밀번호" className="sign_line" onChange={checkPassword}/>
-                                    <div className="font_box_top font_color">
+                                    <div className="font_box_top font_color sign_password_success">
                                         <h5>비밀번호는 8자리 이상과 영문+숫자+특수문자</h5>
                                         <h5>조합으로 입력해야 합니다.</h5>
                                         {pwConfirm ? <h5 className="font_box_top"> {<UilCheckCircle color="green"/>} 
                                         비밀번호 조합에 성공 하셨습니다. 🎉 </h5>: ''}
                                     </div>
                                 </div>
-                                <div className="sign_inputbox">
+                                <div className="sign_inputbox sign_warrning">
                                     <input type='password' placeholder="비밀번호 확인" className="sign_line" onChange={checkPWValue}/>
                                     <div className="font_box_top font_color_warning">
-                                        {notsame ? <h5>비밀번호와 비밀번호 확인이 서로 다릅니다.</h5> : ''}
+                                        {notsame ? <h5 className="sign_password_font">비밀번호와 비밀번호 확인이 서로 다릅니다.</h5> : ''}
                                     </div>
                                 </div>
-                                <div className="sign_inputbox flex">
+                                <div className="sign_inputbox sign_username-flex">
                                     <input placeholder="닉네임" className="sign_line" onChange={checkUsername}/>
                                     <button type="button" className="sign_btn_username" onClick={()=> handleUserName()}>
                                     닉네임 중복 검사    
                                     </button>
+                                    {blanck ?
+                                    <h5 className="sign_blak-word"> 
+                                        🚫 닉네임에 공백은 사용 불가입니다.
+                                    </h5> : ""
+                                    }
                                 </div>
 
                                 <div className="profile_container">
@@ -173,18 +227,19 @@ function SignUp() {
                                     </div>
                                 </div>
 
-                                <button type="button" className="sign_btn hover1" onClick={()=> handleLogin}>
+                                <button type="button" className="sign_btn" onClick={()=> handleLogin}>
                                     회원가입    
                                 </button> 
                             </form>
                                   
                         </div>
                         <aside className="sign_aside">
-                            <img className="sign_img" src="/perfume.jpeg"/>
+                            <img className={`sign_img ${inClass}`} src={`/perfume_sign_${count}.jpeg`}/>
                         </aside>
                     </div>
                 </section>
             </main>
+            <Footer/>
             <div>
                 {antMessage ?
                 <div className="notice_message" >

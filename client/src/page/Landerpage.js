@@ -1,4 +1,3 @@
-import './Landerpage.css'
 import Prolougue from '../components/Prolougue'
 import Footer from '../components/Footer'
 import {Link} from 'react-router-dom'

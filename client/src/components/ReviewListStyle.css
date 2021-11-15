@@ -1,0 +1,33 @@
+
+.ReviewList_list {
+    list-style: none;
+    border-bottom: 3px dotted orangered;
+}
+
+.ReviewList_list-box {
+    display: flex;
+    justify-content: space-between; 
+    border-bottom: 1px solid black;
+}
+
+.ReviewList_list_day-review {
+    text-align: right;
+    color: gray;
+    margin-top: 2px;
+    padding-right: 15px;
+}
+
+.ReviewList_product_font {
+    font-size: 23px;
+    margin: 10px;
+}
+
+.ReviewList_comment {
+    margin: 15px 20px;
+}
+
+.ReviewList_comment_good {
+    text-align: right;
+    padding: 0 40px 5px 0;
+}
+

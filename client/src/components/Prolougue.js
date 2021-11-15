@@ -1,4 +1,3 @@
-import './Prolouge.css'
 
 const Prolougue = () => {
 

@@ -1,12 +1,16 @@
-.App {
-  height: 100%;
-  min-width: auto;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.parents_layer {
+  position:relative;
+  
+}
+
+.child_layer {
+  position:absolute;
 }
 
 @font-face {

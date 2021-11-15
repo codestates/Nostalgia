@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import './loginStyle.css';
+import useImageHook from '../components/ImageTime'
 import axios from "axios";
+import LukaHeader from "../components/LukaHeader";
+import Footer from "../components/Footer";
 
 function Login() {
 
@@ -8,6 +11,10 @@ function Login() {
     const [password, setPassword] = useState('')
     const [notNull, setNotNull] = useState(false)
     const [logResult, setLogResult] = useState(false)
+
+    // 이미지 애니메이션 훅 
+    const [inClass, setIn] = useState('fade-in-bck')
+    const [count, setCount] = useState(1);
 
     let checkEmail = (e) => {
         setEmail(e.target.value)
@@ -46,31 +53,51 @@ function Login() {
         } 
     }, [email, password])
 
-    console.log(email)
-    console.log(password)
+
+
+
+     // ################################### 이미지 애니메이션 효과 훅으로 제작함 ################################### //
+     useImageHook(() => {
+        setIn('fade-in-bck')
+        setCount(count + 1);
+    }, 4000);
+  
+    useEffect(() => {
+        setTimeout(()=> {
+          setIn('')
+        }, 1000)
+    }, [count])
+      
+    if(count > 3) {
+        setCount(1)
+    }
+
+
+
+
 
     return(
         //위 header component 부착 필요
-        <>
+        <>  <LukaHeader/>
             <main className="login_main">
                 <section className="login_container">
                     <div className="login_flexbox">
                         <aside className="login_aside">
-                            <img src="/perfume.jpeg"/>
+                            <img className={`login_img ${inClass}`} src={`/perfume_login_${count}.jpeg`}/>
                         </aside>
                         <div className="login_menu">
-                            <h4>Nostalgia를 방문해주셔서 감사합니다.</h4>
-                            <h1>LOGIN</h1>
+                            <h1 className="login_title_font">LOGIN</h1>
+                            <h4 className="login_info_font">Nostalgia를 방문해주셔서 감사합니다.</h4>
                             <form className="login_form">
                                 <div className="login_inputbox">
                                     <input type='email' placeholder="이메일" className="input_line" onChange={checkEmail} />
                                 </div>
                                 <div className="login_inputbox">
                                     <input type='password' placeholder="패스워드" className="input_line" onChange={checkPassword} />
+                                    {logResult? <h4 className="login_font">로그인 정보가 없는 관계로 다시 입력해주세요.</h4>: ""}
+                                    {notNull ? <h4 className="login_font-info">로그인 정보를 입력해주세요.</h4>: ""}
                                 </div>
-                                {logResult? <h4 className="login_font">로그인 정보가 없는 관계로 다시 입력해주세요.</h4>: ""}
-                                {notNull ? <h4>로그인 정보를 입력해주세요.</h4>: ""}
-                                <button type="submit" className="login_btn hover1" onClick={()=> handleLogin}>
+                                <button type="button" className="login_btn" onClick={handleLogin}>
                                     로그인    
                                 </button> 
                             </form>      
@@ -78,6 +105,7 @@ function Login() {
                     </div>
                 </section>
             </main>
+            <Footer/>
         </>
     )
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import './Header.css'
 import { UilUser } from '@iconscout/react-unicons'
 
 const Header = () => {
