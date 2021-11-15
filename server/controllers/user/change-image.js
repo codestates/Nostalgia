@@ -32,19 +32,18 @@ module.exports = {
       }
       
 
-        const images = req;
-        console.log(':::::::::::::::::::::::::::',images.file)
+        const images = req.file.path;
         if (images === undefined){
             return res.status(400).send(utill.fail(400, 'fail'));
         };
         await user.update({
-            
-            profile_img: req.body.image },
+            profile_img: req.file.path },
           {
               where: {
-              email: data.dataValues.profile_img
+              profile_img: data.dataValues.profile_img,
+              email: data.dataValues.email
             }
           });
-        res.status(200).send(util.success(200, 'ok', images));
+        res.status(200).send(util.success(200, 'true', images));
       }
 }
