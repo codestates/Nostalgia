@@ -11,33 +11,25 @@ module.exports = async(req,res)=>{
             {model:note_info, as:'middle', required: true, attributes:[ ['note_name','middle_note_name'] ]},
             {model:note_info, as:'base', required: true, attributes:[ ['note_name','base_note_name'] ]},
             {model:brand, required: true, attributes:['brand_name', 'country', 'country_img', 'logo_img']},
-            //{
-            //    model:review, required: true, 
-            //    attributes: [ [Sequelize.fn('avg', Sequelize.col('rating')),'avg_rating']],
-            //}
         ],
-        //group: ['perfume_infos.id']
     })
-
-    //select perfume_id,perfume_name,avg(rating) as avg_rating from reviews group by perfume_id;
-
-    // select perfume_infos.id, perfume_infos.perfume_name ,avg(rating) as avg_rating from perfume_infos 
-    // INNER JOIN reviews ON perfume_infos.id = reviews.perfume_id group by perfume_infos.id;
-
-
+    
     const avg_rating = await review.findAll({
-        attributes: [ 'perfume_id',[Sequelize.fn('avg', Sequelize.col('rating')),'avg_rating']],
+        attributes:  [ 'perfume_id' ,[Sequelize.fn('ROUND', Sequelize.fn('AVG', Sequelize.col('rating'))) , 'avg_rating' ] ],
         group: ['perfume_id']
     })
 
+    const number_review = await review.findAll({
+        attributes: [ 'perfume_id', [Sequelize.fn('count', Sequelize.col('perfume_id')),'number_reviews']],
+        group: ['perfume_id']
+    })
     
-    console.log(avg_rating);
 
    
     if(!data) {
         res.status(400).json({"data":null , "message": "fail to get all perfumes infos"});
     }
     else{
-    res.status(200).json({"data":data,"avg_rating":avg_rating , "message":"get all perfume infos successfully"});
+    res.status(200).json({"data":data, avg_rating, number_review  , "message":"get all perfume infos successfully"});
     }
 };

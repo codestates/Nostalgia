@@ -1,3 +1,5 @@
+//!유저 한명당 리뷰하나만 작성가능 중복확인할것
+
 const {review,user}=require('../../models');
 
 module.exports= async(req,res)=>{
@@ -12,10 +14,10 @@ module.exports= async(req,res)=>{
             rating:req.body.rating,
             comment:req.body.comment
         })
-        res.status(200).json({"data":null ,"message":"get review successully"})
+        res.status(201).json({"data":null ,"message":"add review success"})
     }
 
     else{
-        res.status(400).json({"data":null ,"message": "fail to get review"})
+        res.status(400).json({"data":null ,"message": "fail to add review"})
     }
 }

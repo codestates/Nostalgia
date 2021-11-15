@@ -28,6 +28,9 @@ function App() {
         path='/signup'
         component={SignUp}
         />
+        <Route
+        path='/mypage'
+        component={Mypage}/>
         <Route 
         path= '/mainpage'
         component={Main}/>
