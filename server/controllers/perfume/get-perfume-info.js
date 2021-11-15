@@ -14,12 +14,10 @@ module.exports = async(req,res)=>{
         ]
     })
 
-    let avg_rating = await review.findOne({
+    const  avg_rating = await review.findOne({
         where:{perfume_id:req.body.perfume_id},
-        attributes: [[Sequelize.fn('avg', Sequelize.col('rating')),'avg_rating']]
+        attributes:  [ 'perfume_id' ,[Sequelize.fn('ROUND', Sequelize.fn('AVG', Sequelize.col('rating'))) , 'avg_rating' ] ],
     })
-
-    avg_rating = Number(avg_rating.dataValues.avg_rating).toFixed(1); //소수점 자르기. 소수 두번째 자리에서 반올림해서 첫번째 자리까지만
 
     if(!data){
         res.status(400).json({"data":null, "message": "Wrong perfume name" });
