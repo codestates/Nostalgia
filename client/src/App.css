@@ -11,15 +11,20 @@
 
 @font-face {
   font-family: "UUC";
-  src: url(./font/Univers-UltraCondensed.woff)
+  src: url(../src/font/Univers-UltraCondensed.woff)
 }
 
 @font-face {
   font-family: "Playfair";
-  src: url(./font/PlayfairDisplay-Black.woff);
+  src: url(../src/font/PlayfairDisplay-Black.woff);
 }
 
-
+@font-face {
+  font-family: "BlackHanSans";
+  src: url(../src/font/BlackHanSans-Regular.woff);
+  font-weight: 80;
+  font-style: normal;
+}
 
 .App-logo {
   height: 40vmin;
