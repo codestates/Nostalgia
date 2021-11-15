@@ -4,7 +4,6 @@ body {
 
 .login_main {
     padding: 0px 200px;
-    margin-top: 250px;
 }
 
 .login_container {
@@ -27,12 +26,46 @@ body {
     width: inherit;
 }
 
+.login_img {
+    width: 100%;
+    height: 100%;
+}
+
+.fade-in-bck {
+    animation: fade-in-bck 3s cubic-bezier(0.250, 0.460, 0.450, 0.940)both;  
+}
+
+@keyframes fade-in-bck {
+    100% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+      opacity: 1;
+    }
+    0% {
+      -webkit-transform: translateZ(-80px);
+              transform: translateZ(-80px);
+      opacity: 0;
+    }
+} 
+
 .login_menu {
     display: flex;
     justify-content: center;
     align-items: center;
     flex: 1 1;
     flex-direction: column;
+}
+
+.login_title_font {
+    margin-bottom: 50px;
+    font-size: 50px;
+    border-bottom: 2px solid var(--font-color);
+}
+
+.login_info_font {
+    font-size: 15px;
+    color: black;
+    margin-bottom: 20px;
 }
 
 .login_form {
@@ -44,10 +77,16 @@ body {
 
 .login_inputbox {
     margin-bottom: 40px;
+    height: 40px;
+    text-align: center;
 }
 
 .login_font {
     color: red;
+}
+
+.login_font-info {
+    margin-top: 10px;
 }
 
 .input_line {
@@ -60,14 +99,46 @@ body {
 }
 
 .login_btn {
-    display: block;
-    font-weight: 400;
-    font-size: 15px;
+    margin: 8px 60px;
+    border:none;
+    position:relative;
     color: white;
-    cursor: pointer;
+    height:45px;
+    width: 350px;
     background-color: black;
-    height: 50px;
-    width: 300px;
-    
+    font-size:1.1em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms  ease all;
+    outline:none;
+    border-radius: 20px;
+}
+
+.login_btn:hover{
+    background:#fff;
+    color: black;
+}
+
+.login_btn:before,.login_btn:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: black;
+    transition:400ms ease all;
+}
+
+.login_btn:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+}
+
+.login_btn:hover:before,.login_btn:hover:after{
+    width:100%;
+    transition:800ms ease all;
 }
 
