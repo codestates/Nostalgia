@@ -1,0 +1,40 @@
+.favoriateList_list {
+    display: flex;
+    list-style: none;
+    padding: 0 1rem;
+    border-bottom: 3px dotted orangered;
+}
+
+
+.favoriateList_img-border {
+    border-right: 1px solid black;
+    padding-right: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.favoriateList_img-box {
+    margin: 0;
+    width: 100px;
+    height: 100px;
+}
+
+.favoriateList_img {
+    height: 100%;
+    width: 100%;
+}
+
+.favoriateList_list_day-favoriate {
+    text-align: right;
+    color: gray;
+    margin-top: 2px;
+}
+
+.favoriateList_totalList {
+    width: 100%;
+}
+
+.favoriateList_totalList-box {
+    margin: 10px 15px 0 15px;
+    list-style: none;
+}
