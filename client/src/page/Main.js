@@ -1,12 +1,19 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Header from '../components/Header'
 import './Main.css'
 import { chevronDown } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Perfume from '../components/Perfume'
 
+import { useSelector, useDispatch} from 'react-redux'
 
 
 const Main = () => {
+
+// const itemState = useSelector((state) => state.state);
+
+// const { perfumes } = itemState
+
 
 const [display, setDisplay] = useState([false, false, false, false])
 const [topRated, setTopRated] = useState(false)
@@ -66,9 +73,15 @@ const inMouseDisplay = (index) =>{
                     </div>
                     
                         <div className="perfume_container">
-                            <div className="perfume_row_1_container">
-                                <div className="perfume_item"/>
-                                <div className="perfume_item"/>
+                            <div className="perfume_row_container">
+                                {/* {perfumes.map((item,idx) => (
+                                    <Perfume
+                                    item={item}
+                                    key={idx}/>
+                                ))} */}
+                            </div>
+                            
+                            <div className="perfume_row_container">
                             </div>
                         </div>
             </div>
