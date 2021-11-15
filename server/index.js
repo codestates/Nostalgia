@@ -5,6 +5,10 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const express = require('express');
 const app = express();
+const multer = require('multer');
+const upload = multer({
+  dest: 'uploads/'
+});
 
 const { perfume_info,brand,user,favorite } = require('./models');
 
@@ -34,8 +38,8 @@ app.post('/user/signup', controllers.signup);
 app.post('/user/login', controllers.login);
 app.post('/user/signout', controllers.signout);
 app.post('/user/change-password',controllers.changepassword);
-//app.post('/user/change-username',controllers.changeusername);
-//app.post('/user/change-image', upload.single('image'), uploadProfile);
+app.post('/user/change-username',controllers.changeusername);
+app.post('/user/change-image', upload.single('image'), controllers.changeimage.uploadProfile);
 app.post('/user/delete-account', controllers.deleteaccount);
 app.get('/user/check-username',controllers.checkusername);
 
