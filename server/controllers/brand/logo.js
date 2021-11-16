@@ -1,19 +1,19 @@
 const {brand}=require('../../models');
 const fs = require('fs');
 
-module.exports = async (req,res)=>{
 
-
-    fs.readdir('./image', function(err, files) {
-        res.writeHead(200, {"Content-Type": "image/png"});
-        console.log(files)
-
-        files.forEach(function(filename){
-             const img_data =fs.readFile('./image/'+filename,function(data){
-                res.write(img_data);
-             })
-                console.log(img_data)
-            })
-            res.end();
+module.exports = async(req,res)=>{
+   
+    const data = await brand.findAll({
+        attributes:['logo_img']
     });
-}
+   
+    if(!data) {
+        res.status(400).json({"data":null , "message": "fail to get all brand logos"});
+    }
+    else{
+    res.status(200).json({"data":data , "message":"get all brand logos"});
+    }
+
+    }
+

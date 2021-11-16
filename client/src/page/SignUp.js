@@ -1,6 +1,7 @@
 import './signUpStyle.css';
 import { useEffect, useState } from "react";
 import { UilCheckCircle } from '@iconscout/react-unicons'
+import {Link} from 'react-router-dom'
 import useImageHook from '../components/ImageTime'
 import axios from "axios";
 import LukaHeader from '../components/LukaHeader';
@@ -19,11 +20,17 @@ function SignUp() {
 
     const [pwConfirm, setPwConfirm] = useState(false)
     const [notsame, setNotsame] = useState(false)
-    const [nameConfirm, setnameConfirm] = useState(false)
+    const [nameConfirm, setnameConfirm] = useState(true)
+
+    // 개미 메세지
     const [antMessage, setAntMessage] = useState(false)
+    const [antFailMessage, setAntFailMessage] = useState(false)
 
 
-    const [blanck, setBlank] = useState(false)
+    // 회원 가입 결과 메세지
+    const [signUp, setSignUp] = useState(false)
+
+    const [blanc, setBlank] = useState(false)
 
     let checkEmail = (e) => {
         setEmail(e.target.value)
@@ -46,12 +53,15 @@ function SignUp() {
 
     const value = /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@$!%*#?&])[A-Za-z0-9@$!%*#?&]{8,}$/.test(password)
 
-
+    // console.log("패스워드 검사: ", password === pwCheck)
+    // console.log("닉네임 중복검사: ", nameConfirm)
+    // console.log("패스워드 유효성 검사: ", pwConfirm)
     const handleLogin = async () => {   
         // 비밀번호와 비밀번호 확인이 같아야 하고, nameConfirm 중복 닉네임 검사
         // 그리고 유효성 검사까지 합격 받아야 로그인 가능
-        if(password === pwCheck && nameConfirm && pwConfirm) {
-            await axios
+        // #### nameConfirm도 조건문 검사에 있어야함!!! ####
+        if(password === pwCheck && pwConfirm && nameConfirm) {
+            const data = await axios
                 .post("http://localhost:4000/user/signup",
                     {
                         email: email,
@@ -62,48 +72,63 @@ function SignUp() {
                     {
                         // ################################## Content-Type form 형식에 대해 보류 ##################################
                         headers: { "Content-Type": "application/json" }, 
+                        //  아이디와 비밀번호가 서버로 넘어오면 유저의 정보가 맞는지 확인한 후에 cookie에 token을 발급하게 됨,
                         withCredentials: true
                     }
                 )
+
+            // 회원가입 성공 메세지
+            setSignUp(true)
+        } else {
+            // 회원가입 실패 시 공백 
+            setSignUp(false)
         }
     }
 
 
     const handleUserName = async () => {
     
-        setAntMessage(true) 
-    
-        setTimeout(() => {
-            // 6초가 지나야 아래 기능이 발생하는게 setTimeOut 메커니즘 동작법이다!!!!!!!!!!!!
-            setAntMessage(false)
-        }, 6000);
+        
+        if(!blanc && username !== "") {
+
+            const data = await axios
+            // ################################## 닉네임 중복 검사 경로 보류 ##################################
+                .post("http://localhost:4000/user/check-username",
+                    {
+                        user_name: username,
+                    },
+                    {
+                        headers: { "Content-Type": "application/json" }, 
+                        withCredentials: true
+                    }
+                )
+                .catch((err) => {
+                    
+                    // 개미 메세지 애니메이션 효과 제한 시간 
+                    setAntFailMessage(true)
+                    setTimeout(() => {
+                        setAntFailMessage(false)
+                    }, 6000);
+                    //
+                    console.log(err)
+                    setnameConfirm(false)
+                })
 
 
+            if(!blanc && data) {
+                setnameConfirm(true)
 
-        const data = await axios
-        // ################################## 닉네임 중복 검사 경로 보류 ##################################
-        .get("https://nostalgia.com/user/",
-            {
-                user_name: username,
-            },
-            {
-                headers: { "Content-Type": "application/json" }, 
-                withCredentials: true
+                // 개미 메세지 애니메이션 효과 제한 시간 
+                setAntMessage(true)
+                setTimeout(() => {
+                // 6초가 지나야 아래 기능이 발생하는게 setTimeOut 메커니즘 동작법이다!!!!!!!!!!!!
+                setAntMessage(false)
+                }, 6000);
             }
-        )
-
-        if(data && !blanck) {
-            setnameConfirm(true)
-        } else {
-            // 닉네임이 없으면 개미 메세지 On
-            // setAntMessage(true)
-            // console.log(antMessage)
-            // setTimeout(() => {
-            //     setAntMessage(false)
-            // }, 3000);
-
         }
+        
     }
+
 
     const handleImg = (e) => {
         e.preventDefault();
@@ -181,7 +206,10 @@ function SignUp() {
 
 
     return(
-        <>  <LukaHeader/>
+        <>  
+        <div className="parents_layer">
+        <div className="child_layer">
+        <LukaHeader/>
             <main className="sign_main">
                 <section className="sign_container">
                     <div className="sign_flexbox">
@@ -212,7 +240,7 @@ function SignUp() {
                                     <button type="button" className="sign_btn_username" onClick={()=> handleUserName()}>
                                     닉네임 중복 검사    
                                     </button>
-                                    {blanck ?
+                                    {blanc ?
                                     <h5 className="sign_blak-word"> 
                                         🚫 닉네임에 공백은 사용 불가입니다.
                                     </h5> : ""
@@ -225,13 +253,22 @@ function SignUp() {
                                         <label htmlFor="profile-upload" />
                                         <input type="file" id="profile-upload" accept="image/*" onChange={handleImg} />
                                     </div>
+                                    {signUp ? <h5 className="sign_blak-word-green"> 
+                                         회원가입에 성공하셨습니다!  
+                                     </h5> :
+                                      ""
+                                    }
                                 </div>
 
-                                <button type="button" className="sign_btn" onClick={()=> handleLogin}>
+                                <button type="button" className="sign_btn" onClick={handleLogin}>
                                     회원가입    
                                 </button> 
                             </form>
-                                  
+                            <button className="sign-login-link"> 
+                                <Link to="/login" style={{ textDecoration: 'none' }}>
+                                    로그인 이동
+                                </Link>
+                            </button>     
                         </div>
                         <aside className="sign_aside">
                             <img className={`sign_img ${inClass}`} src={`/perfume_sign_${count}.jpeg`}/>
@@ -252,7 +289,18 @@ function SignUp() {
                 }
 
                 {/* ################# 닉네임 있을 경우에 대한 모달창 보류 ################# */}
+                {antFailMessage ? 
+                <div className="notice_message" >
+                    <div>
+                        <div class="notification-container">
+                            <p> 🚫 중복된 닉네임입니다. </p>
+                        </div>
+                    </div>
+                </div> : ""
+                }
             </div>
+          </div>
+          </div>
         </>
     )
 }

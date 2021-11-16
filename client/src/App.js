@@ -6,19 +6,23 @@ import Mypage from './page/Mypage';
 import Main from './page/Main'
 import Footer from "../src/components/Footer";
 import LanderPage from './page/Landerpage';
+
+import LoginSuccess from '../src/components/LoginSuccess'
+
 import LukaHeader from './components/LukaHeader';
+import Item from './page/Item'
 
 
 function App() {
   return(
     <BrowserRouter>
-     <div className="parents_layer">
-        <div className="child_layer">
+
+     <div>
       {/* Header 넣기*/}
       <Switch>
         <Route 
         exact path= '/'
-        render={() => <SignUp />}
+        render={() => <Main />}
         />
         <Route 
         path= '/login'
@@ -29,18 +33,22 @@ function App() {
         component={SignUp}
         />
         <Route
-        path='/mypage'
-        component={Mypage}/>
-        <Route 
-        path= '/mainpage'
-        component={Main}/>
-
+        path='/loginSuccess'
+        component={LoginSuccess}/>
         <Route
         path='/mypage'
         component={Mypage}/>
+        <Route 
+        path= '/main'
+        component={Main}/>
+
+
+        <Route
+        path='/item'
+        component={Item}/>
+          
 
       </Switch>
-     </div>
      </div>
     </BrowserRouter>
   );

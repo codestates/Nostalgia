@@ -41,16 +41,16 @@ function NameUpdate({result}) {
         if(!blanck) {
             // 이건 서버 측에서 중복있는 없는지 알려줘서 data 변수에 결정
             const data = await axios.
-                post("https://nostalgia.com/user/change-username", 
+                post("http://localhost:4000/user/change-username", 
                     {
-                        new_username: username
+                        username: username
                     },
                     {
                         headers: { "Content-Type": "application/json" }, 
                         withCredentials: true
                     } 
                 )
-
+                    console.log(data)
             if(data) {
                 setConfirmFail(false)
                 setConfirmSuccess(true)

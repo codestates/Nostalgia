@@ -23,13 +23,8 @@
 
 
 
-body {
-    background-color: #ece6cc;
-}
-
 .sign_main {
     padding: 0px 200px;
-    /* margin: 100px auto; */
 }
 
 .sign_container {
@@ -102,7 +97,7 @@ body {
 }
 
 .sign_inputbox {
-    margin-bottom: 40px;
+    margin-bottom: 25px;
 }
 
 .sign_warrning {
@@ -114,7 +109,7 @@ body {
 }
 
 .font_box_top {
-    margin-top: 20px;
+    margin-top: 11px;
     text-align: center;
 }
 
@@ -199,13 +194,25 @@ body {
 
 .profile_container {
     width: 300px;
-    margin-bottom: 40px;
+    height: 110px;
 }
 
 .profile_box {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.sign_blak-word-green {
+    text-align: center;
+    margin-top: 12px;
+    color: rgb(11, 167, 11);
+    font-size: 18px;
+}
+
+.sign_blak-word-red {
+    text-align: center;
+    color: red;
 }
 
 .notice_message {
@@ -229,7 +236,7 @@ body {
 
 .notification-container {
     background: rgba(0,0,0,.7);
-    border-radius: 0 0 10px 10px ;
+    border-radius: 15px;
     color: white;
     font-size: 20px;
     padding: 15px 45px;
@@ -243,4 +250,12 @@ body {
 @keyframes scale1 { 
     0%   { transform: scale(0) }
     100%  { transform: scale(1) }
+}
+
+.sign-login-link{
+    font-size: 25px;
+    margin-top: 40px;
+    color: rgb(159, 159, 153);
+    background: none;
+    border: none;
 }

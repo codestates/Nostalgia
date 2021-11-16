@@ -65,7 +65,7 @@ body {
 .login_info_font {
     font-size: 15px;
     color: black;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .login_form {
@@ -81,12 +81,19 @@ body {
     text-align: center;
 }
 
+.login_inputbox2 {
+    margin-bottom: 13px;
+    height: 80px;
+    text-align: center;
+}
+
 .login_font {
     color: red;
 }
 
 .login_font-info {
-    margin-top: 10px;
+    margin-top: 17px;
+    height: 20px;
 }
 
 .input_line {
@@ -99,7 +106,7 @@ body {
 }
 
 .login_btn {
-    margin: 8px 60px;
+    margin: 30px 60px;
     border:none;
     position:relative;
     color: white;
@@ -142,3 +149,15 @@ body {
     transition:800ms ease all;
 }
 
+.login_fail-word {
+    text-align: center;
+    margin-top: 12px;
+    color: red;
+    font-size: 15px;
+}
+
+.login_OAuth-btn {
+    width: 220px;
+    height: 38px;
+    cursor: pointer;
+}

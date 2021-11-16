@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom';
 import './loginStyle.css';
 import useImageHook from '../components/ImageTime'
 import axios from "axios";
@@ -16,6 +17,11 @@ function Login() {
     const [inClass, setIn] = useState('fade-in-bck')
     const [count, setCount] = useState(1);
 
+    const [loginFail, setLoginFail] = useState(false)
+
+
+    const history = useHistory();
+
     let checkEmail = (e) => {
         setEmail(e.target.value)
         setNotNull(false)
@@ -25,10 +31,16 @@ function Login() {
         setNotNull(false)
     }
 
+    useEffect(() => {
+        if(email === "" || password === "") {
+            setLoginFail(false)
+        }
+    }, [email, password])
+
 
     const handleLogin = async () => {
         const data = await axios
-        .post('https://nostalgia.com/user/login', 
+        .post('http://localhost:4000/user/login', 
             {
                 email: email,
                 password: password
@@ -38,9 +50,15 @@ function Login() {
                 withCredentials: true
             }
         )
+        .catch((err) => {
+            setLoginFail(true)
+            console.log("Error Now" , err)
+        })
 
-        if(!data) {
-            setLogResult(true)
+
+        if(data) {
+            setLoginFail(false)
+            history.push('/loginSuccess')
         }
     }
 
@@ -78,7 +96,10 @@ function Login() {
 
     return(
         //위 header component 부착 필요
-        <>  <LukaHeader/>
+        <>  
+        <div className="parents_layer">
+        <div className="child_layer">
+            <LukaHeader/>
             <main className="login_main">
                 <section className="login_container">
                     <div className="login_flexbox">
@@ -92,20 +113,28 @@ function Login() {
                                 <div className="login_inputbox">
                                     <input type='email' placeholder="이메일" className="input_line" onChange={checkEmail} />
                                 </div>
-                                <div className="login_inputbox">
+                                <div className="login_inputbox2">
                                     <input type='password' placeholder="패스워드" className="input_line" onChange={checkPassword} />
                                     {logResult? <h4 className="login_font">로그인 정보가 없는 관계로 다시 입력해주세요.</h4>: ""}
-                                    {notNull ? <h4 className="login_font-info">로그인 정보를 입력해주세요.</h4>: ""}
+                                    {notNull ? <h4 className="login_font-info">로그인 정보를 입력해주세요.</h4>: <h4 className="login_font-info">{}</h4>}
+                                    {loginFail ? <h5 className="login_fail-word"> 
+                                         로그인에 실패하셨습니다. 
+                                        </h5> : ""
+                                    }
                                 </div>
+                                
                                 <button type="button" className="login_btn" onClick={handleLogin}>
                                     로그인    
                                 </button> 
-                            </form>      
+                            </form> 
+                            <img src="/google_oAuth.png" className="login_OAuth-btn"></img>  
                         </div>
                     </div>
                 </section>
             </main>
             <Footer/>
+           </div>
+           </div>
         </>
     )
 

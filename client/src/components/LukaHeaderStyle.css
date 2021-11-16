@@ -19,5 +19,10 @@
     letter-spacing: 7px;
     padding-bottom: 15px;
     border-bottom: 6px double rgb(114, 108, 108);
+    -ms-user-select: none; 
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
