@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './Header.css'
+import './Zeenii_Header.css'
 import { UilUser } from '@iconscout/react-unicons'
 import {UilSignout} from '@iconscout/react-unicons'
 import {Link} from 'react-router-dom'
@@ -18,14 +18,14 @@ const handleClick = () => setIsOpen(true);
 
 
     return (
-        <header className='header'>
-            <div className="header_title">
-                 <Link to='/'
-                 style={{textDecoration: 'none'}}>
-                    Nostalgia 
-                 </Link>
-                 </div>
-            
+        <header className='header_container'>
+            <div className='header_titlecontainer'>
+                <div className="header_title">
+                    <Link to='/'
+                    style={{textDecoration: 'none'}}>
+                        Nostalgia 
+                    </Link>
+                    </div>
             <div className="icon_container">
                 <div className="user_icon">
                     <Link to='/mypage'>
@@ -39,8 +39,19 @@ const handleClick = () => setIsOpen(true);
                                 isOpen={isOpen}/>
                     </div>
             </div>
+            </div>
+            
         </header>
     )
 }
 
 export default Header
+
+
+{/* <header className="LukaHeader_container">
+    <div className="LukaHeader_main">
+    <div className="LukaHeader_project">
+    Nostelgia
+    </div>
+    </div>
+    </header> */}
