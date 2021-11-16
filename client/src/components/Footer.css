@@ -49,4 +49,9 @@
    padding-top: 120px;
    padding-right: 200px;
    color: white;
+   -ms-user-select: none; 
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   user-select: none;    
 }

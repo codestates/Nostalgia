@@ -1,7 +1,7 @@
-.body {
-    background-color: #ece6cc;
-}
 
+.main_container{
+    width: 100%;
+}
 
 .brand_logo_container{
     display: flex;

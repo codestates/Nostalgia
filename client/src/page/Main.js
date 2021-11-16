@@ -34,9 +34,10 @@ const inMouseDisplay = (index) =>{
 }
 
     return (
-        <body className="body">
             <div className="main_container">
             <Header/>
+            <div>
+            
                 <div className="brand_logo_container">
                         <a className="logo_list">
                             <img className="chanel_logo"
@@ -85,7 +86,7 @@ const inMouseDisplay = (index) =>{
                             </div>
                         </div>
             </div>
-        </body>
+            </div>
     )
 }
 

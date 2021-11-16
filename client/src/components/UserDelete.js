@@ -22,15 +22,16 @@ function UserDelete({result}) {
     }
 
     const handleClick = async () => {
-        setUserDeleteFail(true)
+        //setUserDeleteFail(true)
         await axios
-            .post("https://nostalgia.com/user/delete-account", 
+            .post("http://localhost:4000/user/delete-account", 
             {
                 // 보류
+                password: password
             },
             {
                 headers: { "Content-Type": "application/json" }, 
-                        withCredentials: true
+                withCredentials: true
             }
         )
 

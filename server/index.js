@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: ['https://localhost:3000'],
+    origin: ['http://localhost:3000'],
     credentials: true,
     methods: ['GET', 'POST', 'OPTIONS']
   })
@@ -41,7 +41,7 @@ app.post('/user/change-password',controllers.changepassword);
 app.post('/user/change-username',controllers.changeusername);
 app.post('/user/change-image', upload.single('image'), controllers.changeimage.uploadProfile);
 app.post('/user/delete-account', controllers.deleteaccount);
-app.get('/user/check-username',controllers.checkusername);
+app.post('/user/check-username',controllers.checkusername);
 
 app.post('/favorite/add-favorite', controllers.addfavorite);
 app.get('/favorite/get-favorite', controllers.getfavorite);

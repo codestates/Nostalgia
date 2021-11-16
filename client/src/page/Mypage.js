@@ -28,6 +28,8 @@ function Mypage () {
 
     return (
         <>
+        <div className="parents_layer">
+        <div className="child_layer">
             <LukaHeader/>
             <div className="test"></div>
             <main className="main">
@@ -98,6 +100,8 @@ function Mypage () {
             {pwModal ? <PwUpdate result={handlePwModal}/> : ''}
             {nameModal ? <NameUpdate result={handleNameModal}/> : ''}
             {deleteModal ? <UserDelete result={hadleDelteModal}/> : ''}
+          </div>
+          </div>
         </>
     )
 }

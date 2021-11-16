@@ -15,7 +15,7 @@ const Landerpage = () => {
             </div>
                 <div className="btn_container">     
                     <div className="login_btn_container">
-                    <a className="login_btn">
+                    <a className="landpage_btn">
                         <Link 
                         to="/login"
                         style={{textDecoration: 'none'}}>
