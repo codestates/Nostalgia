@@ -35,16 +35,18 @@ function PwUpdate({result}) {
     const handleClick = async () => {
         // 비번이 서로 동일하고, 유효성 검사 또한 합격 여부 되어야 button으로 비번 변경 가능
         if(password === pwCheck && passwordConfirm) {
-            // await axios
-            //     .post('https://nostalgia.com/user/change-password',
-            //     {
-            //         new_password: password,
-            //     },
-            //     {
-            //         headers: { "Content-Type": "application/json" }, 
-            //         withCredentials: true
-            //     }    
-            // )
+            const data = await axios
+                .post('http://localhost:4000/user/change-password',
+                {
+                    password: password,
+                },
+                {
+                    headers: { "Content-Type": "application/json" }, 
+                    withCredentials: true
+                }    
+            )
+
+            console.log(data)
             setPwUpdatedClear(true)
             SetPwupdatedFail(false)
         } 

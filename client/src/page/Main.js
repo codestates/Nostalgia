@@ -37,7 +37,6 @@ const inMouseDisplay = (index) =>{
 }
 
     return (
-        <>
             <Header/>
             <div className="main_container">
                     <div className="search_btn_container">
@@ -124,6 +123,7 @@ const inMouseDisplay = (index) =>{
                             </div>
                         </div>
             </div>
+
             </>
     )
 }

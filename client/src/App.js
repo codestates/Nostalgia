@@ -6,6 +6,9 @@ import Mypage from './page/Mypage';
 import Main from './page/Main'
 import Footer from "../src/components/Footer";
 import LanderPage from './page/Landerpage';
+
+import LoginSuccess from '../src/components/LoginSuccess'
+
 import LukaHeader from './components/LukaHeader';
 import Item from './page/Item'
 
@@ -13,6 +16,8 @@ import Item from './page/Item'
 function App() {
   return(
     <BrowserRouter>
+
+     <div>
       {/* Header 넣기*/}
       <Switch>
         <Route 
@@ -28,15 +33,15 @@ function App() {
         component={SignUp}
         />
         <Route
-        path='/mypage'
-        component={Mypage}/>
-        <Route 
-        path= '/mainpage'
-        component={Main}/>
-
+        path='/loginSuccess'
+        component={LoginSuccess}/>
         <Route
         path='/mypage'
         component={Mypage}/>
+        <Route 
+        path= '/main'
+        component={Main}/>
+
 
         <Route
         path='/item'
@@ -44,6 +49,7 @@ function App() {
           
 
       </Switch>
+     </div>
     </BrowserRouter>
   );
 }
