@@ -3,9 +3,12 @@ const {favorite,user,review}=require('../../models')
 const Sequelize = require('sequelize');
 
 module.exports= async(req,res)=>{
+    
+    console.log(req.params)
     const data= await favorite.findAll({
-        attributes:['perfume_name','perfume_img','brand_name','createdAt'],
-        include:[ {model:user , required:true , attributes:['user_name'] ,where:{email: req.body.email} } ],
+        attributes:['perfume_name','brand_name','createdAt'],
+        where:{user_id:req.params.user_id}
+        //include:[ {model:user , required:true , attributes:['user_name'] ,where:{email: req.params.email} } ],
     })
     //일단 rating은 전체보내주는걸로
     const avg_rating = await review.findAll({
@@ -21,3 +24,5 @@ module.exports= async(req,res)=>{
     }
     
 }
+
+//! params 로 GET 요청
