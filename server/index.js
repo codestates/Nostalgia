@@ -25,6 +25,8 @@ app.use(
 app.use(cookieParser());
 
 
+<<<<<<< HEAD
+=======
 //app.use('/', express.static('brand_logo'));
 
 /*app.get('/',(req,res)=>{
@@ -36,6 +38,7 @@ app.use(cookieParser());
 })*/
 
 
+>>>>>>> c9c74a6e176c41592ec84464440bab45728840a7
 app.get('/user/userinfo', controllers.userinfo);
 app.post('/user/signup', controllers.signup);
 app.post('/user/login', controllers.login);
@@ -44,7 +47,11 @@ app.post('/user/change-password',controllers.changepassword);
 app.post('/user/change-username',controllers.changeusername);
 app.post('/user/change-image', upload.single('image'), controllers.changeimage.uploadProfile);
 app.post('/user/delete-account', controllers.deleteaccount);
+<<<<<<< HEAD
+app.post('/user/check-username', controllers.checkusername);
+=======
 app.post('/user/check-username',controllers.checkusername);
+>>>>>>> c9c74a6e176c41592ec84464440bab45728840a7
 
 app.post('/favorite/add-favorite', controllers.addfavorite);
 app.get('/favorite/get-favorite/:user_id', controllers.getfavorite);

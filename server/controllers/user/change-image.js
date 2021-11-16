@@ -44,6 +44,7 @@ module.exports = {
               email: data.dataValues.email
             }
           });
+          console.log(images.data)
         res.status(200).send(util.success(200, 'true', images));
       }
 }
