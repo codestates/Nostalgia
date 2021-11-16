@@ -1,6 +1,9 @@
 const {brand}=require('../../models');
+const fs = require('fs');
+
 
 module.exports = async(req,res)=>{
+   
     const data = await brand.findAll({
         attributes:['logo_img']
     });
@@ -11,4 +14,6 @@ module.exports = async(req,res)=>{
     else{
     res.status(200).json({"data":data , "message":"get all brand logos"});
     }
-};
+
+    }
+

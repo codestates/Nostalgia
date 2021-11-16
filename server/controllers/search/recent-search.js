@@ -13,3 +13,10 @@ module.exports= async(req,res)=>{
         res.status(200).json({'data':data, 'message':'get recent search list success' });
     }
 }
+
+
+
+
+//삭제 
+//추가 컨트롤러 추가
+//검색버튼

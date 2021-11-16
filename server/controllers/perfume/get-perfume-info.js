@@ -4,13 +4,13 @@ const Sequelize = require('sequelize');
 
 module.exports = async(req,res)=>{
     const data = await perfume_info.findOne({
-        where:{perfume_name : req.body.perfume_name}, 
-        attributes:['id','perfume_name','perfume_img','comment'],
+        where:{perfume_name : req.params.perfume_name}, 
+        attributes:['id','perfume_name','comment'],
         include:[
             {model:note_info, as:'top', required: true, attributes:[ ['note_name','top_note_name'] ]},
             {model:note_info, as:'middle', required: true, attributes:[ ['note_name','middle_note_name'] ]},
             {model:note_info, as:'base', required: true, attributes:[ ['note_name','base_note_name'] ]},
-            {model:brand, required: true, attributes:['brand_name', 'country', 'country_img', 'logo_img']}
+            {model:brand, required: true, attributes:['brand_name', 'country']}
         ]
     })
 
@@ -48,3 +48,5 @@ GROUP BY `perfume_id`
 
 
  */
+
+//! params로 GET 요청
