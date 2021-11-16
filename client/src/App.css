@@ -4,14 +4,18 @@
   padding: 0;
 }
 
+body{
+  background-color: #ece6cc;
+}
+
 .parents_layer {
   position:relative;
   
 }
 
-.child_layer {
+/* .child_layer {
   position:absolute;
-}
+} */
 
 @font-face {
   font-family: "UUC";

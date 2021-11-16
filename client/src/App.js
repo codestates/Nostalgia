@@ -7,18 +7,17 @@ import Main from './page/Main'
 import Footer from "../src/components/Footer";
 import LanderPage from './page/Landerpage';
 import LukaHeader from './components/LukaHeader';
+import Item from './page/Item'
 
 
 function App() {
   return(
     <BrowserRouter>
-     <div className="parents_layer">
-        <div className="child_layer">
       {/* Header 넣기*/}
       <Switch>
         <Route 
         exact path= '/'
-        render={() => <Mypage />}
+        render={() => <Main />}
         />
         <Route 
         path= '/login'
@@ -39,9 +38,12 @@ function App() {
         path='/mypage'
         component={Mypage}/>
 
+        <Route
+        path='/item'
+        component={Item}/>
+          
+
       </Switch>
-     </div>
-     </div>
     </BrowserRouter>
   );
 }

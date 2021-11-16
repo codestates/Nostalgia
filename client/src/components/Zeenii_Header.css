@@ -1,12 +1,17 @@
-.header{
+.header_container{
     background-color: #ece6cc;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    border-bottom: 5px solid #000000;
-    margin: 2% 15%;
+    height: 250px;
+    width: 100%;
+    margin-bottom: 4px;
+    border-bottom: 8px solid black;
 }
 
+.header_titlecontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+}
 
 .header_title{
     display: flex;
@@ -29,13 +34,11 @@
     display: flex;
     justify-content: center;
     width: 60px;
-    height: 70px;
 }
 
 .signout_icon{
     display: flex;
     justify-content: center;
     width: 70px;
-    height: 70px;
     cursor: pointer;
 }
