@@ -13,9 +13,9 @@ module.exports = async (req, res) => {
       if (!data){
         return res.status(401).json({ message: 'Invalid user' })
       }
-      const first_username = await user.findOne({ where: { email: req.body.email } })
+      const first_username = await user.findOne({ where: { user_name: req.body.username } })
       if(!first_username){
-        await user.update({ email: req.body.email }, { where: { email: data.dataValues.email }} )
+        await user.update({ user_name: req.body.username }, { where: {  user_name: data.dataValues.user_name}} )
         return res.json({ message: "change username successfully" });
       }
       res.status(401).json({ message: ' invaild user '})

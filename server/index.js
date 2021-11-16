@@ -26,13 +26,6 @@ app.use(
 app.use(cookieParser());
 
 
-/*app.get('/', async(req,res)=>{
-  const data = await perfume_info.findOne({where:{'id':1} , include:[brand]});
-
-  res.json(data);
-})*/
-
-
 app.get('/user/userinfo', controllers.userinfo);
 app.post('/user/signup', controllers.signup);
 app.post('/user/login', controllers.login);
@@ -41,7 +34,7 @@ app.post('/user/change-password',controllers.changepassword);
 app.post('/user/change-username',controllers.changeusername);
 app.post('/user/change-image', upload.single('image'), controllers.changeimage.uploadProfile);
 app.post('/user/delete-account', controllers.deleteaccount);
-app.get('/user/check-username',controllers.checkusername);
+app.post('/user/check-username', controllers.checkusername);
 
 app.post('/favorite/add-favorite', controllers.addfavorite);
 app.get('/favorite/get-favorite', controllers.getfavorite);

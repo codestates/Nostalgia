@@ -18,7 +18,7 @@ function App() {
       <Switch>
         <Route 
         exact path= '/'
-        render={() => <Mypage />}
+        render={() => <SignUp />}
         />
         <Route 
         path= '/login'

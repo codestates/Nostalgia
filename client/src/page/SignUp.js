@@ -51,8 +51,8 @@ function SignUp() {
         // 비밀번호와 비밀번호 확인이 같아야 하고, nameConfirm 중복 닉네임 검사
         // 그리고 유효성 검사까지 합격 받아야 로그인 가능
         if(password === pwCheck && nameConfirm && pwConfirm) {
-            const data = await axios
-                .post("https://nostalgia.com/user/signup",
+            await axios
+                .post("http://localhost:4000/user/signup",
                     {
                         email: email,
                         password: password,

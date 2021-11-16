@@ -1,8 +1,8 @@
-const {user}=require('../../models')
+const { user }=require('../../models')
 
-module.exports = async(req,res)=>{
+module.exports = async(req, res)=>{
     const data = await user.findOne({
-      where: {user_name : req.body.user_name}
+      where: { user_name : req.body.user_name }
     });
     
     if(!data) {
