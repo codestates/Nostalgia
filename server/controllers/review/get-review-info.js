@@ -6,12 +6,7 @@ module.exports= async(req,res)=>{
     })
 
     if(!data){
-        await review.create({
-            user_id:req.body.user_id,
-            perfume_id:req.body.perfume_id,
-            rating:req.body.rating,
-            comment:req.body.comment
-        })
+       
         res.status(200).json({"data":null ,"message":"get review successully"})
     }
 
@@ -19,3 +14,6 @@ module.exports= async(req,res)=>{
         res.status(400).json({"data":null ,"message": "fail to get review"})
     }
 }
+
+
+//!수정필요., POST 로 바꾸셈

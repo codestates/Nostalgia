@@ -10,7 +10,6 @@ const upload = multer({
   dest: 'uploads/'
 });
 
-const { perfume_info,brand,user,favorite } = require('./models');
 
 const controllers = require('./controllers');
 
@@ -26,10 +25,14 @@ app.use(
 app.use(cookieParser());
 
 
-/*app.get('/', async(req,res)=>{
-  const data = await perfume_info.findOne({where:{'id':1} , include:[brand]});
+//app.use('/', express.static('brand_logo'));
 
-  res.json(data);
+/*app.get('/',(req,res)=>{
+  fs.readFile('./uploads/4d28e90715288eb005b151736e08426b',function(err,data){
+    res.writeHead(200,{'Content-Type': 'image/png'});
+    res.write(data);
+    res.end();
+  })
 })*/
 
 
@@ -44,19 +47,19 @@ app.post('/user/delete-account', controllers.deleteaccount);
 app.post('/user/check-username',controllers.checkusername);
 
 app.post('/favorite/add-favorite', controllers.addfavorite);
-app.get('/favorite/get-favorite', controllers.getfavorite);
+app.get('/favorite/get-favorite/:user_id', controllers.getfavorite);
 
  app.get('/perfume/get-perfume-info', controllers.getperfumeinfo);
  app.get('/perfume/get-perfume-info-all', controllers.getperfumeinfoall);
 
 app.post('/review/add-review', controllers.addreview);
-app.get('/review/get-review-info', controllers.getreviewinfo);
+app.post('/review/get-review-info', controllers.getreviewinfo);
 app.post('/review/like-review', controllers.likereview);
-app.get('/review/number-of-like', controllers.numberoflike);
-app.get('/review/myreview', controllers.myreview);
+app.post('/review/number-of-like', controllers.numberoflike);
+app.post('/review/myreview', controllers.myreview);
 
-app.get('/search/get-recent-search', controllers.getrecentsearch);
-app.get('/brand/logo', controllers.logo);
+app.post('/search/get-recent-search', controllers.getrecentsearch);
+app.get('/brand/logo',controllers.logo);
 
 const HTTPS_PORT = process.env.HTTPS_PORT || 4000;
 

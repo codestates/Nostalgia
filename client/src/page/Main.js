@@ -1,14 +1,17 @@
 import React, {useState, useEffect} from 'react'
-import Header from '../components/Header'
+import Header from '../components/Zeenii_Header'
 import './Main.css'
 import { chevronDown } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Perfume from '../components/Perfume'
+import Search from '../components/Search'
+import { UilSearch } from '@iconscout/react-unicons'
+import { Link } from 'react-router-dom'
 
-import { useSelector, useDispatch} from 'react-redux'
+import { useSelector } from 'react-redux'
 
 
-const Main = () => {
+const Main = ({}) => {
 
 // const itemState = useSelector((state) => state.state);
 
@@ -34,10 +37,13 @@ const inMouseDisplay = (index) =>{
 }
 
     return (
-            <div className="main_container">
             <Header/>
-            <div>
-            
+            <div className="main_container">
+                    <div className="search_btn_container">
+                        <button className="search_btn_icon">
+                            <Search/>
+                        </button>
+                    </div>
                 <div className="brand_logo_container">
                         <a className="logo_list">
                             <img className="chanel_logo"
@@ -81,12 +87,44 @@ const inMouseDisplay = (index) =>{
                                     key={idx}/>
                                 ))} */}
                             </div>
-                            
+                            <Link to='/item'>
+                            <div className="perfume_row_container">
+                                <img className="perfume_img"></img>
+                                <div className="perfume_info_box">
+                                    <span className="perfume_info">향수</span>
+                                </div>
+                            </div>
+                            </Link>
+                            <div className="perfume_row_container">
+                            </div>
+                            <div className="perfume_row_container">
+                            </div>
+                            <div className="perfume_row_container">
+                            </div>
+                            <div className="perfume_row_container">
+                            </div>
+                            <div className="perfume_row_container">
+                            </div>
+                            <div className="perfume_row_container">
+                            </div>
+                            <div className="perfume_row_container">
+                            </div>
+                            <div className="perfume_row_container">
+                            </div>
+                            <div className="perfume_row_container">
+                            </div>
+                            <div className="perfume_row_container">
+                            </div>
+                            <div className="perfume_row_container">
+                            </div>
+                            <div className="perfume_row_container">
+                            </div>
                             <div className="perfume_row_container">
                             </div>
                         </div>
             </div>
-            </div>
+
+            </>
     )
 }
 
