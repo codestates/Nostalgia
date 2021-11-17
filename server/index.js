@@ -25,15 +25,8 @@ app.use(
 app.use(cookieParser());
 
 
-//app.use('/', express.static('brand_logo'));
 
-/*app.get('/',(req,res)=>{
-  fs.readFile('./uploads/4d28e90715288eb005b151736e08426b',function(err,data){
-    res.writeHead(200,{'Content-Type': 'image/png'});
-    res.write(data);
-    res.end();
-  })
-})*/
+app.use('/image', express.static('images')); //정적이미지 제공
 
 
 app.get('/user/userinfo', controllers.userinfo);
@@ -49,7 +42,7 @@ app.post('/user/check-username',controllers.checkusername);
 app.post('/favorite/add-favorite', controllers.addfavorite);
 app.post('/favorite/get-favorite', controllers.getfavorite);
 
- app.get('/perfume/get-perfume-info', controllers.getperfumeinfo);
+ app.post('/perfume/get-perfume-info', controllers.getperfumeinfo);
  app.get('/perfume/get-perfume-info-all', controllers.getperfumeinfoall);
 
 app.post('/review/add-review', controllers.addreview);
@@ -59,6 +52,8 @@ app.post('/review/number-of-like', controllers.numberoflike);
 app.post('/review/myreview', controllers.myreview);
 
 app.post('/search/get-recent-search', controllers.getrecentsearch);
+app.post('/search/delete-recent-search', controllers.deleterecentsearch);
+
 app.get('/brand/logo',controllers.logo);
 
 const HTTPS_PORT = process.env.HTTPS_PORT || 4000;

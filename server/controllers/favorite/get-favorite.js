@@ -6,7 +6,9 @@ module.exports= async(req,res)=>{
     
     console.log(req.params)
     const data= await favorite.findAll({
-        attributes:['perfume_name','brand_name','createdAt'],
+
+        attributes:['perfume_name','brand_name','createdAt','perfume_img'],
+
         where:{user_id:req.body.user_id}
         //include:[ {model:user , required:true , attributes:['user_name'] ,where:{email: req.params.email} } ],
     })
@@ -25,4 +27,5 @@ module.exports= async(req,res)=>{
     
 }
 
-//! params 로 GET 요청
+
+

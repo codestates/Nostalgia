@@ -65,6 +65,7 @@
     display: grid;
     grid-template-rows: repeat(5, 1fr);
     grid-template-columns: repeat(3, 1fr);
+    flex-wrap: wrap;
     justify-content: center;
     border: 2px solid #000000;
     margin: 10px auto;

@@ -14,11 +14,8 @@ module.exports = {
       country: {
         type: Sequelize.STRING
       },
-      country_img: {
-        type: Sequelize.BLOB
-      },
       logo_img: {
-        type: Sequelize.BLOB
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
