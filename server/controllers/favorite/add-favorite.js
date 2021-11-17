@@ -1,13 +1,17 @@
 //! 한번만 누를 수 있음
 const {favorite,user}=require('../../models');
+const { isAuthorized } = require('../tokenFunctions');
 
 module.exports= async(req,res)=>{
+    const accessTokenData = isAuthorized(req);
+    const { user_id } = accessTokenData;
+
     const data = await favorite.findOne({
-        where:{'user_id':req.body.user_id, 'perfume_name':req.body.perfume_name}
+        where:{'user_id':user_id, 'perfume_name':req.body.perfume_name}
     })
     if(!data){
         await favorite.create({
-            user_id:req.body.user_id,
+            user_id:user_id,
             perfume_name:req.body.perfume_name,
             perfume_img:req.body.perfume_img,
             brand_name:req.body.brand_name
