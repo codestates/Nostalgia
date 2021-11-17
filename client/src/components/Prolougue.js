@@ -1,9 +1,30 @@
+import {useState, useEffect} from 'react'
 import './Prolouge.css'
+import useImageHook from './ImageTime'
 
 const Prolougue = () => {
 
+    const [inClass, setIn] = useState('fade-in-bck')
+    const [count, setCount] = useState(1);
+
+    useImageHook(() => {
+        setCount(count + 1);
+        setIn('fade-in-bck')
+    }, 4000);
+  
+    useEffect(() => {
+        setTimeout(()=> {
+          setIn('')
+        }, 1000)
+    }, [count])
+      
+    if(count > 3) {
+        setCount(1)
+    }
+
+
     return (
-        <body>
+        <body className="prolougue_body">
             <div className="prolougue_container">
                 <div className="prolouge_title_container">
                     <div className="prolougue_title">Prolougue</div>

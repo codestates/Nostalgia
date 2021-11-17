@@ -34,8 +34,6 @@ app.get('/user/userinfo/userdata', controllers.userinfo.userdata);
 app.use('/image', express.static('images')); //정적이미지 제공
 
 
-app.get('/user/userinfo', controllers.userinfo);
-
 app.post('/user/signup', upload.single('image'), controllers.signup);
 app.post('/user/login', controllers.login);
 app.post('/user/signout', controllers.signout);
