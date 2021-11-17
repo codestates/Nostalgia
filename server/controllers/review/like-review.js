@@ -1,5 +1,5 @@
 //!한명이 중복해서 좋아요 못누름 중복확인할것
-
+const { isAuthorized } = require('../tokenFunctions');
 const {review_like}=require('../../models');
 
 module.exports= async(req,res)=>{
