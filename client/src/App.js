@@ -11,7 +11,7 @@ import LanderPage from './page/Landerpage';
 import LoginSuccess from '../src/components/LoginSuccess'
 
 import LukaHeader from './components/LukaHeader';
-import Item from './page/Item'
+import Itempage from './page/Itempage'
 import axios from 'axios';
 
 
@@ -49,8 +49,7 @@ function App() {
         render={() => <LanderPage />}
         />
         <Route 
-        path= '/main'
-        component={MainList}/>
+
         <Route 
         path= '/LanderPage'
         component={LanderPage}
@@ -73,10 +72,8 @@ function App() {
         path= '/mainpage'
         component={MainList}/>
         <Route
-        path='/item'
-        component={Item}/>
-          
-
+        path='/itempage'
+        component={Itempage}/>
       </Switch>
      </div>
     </BrowserRouter>

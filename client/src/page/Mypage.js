@@ -9,6 +9,7 @@ import FavoriteList from "../components/FavoriteList"
 import ReviewList from "../components/ReviewList"
 
 import axios from 'axios'
+import Review from "../components/Review"
 
 function Mypage () {
     
@@ -19,9 +20,9 @@ function Mypage () {
 
 
 
-    const [favoiList, setFavoiList] = useState('')
-    const [reviewList, setreviewList] = useState('')   
-    const [userInfo, setUserInfo] = useState('')
+    const [favoiList, setFavoiList] = useState([])
+    const [reviewList, setreviewList] = useState([])   
+    const [userInfo, setUserInfo] = useState([])
 
     const handlePwModal = (el) => {
         setPewModal(el)
@@ -45,15 +46,16 @@ function Mypage () {
               headers: { "Content-Type": "application/json" }, 
               withCredentials: true
           }
-        ).then((data) => {
-         setUserInfo(data.data.data)
-          //console.log("유저 정보 요청: ", data.data.data)
+        )
+        .then((res) => {
+            console.log("유저 정보: ", res.data.data)
+            setUserInfo(res.data.data);    
         })
       }, [])
 
 
 
-
+      console.log("#########", userInfo)
 
 
     //  ########### 찜하기 목록 요청 ###########
@@ -70,8 +72,8 @@ function Mypage () {
             }
         )
        .then((data) => {
-           console.log("찜하기 목록 요청: ", data.data)
-           setFavoiList(data.data)
+           //console.log("찜하기 목록 요청13: ", data.data.data)
+           setFavoiList(data.data.data)
         })
     }, [])
 
@@ -90,7 +92,7 @@ function Mypage () {
               withCredentials: true
           }
         ).then((data) => {
-        //   console.log("리뷰 목록 요청: ",data.data.data)
+          console.log("리뷰 목록 요청: ",data.data)
           setreviewList(data.data.data)
         })
       }, [])
@@ -112,7 +114,7 @@ function Mypage () {
                         </div>
                         <div className="mypage_image-box">
                             <div className="mypage_image-size">
-                                <img className="mypage_image" src="/perfume_sign_1.jpeg"></img>
+                                <img className="mypage_image" src={''}></img>
                             </div>
                         </div>   
                         <div className="mypage_text-box">
@@ -154,17 +156,16 @@ function Mypage () {
                             <ul className="favoriate_box">
                                 <h3 className="favoriate_list_title">찜하기 목록</h3>
                                  {/* ################## Component 분리해야 antipattern 벗어남 !! ################### */}    
-                                 <FavoriteList/>
-                                {/* {favoiList.avg_rating.map((el) => <FavoriteList avgList={el} item={favoiList.data}/>)} */}
+                                
+                                {favoiList.map((el) => <FavoriteList item={el}/>)}
                             </ul>
                         </section>
 
                         <section className="mypage_review">
                             <ul className="mypage_review_box">
                                 <h3 className="review_list_title">Review 목록</h3>
-                               
-                                <ReviewList/>
-                            {/* {reviewList.map((el) => <ReviewList list={el}/>)} */}
+                                {/* <ReviewList/> */}
+                            {reviewList.map((el) => <ReviewList list={el}/>)}
                             </ul>
                         </section>
                     </div>
