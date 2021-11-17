@@ -1,5 +1,4 @@
 
-
 .title_container {
     display: flex;
     flex-direction: row;
@@ -38,7 +37,6 @@
 
 
 .lander_login_btn{
-    background-color: #ffffff;
     border-radius: 10px;
     cursor: pointer;
     font-family: "Playfair";
@@ -61,7 +59,6 @@
 }
 
 .signup_btn{
-    background-color: #ffffff;
     border-radius: 10px;
     cursor: pointer;
     font-family: "Playfair";
