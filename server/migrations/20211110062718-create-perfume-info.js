@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       perfume_img: {
-        type: Sequelize.BLOB
+        type: Sequelize.STRING
       },
       comment: {
         type: Sequelize.STRING

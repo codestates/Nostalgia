@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
   
   perfume_info.init({
     perfume_name: DataTypes.STRING,
-    perfume_img: DataTypes.BLOB,
+    perfume_img: DataTypes.STRING,
     comment: DataTypes.STRING,
     top_note_id: DataTypes.INTEGER,
     middle_note_id: DataTypes.INTEGER,
