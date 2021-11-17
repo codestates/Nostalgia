@@ -22,7 +22,8 @@ module.exports = {
     numberoflike: require('./review/number-of-like'),
     myreview: require('./review/myreview'),
 
-    getrecentsearch: require('./search/recent-search'),
+    getrecentsearch: require('./search/get-recent-search'),
+    deleterecentsearch: require('./search/delete-recent-search'),
     logo: require('./brand/logo'),
  
   };

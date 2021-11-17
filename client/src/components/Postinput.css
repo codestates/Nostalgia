@@ -1,0 +1,61 @@
+.review_input_box {
+    width: 100%;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .box_row {
+    display: flex;
+    flex-direction: row;
+    height: 80%;
+  }
+  
+  .review_user_info {
+    width: 13%;
+    height: 60%;
+    margin: 15px 15px;
+  }
+  
+  .review_user_info_wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  
+  .review_user_info_wrapper > .review_username {
+    font-size: 20px;
+    justify-content: flex-end;
+    margin-right: 10px;
+  }
+  
+  .review_input_container {
+    width: 99%;
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .review_comment_input {
+    width: 90%;
+    height: 86%;
+    margin: 10px 20px;
+    border:none;
+    font-size: 25px;
+  }
+  
+  .submit_btn{
+      justify-content:center;
+      width: 80%;
+      height: 80%;
+      font-size: 20px;
+  }
+
+  .input_btn_container{
+      justify-content: center;
+      width: 100px;
+      height: 110px;
+      padding-top: 10px;
+  }

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import './mypageStyle.css'
 import PwUpdate from '../components/PwUpdate'
 import NameUpdate from "../components/NameUpdate"
@@ -8,11 +8,20 @@ import LukaHeader from "../components/LukaHeader"
 import FavoriteList from "../components/FavoriteList"
 import ReviewList from "../components/ReviewList"
 
+import axios from 'axios'
+
 function Mypage () {
     
+    // 모달 제어하는 useState()
     const [pwModal, setPewModal] = useState(false)
     const [nameModal, setNameModal] = useState(false)
     const [deleteModal, setDeleteModal] = useState(false)
+
+
+
+    const [favoiList, setFavoiList] = useState('')
+    const [reviewList, setreviewList] = useState('')   
+    const [userInfo, setUserInfo] = useState('')
 
     const handlePwModal = (el) => {
         setPewModal(el)
@@ -26,10 +35,73 @@ function Mypage () {
         setDeleteModal(el)
     }
 
+
+    
+    //  ########### UserInfo 요청 ########### 
+    useEffect(() => {
+        axios
+         .get("http://localhost:4000/user/userinfo",
+          {
+              headers: { "Content-Type": "application/json" }, 
+              withCredentials: true
+          }
+        ).then((data) => {
+         setUserInfo(data.data.data)
+          //console.log("유저 정보 요청: ", data.data.data)
+        })
+      }, [])
+
+
+
+
+
+
+    //  ########### 찜하기 목록 요청 ###########
+    useEffect(() => {
+
+      axios
+        .post("http://localhost:4000/favorite/get-favorite",
+            {
+                user_id: 1
+            },
+            {
+                headers: { "Content-Type": "application/json" }, 
+                withCredentials: true
+            }
+        )
+       .then((data) => {
+           console.log("찜하기 목록 요청: ", data.data)
+           setFavoiList(data.data)
+        })
+    }, [])
+
+
+
+
+    // ########### 리뷰 목록 요청 ########### 
+    useEffect(() => {
+        axios
+         .post("http://localhost:4000/review/myreview",
+          {
+              user_id: 1
+          },
+          {
+              headers: { "Content-Type": "application/json" }, 
+              withCredentials: true
+          }
+        ).then((data) => {
+        //   console.log("리뷰 목록 요청: ",data.data.data)
+          setreviewList(data.data.data)
+        })
+      }, [])
+
+     
+    
+    
+
     return (
         <>
         <div className="parents_layer">
-        <div className="child_layer">
             <LukaHeader/>
             <div className="test"></div>
             <main className="main">
@@ -49,17 +121,17 @@ function Mypage () {
                                     💌 이메일
                                 </div>
                                 <div className="mypage_info_font">
-                                    caifornialove.96@gmail.com
+                                    {userInfo.email}
                                 </div>
                             </div>
                         </div>
                         <div className="mypage_text-box">
                             <div>
                                 <div className="mypage_font">
-                                    👱 닉네임 
+                                    👱 닉네임
                                 </div>
                                 <div className="mypage_info_font">
-                                    CaliforniaLuv
+                                   {userInfo.user_name}
                                 </div>
                             </div>
                         </div>
@@ -81,16 +153,18 @@ function Mypage () {
                         <section className="mypage_favoriate">         
                             <ul className="favoriate_box">
                                 <h3 className="favoriate_list_title">찜하기 목록</h3>
-                                 {/* ################## Component 분리해야 antipattern 벗어남 !! ################### */}
-                                <FavoriteList/>
-                                 {/* ################## Component 분리해야 antipattern 벗어남 !! ################### */}
+                                 {/* ################## Component 분리해야 antipattern 벗어남 !! ################### */}    
+                                 <FavoriteList/>
+                                {/* {favoiList.avg_rating.map((el) => <FavoriteList avgList={el} item={favoiList.data}/>)} */}
                             </ul>
                         </section>
 
                         <section className="mypage_review">
-                            <ul className="review_box">
+                            <ul className="mypage_review_box">
                                 <h3 className="review_list_title">Review 목록</h3>
+                               
                                 <ReviewList/>
+                            {/* {reviewList.map((el) => <ReviewList list={el}/>)} */}
                             </ul>
                         </section>
                     </div>
@@ -100,7 +174,6 @@ function Mypage () {
             {pwModal ? <PwUpdate result={handlePwModal}/> : ''}
             {nameModal ? <NameUpdate result={handleNameModal}/> : ''}
             {deleteModal ? <UserDelete result={hadleDelteModal}/> : ''}
-          </div>
           </div>
         </>
     )

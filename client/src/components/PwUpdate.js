@@ -12,7 +12,6 @@ function PwUpdate({result}) {
     const [passwordConfirm, setConfirm] = useState(false)
     const [samePw, setSamePw] = useState(false)
     const [pwUpdatedClear, setPwUpdatedClear] = useState(false)
-    const [pwupdatedFail, SetPwupdatedFail] = useState(false)
 
 
     
@@ -44,16 +43,18 @@ function PwUpdate({result}) {
                     headers: { "Content-Type": "application/json" }, 
                     withCredentials: true
                 }    
-            )
+            ).catch((err) => {
+                console.log("🚫 Not Found 🚫", err)
+                setPwUpdatedClear(false)
+            })
 
-            console.log(data)
-            setPwUpdatedClear(true)
-            SetPwupdatedFail(false)
+    
+            if(data) {
+                setPwUpdatedClear(true)
+            }
+            
         } 
-        if(password !== pwCheck) {
-            setPwUpdatedClear(false)
-            SetPwupdatedFail(true)
-        }
+        
     }
     
     
@@ -101,8 +102,7 @@ function PwUpdate({result}) {
                             </div>
                             <button className="pwUpdate_button" onClick={handleClick}>비밀번호 변경</button>
                             <div className="pwUpdate_box-inputline">
-                                {pwUpdatedClear ? <h5 className="pwUpdate_successs-result">비밀번호 변경을 성공하였습니다.</h5> : ''}
-                                {pwupdatedFail ? <h5 className="pwUpdate_warning">비밀번호 변경을 실패하셨습니다.</h5> : ''}  
+                                {pwUpdatedClear ? <h5 className="pwUpdate_successs-result">비밀번호가 변경되었습니다.</h5> : ''}
                             </div>
                         </div>                            
                     </section>

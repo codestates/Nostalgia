@@ -5,7 +5,7 @@ const Sequelize = require('sequelize');
 module.exports = async(req,res)=>{
     
     const data = await perfume_info.findAll({ 
-        attributes:['id','perfume_name','comment'],
+        attributes:['id','perfume_name','comment','perfume_img'],
         include:[
             {model:brand, required: true, attributes:['brand_name']},
         ],

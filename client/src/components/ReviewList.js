@@ -1,20 +1,26 @@
 import './ReviewListStyle.css'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
 
-function ReviewList() {
+ function ReviewList({list}) {
+    
+
 
     return(
         <>
             <li className="ReviewList_list">
                 <div className="ReviewList_list-box">
-                    <div className="ReviewList_product_font">{"CHANEL No.5"}</div>
-                    <div className="ReviewList_list_day-review">2021-11-12</div>
+                    <div className="ReviewList_product_font">{14}
+                    {/* {list.perfume_info.perfume_name} */}
+                    </div>
+                    <div className="ReviewList_list_day-review">{554}
+                    {/* {{list.createdAt.slice(0, 10)}} */}
+                    </div> 
                 </div>      
                 <div>
                     <div className="ReviewList_comment">
-                                {"우와 저어엉말 좋아요!! 최고에요!!!!우와 저어엉말 좋아요!! 최고에요!!!!!!"}
-                    </div>
-                    <div className="ReviewList_comment_good">
-                        👍 : {""}
+                    {456456}
+                    {/* {list.comment} */}
                     </div>
                 </div>           
             </li>

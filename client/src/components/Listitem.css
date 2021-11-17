@@ -1,0 +1,40 @@
+.listitem {
+    display: flex;
+    flex-direction: column;
+    width: 420px;
+    height: 465px;
+    border: solid rgb(238, 238, 238) 0.1rem;
+    margin: 1.1rem;
+    background-color: white;
+  }
+  
+  .listitem_img {
+    width: 400px;
+    height: 330px;
+    margin: 0.5rem;
+    border: 0.5px solid rgb(238, 238, 238);
+    object-fit: cover;
+  }
+  
+  .listitem_info_box {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .listitem_brand {
+    justify-content: flex-start;
+    margin-left: 1rem;
+    font-weight: 400;
+  }
+  
+  .listitem_itemname {
+    float: center;
+    margin-left: 1rem;
+    font-weight: 400;
+  }
+  
+  .listitem_item_tag {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  

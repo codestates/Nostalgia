@@ -1,6 +1,5 @@
 const {recent_search} = require('../../models');
 
-
 module.exports= async(req,res)=>{
     const data = await recent_search.findAll({
         where:{'user_id':req.body.user_id}
@@ -15,8 +14,5 @@ module.exports= async(req,res)=>{
 }
 
 
-
-
-//삭제 
 //추가 컨트롤러 추가
-//검색버튼
+//검색하면 추가 해추고 검색결과 주기

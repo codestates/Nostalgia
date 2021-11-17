@@ -2,16 +2,14 @@ import React, { useState, useEffect } from 'react';
 import './StarStyle.css'
 
 
-function Rating() {
+function Rating({star}) {
  
-  const [rating, setRating] = useState('5')
-
-
+  //console.log(star)
   return (
     <>
       <div>
         <div className='star-rating'>
-          <span className={`star-background star-rating-size${rating}`}></span>
+          <span className={`star-background star-rating-size${1}`}></span>
         </div>
       </div>
     </>
