@@ -1,0 +1,38 @@
+
+.perfume{
+
+    animation: bell 3s infinite linear;
+}
+
+.center {
+    width: 150px;
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    border: none;
+    transform: translate(-50%,-50%);
+}
+
+.smoke{
+  position: absolute;
+  top: -50%;
+  left: 110%;
+  animation: moveto 3s infinite linear;
+}
+
+@keyframes moveto{
+    25% {
+        transform: translate(50px, -50px);
+    }
+
+}
+
+@keyframes bell{
+    0%, 60%{
+      transform: rotate(0deg);
+      }
+    5%, 15%, 25%, 35%, 45% {
+      transform: rotate(-13deg);
+    }
+  
+  }

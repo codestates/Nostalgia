@@ -1,14 +1,15 @@
-const {user}=require('../../models')
+const { user }=require('../../models')
 
-module.exports = async(req,res)=>{
+module.exports = async(req, res)=>{
+  console.log(req.body)
     const data = await user.findOne({
-      where: {user_name : req.body.user_name}
+      where: { user_name : req.body.user_name }
     });
     
     if(!data) {
-      return res.status(200).json({'data':1, 'message':'possible to use this username' });
-    }
+      return res.status(200).json({'data': true });
+    } 
+      res.status(409).json({ 'data': false} );  
     
-    res.status(400).json({ 'data':0, 'message':'this user name already exist'} );
-
+    
 }

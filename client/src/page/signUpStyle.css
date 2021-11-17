@@ -23,13 +23,8 @@
 
 
 
-body {
-    background-color: #ece6cc;
-}
-
 .sign_main {
     padding: 0px 200px;
-    margin: 250px auto;
 }
 
 .sign_container {
@@ -56,6 +51,23 @@ body {
     width: 100%;
     height: 100%;
 }
+
+.fade-in-bck {
+    animation: fade-in-bck 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;  
+}
+
+@keyframes fade-in-bck {
+    100% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+      opacity: 1;
+    }
+    0% {
+      -webkit-transform: translateZ(-80px);
+              transform: translateZ(-80px);
+      opacity: 0;
+    }
+} 
 
 .sign_menu {
     display: flex;
@@ -85,11 +97,24 @@ body {
 }
 
 .sign_inputbox {
-    margin-bottom: 40px;
+    margin-bottom: 25px;
+}
+
+.sign_warrning {
+    height: 40px;
+}
+
+.sign_password_font {
+    text-align: center;
 }
 
 .font_box_top {
-    margin-top: 20px
+    margin-top: 11px;
+    text-align: center;
+}
+
+.sign_password_success {
+    height: 60px;
 }
 
 .sign_line {
@@ -102,22 +127,55 @@ body {
     border-radius: 30px;
 }
 
-.flex {
+.sign_username-flex {
     display: flex;
     flex-direction: column;
     align-items:flex-end;
+    height: 50px;
 }
 
 .sign_btn {
-    display: block;
-    font-weight: 400;
-    font-size: 15px;
+    margin: 0 60px;
+    border:none;
+    position:relative;
     color: white;
-    cursor: pointer;
+    height:45px;
+    width: 350px;
     background-color: black;
-    height: 50px;
-    width: 300px;
-    
+    font-size:1.1em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms  ease all;
+    outline:none;
+    border-radius: 20px;
+}
+
+.sign_btn:hover{
+    background:#fff;
+    color: black;
+}
+
+.sign_btn:before,.sign_btn:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: black;
+    transition:400ms ease all;
+}
+
+.sign_btn:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+}
+
+.sign_btn:hover:before,.sign_btn:hover:after{
+    width:100%;
+    transition:800ms ease all;
 }
 
 .sign_btn_username {
@@ -127,17 +185,34 @@ body {
     padding: 4px 5px;
 }
 
+.sign_blak-word {
+    text-align: center;
+    margin-right: 50px;
+}
+
 
 
 .profile_container {
     width: 300px;
-    margin-bottom: 40px;
+    height: 110px;
 }
 
 .profile_box {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.sign_blak-word-green {
+    text-align: center;
+    margin-top: 12px;
+    color: rgb(11, 167, 11);
+    font-size: 18px;
+}
+
+.sign_blak-word-red {
+    text-align: center;
+    color: red;
 }
 
 .notice_message {
@@ -160,13 +235,14 @@ body {
 
 
 .notification-container {
-    background: rgba(0,0,0,.4);
-    border-radius: 0 0 10px 10px ;
+    background: rgba(0,0,0,.7);
+    border-radius: 15px;
     color: white;
     font-size: 20px;
     padding: 15px 45px;
     position: absolute;
-    bottom: -700px;
+    bottom: -100px;
+    right: 650px;
     animation: scale1 3s infinite alternate;
 }
 
@@ -174,4 +250,12 @@ body {
 @keyframes scale1 { 
     0%   { transform: scale(0) }
     100%  { transform: scale(1) }
+}
+
+.sign-login-link{
+    font-size: 25px;
+    margin-top: 40px;
+    color: rgb(159, 159, 153);
+    background: none;
+    border: none;
 }

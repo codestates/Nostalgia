@@ -1,0 +1,45 @@
+.listitem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 310px;
+    height: auto;
+    background-color: white;
+    margin: 1.0rem;
+    border: 1px solid #000000;
+    padding: 10px;
+  }
+  
+  .listitem_img {
+    width: 300px;
+    height: 200px;
+    /* margin: 0.5rem; */
+    border: 0.5px solid rgb(238, 238, 238);
+    object-fit: scale-down;
+    justify-content: center;
+  }
+  
+  .listitem_info_box {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .listitem_brand {
+    justify-content: flex-start;
+    margin-left: 1rem;
+    font-weight: 400;
+    font-family: "UUC";
+  }
+  
+  .listitem_itemname {
+    float: center;
+    margin-left: 1rem;
+    font-weight: 400;
+    font-size: 20px;
+  }
+  
+  .listitem_item_tag {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  

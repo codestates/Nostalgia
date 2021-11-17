@@ -14,22 +14,35 @@
 
 .mypage_info {
     width: 50%;
-    border-right: 2px dotted sienna;
+    transition: 0.8s;
+}
+
+.mypage_info:hover {
+    box-shadow: 0 7px 105px rgb(0 0 0 / 70%);
 }
 
 .mypage_record {
     width: 50%;
-    border-left: 2px dotted sienna;
+    display: flex;
+    flex-direction: column; 
+    transition: 0.8s;
+}
+
+.mypage_record:hover {
+    box-shadow: 0 7px 105px rgb(0 0 0 / 70%);
 }
 
 .mypage_header {
-    margin: 45px auto;
+    margin: 45px 190px;
 }
 
 .mypage_title {
     text-align: center;
-    font-size: 45px;
+    margin-bottom: 50px;
+    font-size: 50px;
+    border-bottom: 2px solid var(--font-color);
 }
+
 
 .mypage_image-box {
     margin: 65px auto;
@@ -81,7 +94,7 @@
     font-size:1.1em;
     padding:0 2em;
     cursor:pointer;
-    transition:800ms ease all;
+    transition:800ms  ease all;
     outline:none;
 }
 
@@ -144,12 +157,6 @@
     left: 0; 
 }
 
-.mypage_record {
-    display: flex;
-    flex-direction: column; 
- 
-}
-
 .mypage_favoriate {
     margin: 40px auto;
     width: 30.5rem;
@@ -162,61 +169,73 @@
     height: 27.0rem;
 }
 
+.favoriate_list_title {
+    font-size: 25px;
+    padding: 15px;
+    text-align: center;
+    background-color: #d0c79f;
+    border-bottom: 4px solid black;
+}
+
 .favoriate_box {
     height: 100%;
-    border: 2px solid black;
     overflow: scroll;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+    transition: .3s;
 }
 
-.favoriate_list {
-    display: flex;
-    list-style: none;
-    padding: 0 1rem;
-    border-bottom: 1px solid orangered;
+.favoriate_box:hover{
+    box-shadow: 0 7px 15px rgba(0, 0, 0, .7);
 }
 
-.favoriate_img-border {
-    border-right: 1px solid black;
-    padding-right: 15px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-.favoriate_img-box {
-    margin: 0;
-    width: 100px;
-    height: 100px;
-}
-
-.favoriate_img {
+.mypage_review_box {
     height: 100%;
-    width: 100%;
-}
-
-.list_day {
-    text-align: right;
-    color: gray;
-    margin-top: 2px;
-}
-
-.favoriate_totalList {
-    width: 100%;
-}
-
-.favoriate_totalList-box {
-    margin: 15px 15px 0 15px;
-    list-style: none;
-}
-
-.review_box {
-    height: 100%;
-    border: 2px solid black;
     overflow: scroll;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+    transition: .3s;
+}
+
+.mypage_review_box:hover{
+    box-shadow: 0 7px 15px rgba(0, 0, 0, .7);
 }
 
 .review_list {
-    display: flex;
     list-style: none;
-    padding: 0 1rem;
     border-bottom: 1px solid orangered;
+}
+
+.review_list-box {
+    display: flex;
+    justify-content: space-between; 
+    border-bottom: 1px solid black;
+}
+
+.mypage_list_day-review {
+    text-align: right;
+    color: gray;
+    margin-top: 2px;
+    padding-right: 15px;
+}
+
+.review_product_font {
+    font-size: 23px;
+    margin: 10px;
+}
+
+.review_comment {
+    margin: 15px 20px;
+}
+
+.review_comment_good {
+    text-align: right;
+    padding: 0 40px 5px 0;
+}
+
+
+.review_list_title {
+    font-size: 25px;
+    padding: 15px;
+    text-align: center;
+    border-bottom: 4px solid black;
+    background-color: #d0c79f;
 }

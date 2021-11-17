@@ -15,10 +15,10 @@ const Landerpage = () => {
             </div>
                 <div className="btn_container">     
                     <div className="login_btn_container">
-                    <a className="login_btn">
+                    <a className="lander_login_btn">
                         <Link 
                         to="/login"
-                        style={{textDecoration: 'none'}}>
+                        style={{color: 'inherit',textDecoration: 'none'}}>
                         Login
                         </Link>
                         </a>
@@ -26,7 +26,7 @@ const Landerpage = () => {
                     <div className="signup_btn_container">
                     <a className="signup_btn">
                         <Link to="/signup"
-                        style={{textDecoration: 'none'}}>
+                        style={{color: 'inherit',textDecoration: 'none'}}>
                             Sign Up
                         </Link>
                         </a>
@@ -35,7 +35,7 @@ const Landerpage = () => {
                 <div className="guestInto_btn_container">
                     <a className="guestInto_btn">
                         <Link to='mainpage'
-                        style={{textDecoration: 'none'}}>
+                        style={{color: 'inherit',textDecoration: 'none'}}>
                         Are you First time?
                         </Link>
                         </a>

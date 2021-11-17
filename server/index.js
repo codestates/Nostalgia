@@ -10,8 +10,6 @@ const upload = multer({
   dest: 'uploads/'
 });
 
-const { perfume_info,brand,user,favorite } = require('./models');
-
 const controllers = require('./controllers');
 
 app.use(express.json());
@@ -25,38 +23,38 @@ app.use(
 );
 app.use(cookieParser());
 
+app.get('/user/userinfo/userimage', controllers.userinfo.userimage);
+app.get('/user/userinfo/userdata', controllers.userinfo.userdata);
 
-/*app.get('/', async(req,res)=>{
-  const data = await perfume_info.findOne({where:{'id':1} , include:[brand]});
+app.use('/image', express.static('images')); //정적이미지 제공
 
-  res.json(data);
-})*/
+app.post('/user/signup/login', upload.single('image'), controllers.signup.login);
+app.post('/user/signup/Oauthlogin', controllers.signup.Oauthlogin)
 
-
-app.get('/user/userinfo', controllers.userinfo);
-app.post('/user/signup', controllers.signup);
 app.post('/user/login', controllers.login);
 app.post('/user/signout', controllers.signout);
 app.post('/user/change-password',controllers.changepassword);
 app.post('/user/change-username',controllers.changeusername);
 app.post('/user/change-image', upload.single('image'), controllers.changeimage.uploadProfile);
 app.post('/user/delete-account', controllers.deleteaccount);
-app.get('/user/check-username',controllers.checkusername);
+app.post('/user/check-username',controllers.checkusername);
 
 app.post('/favorite/add-favorite', controllers.addfavorite);
-app.get('/favorite/get-favorite', controllers.getfavorite);
+app.post('/favorite/get-favorite', controllers.getfavorite);
 
- app.get('/perfume/get-perfume-info', controllers.getperfumeinfo);
+ app.post('/perfume/get-perfume-info', controllers.getperfumeinfo);
  app.get('/perfume/get-perfume-info-all', controllers.getperfumeinfoall);
 
 app.post('/review/add-review', controllers.addreview);
-app.get('/review/get-review-info', controllers.getreviewinfo);
+app.post('/review/get-review-info', controllers.getreviewinfo);
 app.post('/review/like-review', controllers.likereview);
-app.get('/review/number-of-like', controllers.numberoflike);
-app.get('/review/myreview', controllers.myreview);
+app.post('/review/number-of-like', controllers.numberoflike);
+app.post('/review/myreview', controllers.myreview);
 
-app.get('/search/get-recent-search', controllers.getrecentsearch);
-app.get('/brand/logo', controllers.logo);
+app.post('/search/get-recent-search', controllers.getrecentsearch);
+app.post('/search/delete-recent-search', controllers.deleterecentsearch);
+
+app.get('/brand/logo',controllers.logo);
 
 const HTTPS_PORT = process.env.HTTPS_PORT || 4000;
 

@@ -1,0 +1,90 @@
+.review_box {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  
+  .box_row {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #0000;
+    height: 80%;
+  }
+  
+  .review_user_info {
+    border: 1px solid #000000;
+    width: 13%;
+    height: 60%;
+    margin: 15px 15px;
+  }
+  
+  .review_user_info_wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .others_img {
+    border: 1px solid #000000;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    margin-left: 10px;
+  }
+  
+  .review_user_info_wrapper > .review_username {
+    font-size: 20px;
+    justify-content: flex-end;
+    border: 1px solid #000000;
+    margin-right: 10px;
+  }
+  
+  .review_content_container {
+    border: 1px solid #000000;
+    width: 99%;
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .other_avg {
+    border: 1px solid #000000;
+    width: 10%;
+    height: 50%;
+    font-size: 20px;
+    justify-content: center;
+    margin: 20px 6px;
+  }
+  
+  .review_content {
+    border: 1px solid #000000;
+    width: 90%;
+    height: 80%;
+    margin: 12px 20px;
+  }
+  
+  .like_review_container {
+    float: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 20%;
+    padding-bottom: 10px;
+  }
+  
+  .like_btn {
+    border-radius: 50%;
+    margin-left: 85%;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 20px;
+  }
+  
+  .like_cnt {
+    margin-right: 120px;
+  }
+  

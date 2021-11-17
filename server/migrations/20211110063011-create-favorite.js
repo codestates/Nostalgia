@@ -20,7 +20,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       perfume_img: {
-        type: Sequelize.BLOB
+        type: Sequelize.STRING
       },
       brand_name: {
         type: Sequelize.STRING
