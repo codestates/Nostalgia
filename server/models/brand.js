@@ -18,8 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   brand.init({
     brand_name: DataTypes.STRING,
     country: DataTypes.STRING,
-    country_img: DataTypes.BLOB,
-    logo_img: DataTypes.BLOB
+    logo_img: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'brand',

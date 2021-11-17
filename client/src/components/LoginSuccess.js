@@ -10,7 +10,7 @@ function Animation() {
     
      
      setTimeout(() => {
-        history.push('/mypage')
+        history.push('/main')
      }, 5000)
     
 

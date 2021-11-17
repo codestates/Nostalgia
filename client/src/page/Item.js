@@ -1,72 +1,204 @@
-import React , {useState} from 'react';
+import React , {useEffect, useState} from 'react';
 import Header from'../components/Zeenii_Header'
 import Review from '../components/Review'
+import axios from 'axios';
+import Star from '../components/Star'
 import './Item.css';
 
-const Item = () =>{
+const Item = ({}) =>{
 
 const [otherReview, setOtherReview] = useState('')
+const [review, setReiview] = useState('')
+const [count, setCount] = useState('')
+
+// 해당 제품에 대한 평점
+const [starAvg, setStarAvg] = useState('')
+
+    useEffect(() => {
+        axios.
+          post("https://localhost:4000/perfume/get-perfume-info", 
+            {
+                perfume_id: 3
+            },
+            {
+                headers: { "Content-Type": "application/json" },
+                withCredentials: true
+            }
+        )
+        .then((res) => {
+            console.log(res.data)
+            setOtherReview(res.data.data)
+            setStarAvg(res.data.avg_rating)
+        })
+    }, [])
+
+
+    const typingReview = (e) => {
+        setReiview(e.target.value)
+    }
+
+    const typingCount = (e) => {
+        setCount(e.target.value)
+    }
+
+    console.log("리뷰 작성하는 중 :", review)
+    console.log("평점 매기는 중 :", count)
+    console.log("퍼퓸 아이디", starAvg.perfume_id)
+
+
+    const handleReview = async () => {
+         await axios.
+            post("https://localhost:4000/review/add-review",
+                {   
+                    perfume_id: starAvg.perfume_id,
+                    comment: review,
+                    rating: count
+
+                },
+                {
+                    headers: { "Content-Type": "application/json" },
+                    withCredentials: true
+                }
+            )
+          
+        }
+
 
     return (
         <>
         <Header/>
-        <div className="item_container">
-
-            <div className="item_info_grid_con">
+        <section className="item_container-product">
+            <div className="item_img-box">
                 <img className="item_img"/>
-                    <div className="item_info_container">
-                        <div className="item_info_box_brand">
-                            <div className="item_info_brandname">
-                            브랜드명 :
-                        </div>
-                    </div>
+            </div>
 
-                    <div className="item_info_box_prudect">
-                        <div className="item_info_productname">
-                            상품명 :
+            <div className="item_info_container">
+                        
+                <div className="item_info_box_brand">
+                    <div className="item_info_brandname">
+                        <div> 브랜드명 : </div>
+                        <div>
+                            
+                            {/* {`${otherReview.brand.brand_name}`} */}
                         </div>
                     </div>
+                </div>
+
+                <div className="item_info_box_brand">
+                    <div className="item_info_brandname">
+                        <div> 상품명 : </div>
+                        <div>
+                            
+                            {/* {`${otherReview.perfume_name}`} */}
+                        </div>
+                    </div>
+                </div>
+
+                <div className="item_info_box_brand">
+                    <div className="item_info_brandname">
+                        <div> 평점 : </div>
+                        <Star/>
+                        {/* <Star star={starAvg.avg_rating}> */}
+                    </div>
+                </div>
+
+                <div className="item_info_box_prudect">
+                    <div className="item_info_productname">
+                        <div> 국가 : </div>
+                        <div>
+                            
+                            {/* {`${otherReview.brand.country}`} */}
+                        </div>
+                    </div>
+                </div>
+
+                <div className="item_info_box_brand">
+                    <div className="item_info_brandname">
+                        <div> 찜하기 </div>
+                        <div>
+                            
+                
+                        </div>
+                    </div>
+                </div>
+
+            </div>   
+        </section>
+        <main className="item_container-main">
+            <div className="item_info-title">
+                상세 소개
+            </div>
+            <div className="item_information-box">
+                <div>
+                    top
+                    <div className="item_information">
+                        
+                        {/* {`${otherReview.top.top_note_name}`} */}
+                    </div>
+                </div>
+                <div>
+                    middle
+                    <div className="item_information">
+                        
+                        {/* {`${otherReview.middle.middle_note_name}`} */}
+                    </div>
+                </div>
+                <div>
+                    base
+                    <div className="item_information">
+                        
+                        {/* {`${otherReview.base.base_note_name}`} */}
+                    </div>
+                </div>
+
+            </div>
+                <div className="item_information-box">
+                    <div className="item_information-comment">
+                        간략 설명
+                        <div>
+                        
+                        {/* {`${otherReview.comment}`} */}
+                        </div>
+                        
+                    </div>
+                </div>
+            <div>
+
+            </div>
+        </main>
+
+        <main className="item_container-main2">
+            <div className="item_container-title-box">
+                <div>
+                    리뷰 입력
+                </div>
+                <div className="item-rating-box">
+                    <div className="item-rating-word">평점</div>
+                    <input type="number" className="item-rating-count" onChange={typingCount}></input>
                 </div>
             </div>
-        
-            <div className="item_info_specific_con">
-                <div className="item_specific_box">
-                    <div className="note_container">
-                        <div className="note_value">
-                            <div className='top_note'> Top </div>
-                            <div className='mid_note'> Mid </div>
-                            <div className='base_note'> Base </div>
-                        </div>
+            <input className="review_contanier-typing" onChange={typingReview}></input>
+            <button className="review_contanier-button" onClick={handleReview}>리뷰 쓰기</button>
+        </main>
+        <section className="item_container-section">
+            <div className="item_container-reviewbox">
+                <div className="item_container-reviewtitle">
+                    Review List
                 </div>
+                <div>
 
-                <div className="note_guide">
-                    <span className="note_guide_title">노트란 무엇인가요?</span>
-                    <div className='note_guide_telling'>
-                        노트는............<br/>
-                        이러이러하고<br/>
-                        저러저러합니다
+                    {/* 작업하기 */}
+                    <div className="item_container-review">
+                        sdfsddfsf
+
                     </div>
-                </div>
+                    <div className="item_container-review">
+                        sdfsddfsf
+                    </div>  
 
-                <div className="item_intro">
-                    내용 대략적으로 작성 
-                </div>
-
-                <div className="review_container">
-                    <div className='review_count_box'>
-                        <span className='review_title'>Review</span>
-                        <span className='review_count'>Count : </span>
-                    </div>
-                </div>
-                    <ul className='all_reviews'>
-                        {/* {otherReview.map((el) => {
-                            return <Review review={el}/>
-                        })} */}
-                        <Review/>
-                    </ul>
                 </div>
             </div>
-        </div>
+        </section>
         </>
     )
 }

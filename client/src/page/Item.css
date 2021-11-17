@@ -1,26 +1,41 @@
-.item_container{
-    width: 95%;
+.item_container-product{
+    /* width: 95%;
     height: 500px;
     justify-content: center;
     align-items: center;
-    margin-left: 20px;
+    margin-left: 20px; */
+
+    display: flex;
+    margin: 146px 146px 120px 293px
+}
+
+.item_img-box {
+
+    border: 2px solid #000000;
+    width: 40%;
+    height: 650px;
+}
+
+.item_img{
+    height: 100%;
+    width: 100%;
 }
 
 .item_info_container{
     display: flex;
     flex-direction: column;
-    justify-content:flex-end;
-    max-width: 80%;
-    max-height: 80%;
-    margin: 30px 40px
+    padding: 70px;
+    width: 27%;
+    margin: 71px 185px;
 }
 
-.item_info_grid_con{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    width: 100%;
-    height: 90%;
-    justify-content: center;
+.item_container-main {
+
+    display: flex;
+    margin: 146px 146px 120px 293px;
+    border: 1px solid black;
+    flex-direction: column;
+
 }
 
 .item_info_box{
@@ -32,6 +47,102 @@
     height: 100%;
     margin-top: 10px;
 }
+
+
+.item_information-box {
+    display: flex;
+    justify-content: center; 
+    margin-bottom: 75px;
+}
+
+.item_info-title  {
+    font-size: 50px;
+    padding-bottom: 50px;
+}
+
+.item_information {
+    border: 1px solid black;
+    margin: 20px;
+    width: 300px;
+    height: 100px;
+}
+
+.item_information-comment {
+    width: 1000px;
+    height: 100px;
+    border: 1px solid black;
+}
+
+.item_container-main2{
+    display: flex;
+    margin: 100px 146px 120px 293px;
+    border: 1px solid black;
+
+}
+
+.item_container-title-box {
+    width: 20%;
+    padding: 14px 0;
+    text-align: center;
+    font-size: 50px;
+}
+
+.item-rating-count {
+    width: 45px;
+    height: 30px;
+    font-size: 22px;
+}
+
+.review_contanier-typing {
+    width: 60%;
+    height: 200px;
+    font-size: 25px;
+}
+
+.item-rating-box {
+    margin-top: 20px;
+}
+
+.item-rating-word {
+    font-size: 25px;
+}
+
+.review_contanier-button {
+    width: 20%;
+}
+
+.item_container-section{
+    display: flex;
+    margin: 100px 146px 120px 293px;
+    border: 1px solid black;
+    flex-direction: column; 
+}
+
+.item_container-reviewbox {
+    text-align: center;
+}
+
+.item_container-reviewtitle {
+    background-color: rgb(194, 204, 221);
+    height: 100px;
+    font-size: 35px;
+    padding: 35px;
+    border-bottom: 2px solid black;
+}
+
+.item_container-review {
+    margin: 80px 300px;
+    height: 150px;
+    border: 2px solid black
+    
+}
+
+
+
+
+
+
+
 
 .item_info_brandname{
     justify-content:flex-start;
@@ -47,14 +158,6 @@
     width: 80%;
     height: 80%;
     margin: 20px 30px
-}
-
-.item_img{
-    justify-content:flex-start;
-    border: 2px solid #000000;
-    width: 80%;
-    height: 80%;
-    margin: 40px 40px
 }
 
 .item_info_specific_con{

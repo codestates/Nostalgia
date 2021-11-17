@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   favorite.init({
     user_id: DataTypes.INTEGER,
     perfume_name: DataTypes.STRING,
-    perfume_img: DataTypes.BLOB,
+    perfume_img: DataTypes.STRING,
     brand_name: DataTypes.STRING
   }, {
     sequelize,

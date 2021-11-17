@@ -15,10 +15,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       country_img: {
-        type: Sequelize.BLOB
+        type: Sequelize.STRING
       },
       logo_img: {
-        type: Sequelize.BLOB
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

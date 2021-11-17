@@ -3,9 +3,10 @@ import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import SignUp from './page/SignUp';
 import Login from './page/Login';
 import Mypage from './page/Mypage';
-import Main from './page/Main'
+import Main from './page/MainList'
 import Footer from "../src/components/Footer";
 import LanderPage from './page/Landerpage';
+import Zeenii_Header from './components/Zeenii_Header'
 
 import LoginSuccess from '../src/components/LoginSuccess'
 
@@ -24,7 +25,7 @@ function App() {
       <Switch>
         <Route 
         exact path= '/'
-        render={() => <Mypage />}
+        render={() => <Zeenii_Header />}
         />
         <Route 
         path= '/main'
@@ -47,11 +48,6 @@ function App() {
         <Route
         path='/mypage'
         component={Mypage}/>
-        <Route 
-        path= '/main'
-        component={Main}/>
-
-
         <Route
         path='/item'
         component={Item}/>

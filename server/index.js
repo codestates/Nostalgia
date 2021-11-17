@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: ['http://localhost:3000'],
+    origin: ['https://localhost:3000'],
     credentials: true,
     methods: ['GET', 'POST', 'OPTIONS']
   })
@@ -35,7 +35,7 @@ app.use(cookieParser());
   })
 })*/
 
-
+app.use('/image', express.static('images'));
 app.get('/user/userinfo', controllers.userinfo);
 app.post('/user/signup', upload.single('image'), controllers.signup);
 app.post('/user/login', controllers.login);
@@ -49,7 +49,7 @@ app.post('/user/check-username',controllers.checkusername);
 app.post('/favorite/add-favorite', controllers.addfavorite);
 app.post('/favorite/get-favorite', controllers.getfavorite);
 
- app.get('/perfume/get-perfume-info', controllers.getperfumeinfo);
+ app.post('/perfume/get-perfume-info', controllers.getperfumeinfo);
  app.get('/perfume/get-perfume-info-all', controllers.getperfumeinfoall);
 
 app.post('/review/add-review', controllers.addreview);
