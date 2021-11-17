@@ -1,5 +1,6 @@
 import React from "react";
 import "./Review.css";
+import { UilThumbsUp } from '@iconscout/react-unicons'
 
 const Review = ({ review }) => {
   // const parseDate = new Date(review.createdAt).toLocaleDateString("ko-kr");
@@ -23,7 +24,7 @@ const Review = ({ review }) => {
         </div>
       </div>
       <div className="like_review_container">
-        <button className="like_btn">b</button>
+        <button className="like_btn"><UilThumbsUp/></button>
         <span className="like_cnt">total:</span>
       </div>
     </li>
