@@ -1,6 +1,7 @@
 import "./NameUpdateStyle.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useHistory } from 'react-router-dom';
 
 function NameUpdate({result}) {
     
@@ -11,6 +12,8 @@ function NameUpdate({result}) {
     const [username, setUsername] = useState('')
     const [blanck, setBlank] = useState(false)
 
+
+    const history = useHistory();
 
     // 공백 검사하는 기능
     useEffect(() => {
@@ -28,6 +31,7 @@ function NameUpdate({result}) {
     const handleCloseModal = () => {
         setHidden('NameUpdate_hidden')
         result(false)
+        window.location.replace('/mypage')
     }
 
     const handleUserName = (e) => {
@@ -50,17 +54,23 @@ function NameUpdate({result}) {
                         withCredentials: true
                     } 
                 )
-                    console.log(data)
+                .catch((err) => {
+                    console.log("🚫 Not Found 🚫", err)
+                    setConfirmFail(true)
+                    setConfirmSuccess(false)
+                })
+        
             if(data) {
                 setConfirmFail(false)
                 setConfirmSuccess(true)
-            } else if(!data) {
-                setConfirmFail(true)
-                setConfirmSuccess(false)
-            }
+            } 
             
+        } else {
+            setConfirmFail(false)
+            setConfirmSuccess(false)
         }
     }
+
 
 
 

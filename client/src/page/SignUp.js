@@ -26,9 +26,12 @@ function SignUp() {
     const [antMessage, setAntMessage] = useState(false)
     const [antFailMessage, setAntFailMessage] = useState(false)
 
+    // 이미지 form data 저장
+    const [image, setImage] = useState(true)
 
     // 회원 가입 결과 메세지
     const [signUp, setSignUp] = useState(false)
+
 
     const [blanc, setBlank] = useState(false)
 
@@ -56,22 +59,32 @@ function SignUp() {
     // console.log("패스워드 검사: ", password === pwCheck)
     // console.log("닉네임 중복검사: ", nameConfirm)
     // console.log("패스워드 유효성 검사: ", pwConfirm)
-    const handleLogin = async () => {   
+    const handleLogin = async (e) => {   
         // 비밀번호와 비밀번호 확인이 같아야 하고, nameConfirm 중복 닉네임 검사
         // 그리고 유효성 검사까지 합격 받아야 로그인 가능
         // #### nameConfirm도 조건문 검사에 있어야함!!! ####
+            
+            // append 메서드를 활용하여 key에 files, value에 uploadFile 각각 담아둔다.
+            e.preventDefault();
+            const uploadFile = e.target.files[0]
+            // 전송한 이미지가 담겨줘 있음.
+            console.log(uploadFile)
+            const formData = new FormData()
+            // js 내장객체인 FormData를 사용하여 이미지파일을 formData형식으로 
+            // append 메서드를 활용하여 key에 files, value에 uploadFile 각각 담아둔다.
+            formData.append('files',uploadFile)
+            formData.append('email', email);
+            formData.append('user_name', username);
+            formData.append('password', password);
+            
         if(password === pwCheck && pwConfirm && nameConfirm) {
-            const data = await axios
-                .post("http://localhost:4000/user/signup",
-                    {
-                        email: email,
-                        password: password,
-                        user_name: username,
-                        // ################################## 이미지 전송에 대해 보류 ##################################
-                    },
+       
+            await axios
+                .post("https://localhost:4000/user/signup",
+                  formData,
                     {
                         // ################################## Content-Type form 형식에 대해 보류 ##################################
-                        headers: { "Content-Type": "application/json" }, 
+                        headers: {"Content-Type": "multipart/form-data"}, 
                         //  아이디와 비밀번호가 서버로 넘어오면 유저의 정보가 맞는지 확인한 후에 cookie에 token을 발급하게 됨,
                         withCredentials: true
                     }
@@ -93,7 +106,7 @@ function SignUp() {
 
             const data = await axios
             // ################################## 닉네임 중복 검사 경로 보류 ##################################
-                .post("http://localhost:4000/user/check-username",
+                .post("https://localhost:4000/user/check-username",
                     {
                         user_name: username,
                     },
@@ -130,22 +143,21 @@ function SignUp() {
     }
 
 
-    const handleImg = (e) => {
-        e.preventDefault();
+    // const handleImg = (e) => {
+    //     e.preventDefault();
   
-        if(e.target.files){
-            const uploadFile = e.target.files[0]
-            // 전송한 이미지가 담겨줘 있음.
-            console.log(uploadFile)
-            // js 내장객체인 FormData를 사용하여 이미지파일을 formData형식으로 
-            const formData = new FormData()
-            // append 메서드를 활용하여 key에 files, value에 uploadFile 각각 담아둔다.
-            formData.append('files',uploadFile)
-            console.log(formData)
-        }
-    }
+    //     if(e.target.files){
+    //         const uploadFile = e.target.files[0]
+    //         // 전송한 이미지가 담겨줘 있음.
+    //         console.log(uploadFile)
+    //         // js 내장객체인 FormData를 사용하여 이미지파일을 formData형식으로 
+    //         // append 메서드를 활용하여 key에 files, value에 uploadFile 각각 담아둔다.
+    //         formData.append('files',uploadFile)
 
-   
+    //     }
+    // }
+
+       
       
 
     useEffect(() => {
@@ -250,8 +262,10 @@ function SignUp() {
                                 <div className="profile_container">
                                     <h4 className="sign_info_font"> 🖼 아래 원하시는 프로필 이미지를 등록해주세요. </h4>
                                     <div className="profile_box">
+                                        <form>
                                         <label htmlFor="profile-upload" />
-                                        <input type="file" id="profile-upload" accept="image/*" onChange={handleImg} />
+                                        <input type="file" id="profile-upload" accept="image/*" onChange={handleLogin} />
+                                        </form>
                                     </div>
                                     {signUp ? <h5 className="sign_blak-word-green"> 
                                          회원가입에 성공하셨습니다!  

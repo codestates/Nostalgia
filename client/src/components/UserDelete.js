@@ -23,24 +23,27 @@ function UserDelete({result}) {
 
     const handleClick = async () => {
         //setUserDeleteFail(true)
-        await axios
+        const data = await axios
             .post("http://localhost:4000/user/delete-account", 
-            {
-                // 보류
-                password: password
-            },
-            {
-                headers: { "Content-Type": "application/json" }, 
-                withCredentials: true
-            }
-        )
+                {
+                    // 보류
+                    password: password
+                },
+                {
+                    headers: { "Content-Type": "application/json" }, 
+                    withCredentials: true
+                }
+            )
+            .catch((err) => {
+                console.log("🚫 Not Found 🚫", err)
+                setUserDeleteFail(true)
+            })
 
-        // if(){
-        //     history.push('/렌더링페이지')
-        //     setUserDeleteFail(false)
-        // } else {
-        //     setUserDeleteFail(true)
-        // }
+        if(data) {
+            history.push("/LanderPage")
+        }
+
+        
     }
 
     return(

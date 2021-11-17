@@ -52,9 +52,10 @@ function Login() {
         )
         .catch((err) => {
             setLoginFail(true)
-            console.log("Error Now" , err)
+            console.log("🚫 Not Found 🚫" , err)
         })
 
+        console.log("로그인 결과", data)
 
         if(data) {
             setLoginFail(false)
@@ -98,7 +99,6 @@ function Login() {
         //위 header component 부착 필요
         <>  
         <div className="parents_layer">
-        <div className="child_layer">
             <LukaHeader/>
             <main className="login_main">
                 <section className="login_container">
@@ -133,7 +133,6 @@ function Login() {
                 </section>
             </main>
             <Footer/>
-           </div>
            </div>
         </>
     )

@@ -16,6 +16,8 @@ import axios from 'axios';
 
 
 
+
+
 function App() {
     const [itemInfo, setItemInfo] = useState(null);
     const history = useHistory();
@@ -47,12 +49,19 @@ function App() {
         render={() => <LanderPage />}
         />
         <Route 
-        path= '/login'
-        component={Login}
+        path= '/main'
+        component={Main}/>
+        <Route 
+        path= '/LanderPage'
+        component={LanderPage}
         />
         <Route 
         path='/signup'
         component={SignUp}
+        />
+        <Route 
+        path='/Login'
+        component={Login}
         />
         <Route
         path='/loginSuccess'

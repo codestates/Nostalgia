@@ -188,14 +188,14 @@
     box-shadow: 0 7px 15px rgba(0, 0, 0, .7);
 }
 
-.review_box {
+.mypage_review_box {
     height: 100%;
     overflow: scroll;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
     transition: .3s;
 }
 
-.review_box:hover{
+.mypage_review_box:hover{
     box-shadow: 0 7px 15px rgba(0, 0, 0, .7);
 }
 
