@@ -27,13 +27,14 @@ const handleClick = (el) => {
             <div className='header_titlecontainer'>
                 <div className="header_title">
                     <Link to='/'
-                    style={{textDecoration: 'none'}}>
+                    style={{color: 'inherit',textDecoration: 'none'}}>
                         Nostalgia 
                     </Link>
                     </div>
             <div className="icon_container">
                 <div className="user_icon">
-                    <Link to='/mypage'>
+                    <Link to='/mypage'
+                    style={{color: 'inherit',textDecoration: 'none'}}>
                         <UilUser 
                         size={65}/>
                     </Link>

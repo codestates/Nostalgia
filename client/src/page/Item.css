@@ -38,6 +38,11 @@
 
 }
 
+.item_specific_box{
+    width: 100%;
+    height: 50%;
+}
+
 .item_info_box{
     display: flex;
     flex-direction: row;
@@ -179,13 +184,13 @@
 
 .note_container{
     width: 100%;
-    height: 100%;
+    height: 20%;
     border: 2px solid #000000;
 }
 
 .note_guide{
     width: 100%;
-    height: 100%;
+    height: auto;
     border: 2px solid #000000;
     margin-top: 2%;
 }
@@ -199,14 +204,14 @@
 
 .item_intro{
     width: 100%;
-    height: 100%;
+    height: auto;
     border: 2px solid #000000;
-    margin: 20px -1px;
+    margin: 10px -1px;
 }
 
 .review_container{
     width: 100%;
-    height: 100%;
+    height: 20%;
     border: 2px solid #000000;
 }
 
@@ -215,7 +220,7 @@
     flex-direction:row;
     justify-content: space-between;
     width: 100%;
-    height: 100%;
+    height: 20%;
     border: 2px solid #000000;
 }
 
@@ -237,4 +242,28 @@
     justify-content: space-around;
     flex-wrap: wrap;
     font-size: 30px;
+}
+
+.item_box_fav_avg_container{
+    justify-content:flex-start;
+    border: 2px solid #000000;
+    width: 50%;
+    height: 90px;
+    margin: 10px 30px
+}
+
+.fav_box{
+    font-size: 22px;
+    margin: 5px 10px;
+}
+
+.avg_box{
+    font-size: 22px;
+    margin: 5px 10px;
+}
+
+.review_input_container{
+    width: 100%;
+    height: 100%;
+    border: 2px solid #000000;
 }

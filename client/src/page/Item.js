@@ -7,6 +7,17 @@ import './Item.css';
 
 const Item = ({}) =>{
 
+import {addFavorite, cancelFavorite, notify} from '../reducers/actions/index'
+
+import axios from 'axios';
+
+
+import { UilThumbsUp } from '@iconscout/react-unicons'
+
+
+const Item = ({props}) =>{
+
+const [perfumeInfo, setPerfumeInfo] = useState([]);
 const [otherReview, setOtherReview] = useState('')
 const [review, setReiview] = useState('')
 const [count, setCount] = useState('')
@@ -90,6 +101,19 @@ const [starAvg, setStarAvg] = useState('')
                         <div>
                             
                             {/* {`${otherReview.perfume_name}`} */}
+                        </div>
+                    </div>
+
+                    <div className="item_box_fav_avg_container">
+                        <div className="fav_box">
+                            찜하기 
+                            <button className="fav_btn">
+                                <UilThumbsUp/>
+                            </button>
+                        </div>
+
+                        <div className="avg_box">
+                            평점
                         </div>
                     </div>
                 </div>

@@ -1,9 +1,10 @@
+import {useState, useEffect} from 'react';
 import './App.css';
-import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Redirect, useHistory} from 'react-router-dom';
 import SignUp from './page/SignUp';
 import Login from './page/Login';
 import Mypage from './page/Mypage';
-import Main from './page/MainList'
+import MainList from './page/MainList'
 import Footer from "../src/components/Footer";
 import LanderPage from './page/Landerpage';
 import Zeenii_Header from './components/Zeenii_Header'
@@ -12,20 +13,41 @@ import LoginSuccess from '../src/components/LoginSuccess'
 
 import LukaHeader from './components/LukaHeader';
 import Item from './page/Item'
+import axios from 'axios';
+
 
 
 
 
 function App() {
+    const [itemInfo, setItemInfo] = useState(null);
+    const history = useHistory();
+
+    // const [items, setItems] = useState([])
+    // const [list, setList] = useState();
+    // const [logoList, setLogoList] = useState();
+  
+    // const itemListHandle = () => {
+    //   axios
+    //   .get('http://localhost:4000/perfume/get-perfume-info-all',{
+    //       headers: { "Content-Type": "application/json" },
+    //       withCredentials: true
+    //   })
+    //   .then((res)=>{
+    //       console.log(res.data)
+    //       setList(res.data)
+    //   })
+    // }
+
+
   return(
     <BrowserRouter>
-
      <div>
       {/* Header 넣기*/}
       <Switch>
         <Route 
         exact path= '/'
-        render={() => <Zeenii_Header />}
+        render={() => <LanderPage />}
         />
         <Route 
         path= '/main'
@@ -48,6 +70,9 @@ function App() {
         <Route
         path='/mypage'
         component={Mypage}/>
+        <Route 
+        path= '/mainpage'
+        component={MainList}/>
         <Route
         path='/item'
         component={Item}/>

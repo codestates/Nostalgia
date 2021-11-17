@@ -6,7 +6,13 @@ const { sequelize } = require('../../models')
 module.exports= async(req,res)=>{
 
     const data= await favorite.findAll({
+<<<<<<< HEAD
         attributes:['perfume_name','brand_name','createdAt','perfume_img'],
+=======
+
+        attributes:['perfume_name','brand_name','createdAt','perfume_img'],
+
+>>>>>>> c6f153a21d5556bf2746482fe53e9b9ca20f4924
         where:{user_id:req.body.user_id}
     })
  
@@ -27,4 +33,12 @@ module.exports= async(req,res)=>{
     else{
     res.status(200).json({"data":data, "message":"get favorite list successfully"});
     }
+<<<<<<< HEAD
 }
+=======
+    
+}
+
+
+
+>>>>>>> c6f153a21d5556bf2746482fe53e9b9ca20f4924

@@ -27,7 +27,11 @@ module.exports = {
         {
           brand_name: "DAVIDOFF",
           country: "SWISS",
+<<<<<<< HEAD
           logo_img:'/brand_logo/davidoff-logo-vector.jpeg',
+=======
+          logo_img:'/brand_logo/davidoff-logo-vectorlogo.jpeg',
+>>>>>>> c6f153a21d5556bf2746482fe53e9b9ca20f4924
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -91,6 +95,7 @@ module.exports = {
       },
       {
         note_name:'Sage',
+<<<<<<< HEAD
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -111,10 +116,50 @@ module.exports = {
       },
       {
         note_name:'Pineapple',
+=======
+>>>>>>> c6f153a21d5556bf2746482fe53e9b9ca20f4924
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
+<<<<<<< HEAD
+        note_name:'Musk',
+=======
+        note_name:'Rose',
+>>>>>>> c6f153a21d5556bf2746482fe53e9b9ca20f4924
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+<<<<<<< HEAD
+        note_name:'Tonka Bean',
+=======
+        note_name:'Lime',
+>>>>>>> c6f153a21d5556bf2746482fe53e9b9ca20f4924
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+<<<<<<< HEAD
+        note_name:'Black Berry',
+=======
+        note_name:'Water Lily',
+>>>>>>> c6f153a21d5556bf2746482fe53e9b9ca20f4924
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+<<<<<<< HEAD
+        note_name:'bay leaf',
+=======
+        note_name:'Pineapple',
+>>>>>>> c6f153a21d5556bf2746482fe53e9b9ca20f4924
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+<<<<<<< HEAD
+=======
         note_name:'Musk',
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -135,6 +180,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+>>>>>>> c6f153a21d5556bf2746482fe53e9b9ca20f4924
         note_name:'Vetiver',
         createdAt: new Date(),
         updatedAt: new Date(),
