@@ -16,5 +16,3 @@ module.exports= async(req,res)=>{
         res.status(200).json({"data":data ,"message": "get review successully"})
     }
 }
-
-//perfume_id, user_name, profile_img 'id','perfume_id','comment','rating','createdAt'
