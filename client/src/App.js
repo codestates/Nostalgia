@@ -50,7 +50,7 @@ function App() {
         />
         <Route 
         path= '/main'
-        component={Main}/>
+        component={MainList}/>
         <Route 
         path= '/LanderPage'
         component={LanderPage}

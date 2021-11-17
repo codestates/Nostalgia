@@ -5,6 +5,8 @@ import useImageHook from '../components/ImageTime'
 import axios from "axios";
 import LukaHeader from "../components/LukaHeader";
 import Footer from "../components/Footer";
+import { GoogleLogin } from 'react-google-login';
+
 
 function Login() {
 
@@ -38,9 +40,32 @@ function Login() {
     }, [email, password])
 
 
+
+    const responseGoogle = async (response) => {
+        console.log(response)
+        const res = await axios
+        .post('https://localhost:4000/user/signup/Oauthlogin',
+        {
+            email: response.profileObj.email,
+            user_name: response.profileObj.username
+        },
+        {
+            headers: { "Content-Type": "application/json" }, 
+            withCredentials: true
+        }
+        )
+
+        if(res) {
+            setLoginFail(false)
+            history.push('/loginSuccess')
+        }
+    }
+
+
+
     const handleLogin = async () => {
         const data = await axios
-        .post('http://localhost:4000/user/login', 
+        .post('https://localhost:4000/user/login', 
             {
                 email: email,
                 password: password
@@ -127,7 +152,14 @@ function Login() {
                                     로그인    
                                 </button> 
                             </form> 
-                            <img src="/google_oAuth.png" className="login_OAuth-btn"></img>  
+                            <img src="/google_oAuth.png" className="login_OAuth-btn"></img> 
+                            <GoogleLogin
+                                clientId="371793436066-b0eq26h3d3tirbnqapjp0p9bgkecc8ae.apps.googleusercontent.com"
+                                buttonText="Login"
+                                onSuccess={responseGoogle}
+                                onFailure={responseGoogle}
+                                cookiePolicy={'single_host_origin'}
+                                />
                         </div>
                     </div>
                 </section>

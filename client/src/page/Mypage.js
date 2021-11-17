@@ -40,7 +40,7 @@ function Mypage () {
     //  ########### UserInfo 요청 ########### 
     useEffect(() => {
         axios
-         .get("http://localhost:4000/user/userinfo",
+         .get("https://localhost:4000/user/userinfo/userdata",
           {
               headers: { "Content-Type": "application/json" }, 
               withCredentials: true
@@ -60,7 +60,7 @@ function Mypage () {
     useEffect(() => {
 
       axios
-        .post("http://localhost:4000/favorite/get-favorite",
+        .post("https://localhost:4000/favorite/get-favorite",
             {
                 user_id: 1
             },
@@ -81,7 +81,7 @@ function Mypage () {
     // ########### 리뷰 목록 요청 ########### 
     useEffect(() => {
         axios
-         .post("http://localhost:4000/review/myreview",
+         .post("https://localhost:4000/review/myreview",
           {
               user_id: 1
           },
