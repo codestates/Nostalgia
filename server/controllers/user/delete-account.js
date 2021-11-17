@@ -13,7 +13,6 @@ module.exports = async (req, res) => {
     const find_password = await user.findOne({ where: { password: req.body.password } })
 
     if(!data) { return res.status(401).json({ message: "Wrong email" })}
-  console.log(find_password)
     if( find_password.password === req.body.password ){
         await user.destroy({ where: { email: data.dataValues.email }})
       return res.json({message: 'delete account seccessfully'})

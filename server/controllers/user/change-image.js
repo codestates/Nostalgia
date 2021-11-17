@@ -1,5 +1,6 @@
 const { user }=require('../../models');
 const { isAuthorized } = require('../tokenFunctions');
+const fs = require('fs');
 
 module.exports = {
     uploadProfile: async (req, res) => {
@@ -30,21 +31,22 @@ module.exports = {
       if (!data){
         return res.status(401).json({ message: 'fail to get user info' })
       }
-      
-
         const images = req.file.path;
         if (images === undefined){
             return res.status(400).send(utill.fail(400, 'fail'));
         };
         await user.update({
-            profile_img: req.file.path },
+            profile_img: images },
           {
               where: {
               profile_img: data.dataValues.profile_img,
               email: data.dataValues.email
             }
           });
-          console.log(images.data)
-        res.status(200).send(util.success(200, 'true', images));
+          // fs.readFile(images, function(err, data){
+          //   res.writeHead(200, {'Content-Type': 'image/png'});
+          //   res.write(data);
+          //   res.end();
+          // })
       }
 }
