@@ -41,7 +41,7 @@ function Mypage () {
     //  ########### UserInfo 요청 ########### 
     useEffect(() => {
         axios
-         .get("https://localhost:4000/user/userinfo",
+         .get("https://localhost:4000/user/userinfo/userdata",
           {
               headers: { "Content-Type": "application/json" }, 
               withCredentials: true

@@ -59,11 +59,22 @@ function SignUp() {
     // console.log("패스워드 검사: ", password === pwCheck)
     // console.log("닉네임 중복검사: ", nameConfirm)
     // console.log("패스워드 유효성 검사: ", pwConfirm)
-    const handleLogin = async () => {   
+
+    const handleImg = (e) => {
+        e.preventDefault();
+        if(e.target.files){
+            const uploadFile = e.target.files[0]
+            // 전송한 이미지가 담겨줘 있음.
+            setImage( uploadFile )
+            // js 내장객체인 FormData를 사용하여 이미지파일을 formData형식으로 
+            // append 메서드를 활용하여 key에 files, value에 uploadFile 각각 담아둔다.
+        }
+    }
+const handleLogin = async (e) => {
         // 비밀번호와 비밀번호 확인이 같아야 하고, nameConfirm 중복 닉네임 검사
         // 그리고 유효성 검사까지 합격 받아야 로그인 가능
         // #### nameConfirm도 조건문 검사에 있어야함!!! ####
-            
+
             // append 메서드를 활용하여 key에 files, value에 uploadFile 각각 담아둔다.
             // e.preventDefault();
             // const uploadFile = e.target.files[0]
@@ -76,9 +87,13 @@ function SignUp() {
             formData.append('user_name', username);
             formData.append('password', password);
             formData.append('image', image)
-            
+
         if(password === pwCheck && pwConfirm && nameConfirm) {
-       
+            // formdata 전송확인 코드
+            // for(var value of formData.values()){
+            //     console.log(value)
+            // }
+
             await axios
                 .post("https://localhost:4000/user/signup",
                   formData,
@@ -92,12 +107,12 @@ function SignUp() {
 
             // 회원가입 성공 메세지
             setSignUp(true)
+            setImage([])
         } else {
             // 회원가입 실패 시 공백 
             setSignUp(false)
         }
     }
-
 
     const handleUserName = async () => {
     
@@ -259,10 +274,11 @@ function SignUp() {
                                 <div className="profile_container">
                                     <h4 className="sign_info_font"> 🖼 아래 원하시는 프로필 이미지를 등록해주세요. </h4>
                                     <div className="profile_box">
+
                                         <form  encType='multipart/form-data' onSubmit={handleImg}>
                                             <label htmlFor="profile-upload" />
                                             <input type="file" id="profile-upload" accept="image/*" onChange={handleImg} />
-                                        </form>
+                                        </form> 
                                     </div>
                                     {signUp ? <h5 className="sign_blak-word-green"> 
                                          회원가입에 성공하셨습니다!  

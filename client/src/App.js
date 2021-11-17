@@ -49,6 +49,8 @@ function App() {
         render={() => <LanderPage />}
         />
         <Route 
+
+        <Route 
         path= '/LanderPage'
         component={LanderPage}
         />
