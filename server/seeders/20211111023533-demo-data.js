@@ -27,7 +27,7 @@ module.exports = {
         {
           brand_name: "DAVIDOFF",
           country: "SWISS",
-          logo_img:'/brand_logo/davidoff-logo-vectorlogo.jpeg',
+          logo_img:'/brand_logo/davidoff-logo-vector.jpeg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -291,9 +291,9 @@ module.exports = {
 
     await queryInterface.bulkInsert("users",[
       {
-        user_name: "test1",
-        email: "email1",
-        password:"password1",
+        user_name: "SH",
+        email: "SH@codestates.com",
+        password:"password1!",
         profile_img:"2",
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -327,7 +327,7 @@ module.exports = {
 
   await queryInterface.bulkInsert("reviews", [
     {
-      comment: 'test1',
+      comment: '좋아요!',
       rating: 5,
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -335,7 +335,7 @@ module.exports = {
       perfume_id: 1
     },
     {
-      comment: 'test2',
+      comment: '좋아요!',
       rating: 6,
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -343,7 +343,7 @@ module.exports = {
       perfume_id: 1
     },
     {
-      comment: 'test3',
+      comment: '좋아요!',
       rating: 7,
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -351,7 +351,7 @@ module.exports = {
       perfume_id: 1
     },
     {
-      comment: 'test4',
+      comment: '좋아요!',
       rating: 8,
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -359,7 +359,7 @@ module.exports = {
       perfume_id: 2
     },
     {
-      comment: 'test5',
+      comment: '좋아요!',
       rating: 10,
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -379,10 +379,20 @@ module.exports = {
 
   await queryInterface.bulkInsert("favorites", [
     {
-      perfume_name: 'test1',
+      user_id:1,
+      perfume_img:"/perfume_img/CHANEL CHANCE.jpg",
+      brand_name:'CHANEL',
+      perfume_name: 'CHANEL CHANCE',
       createdAt: new Date(),
       updatedAt: new Date(),
-      user_id: 1,
+    },
+    {
+      user_id:1,
+      perfume_img:"/perfume_img/CHANEL COCO NOIR.jpg",
+      brand_name:'CHANEL',
+      perfume_name: 'CHANEL COCO NOIR',
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
   ]);
 

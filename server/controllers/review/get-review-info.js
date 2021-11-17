@@ -9,11 +9,11 @@ module.exports= async(req,res)=>{
         ]
     })
     if(!data){
-        res.status(200).json({"data":null ,"message":"fail to get review"})
+        res.status(400).json({"data":null ,"message":"fail to get review"})
     }
 
     else{
-        res.status(400).json({"data":data ,"message": "get review successully"})
+        res.status(200).json({"data":data ,"message": "get review successully"})
+    
     }
 }
-

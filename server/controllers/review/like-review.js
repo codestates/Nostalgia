@@ -3,8 +3,11 @@
 const {review_like}=require('../../models');
 
 module.exports= async(req,res)=>{
+    const accessTokenData = isAuthorized(req);
+    const { user_id } = accessTokenData;
+
     const data = await review_like.findOne({
-        where:{'user_id':req.body.user_id, 'review_id':req.body.review_id}
+        where:{'user_id':user_id, 'review_id':req.body.review_id}
     })
 
     if(!data){

@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: ['http://localhost:3000'],
+    origin: ['https://localhost:3000'],
     credentials: true,
     methods: ['GET', 'POST', 'OPTIONS']
   })
@@ -33,8 +33,6 @@ app.get('/user/userinfo/userdata', controllers.userinfo.userdata);
 
 app.use('/image', express.static('images')); //정적이미지 제공
 
-
-app.get('/user/userinfo', controllers.userinfo);
 
 app.post('/user/signup', upload.single('image'), controllers.signup);
 app.post('/user/login', controllers.login);
