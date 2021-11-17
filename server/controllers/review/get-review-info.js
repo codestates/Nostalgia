@@ -14,6 +14,5 @@ module.exports= async(req,res)=>{
 
     else{
         res.status(200).json({"data":data ,"message": "get review successully"})
-    
     }
 }

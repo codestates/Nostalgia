@@ -1,8 +1,8 @@
-body {
+.prolougue_body {
     background-color: #ece6cc;
 }
 
-span {
+.service_prolougue {
     font-family: "BlackHanSans";
     font-size: 18px;
 }

@@ -2,6 +2,7 @@ const { user } = require('../../models');
 const { generateAccessToken, generateRefreshToken } = require('../tokenFunctions');
 
 module.exports = async (req,res)=>{
+    console.log(req.body)
     const { email, password } = req.body;
     const data = await user.findOne({
         where: {
