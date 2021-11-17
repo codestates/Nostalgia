@@ -24,7 +24,6 @@ module.exports = {
       }
     
   },
-
   userdata: async(req, res) => {
     const accessTokenData = isAuthorized(req);
 

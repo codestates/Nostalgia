@@ -10,31 +10,27 @@ const upload = multer({
   dest: 'uploads/'
 });
 
-
 const controllers = require('./controllers');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: ['http://localhost:3000'],
+    origin: ['https://localhost:3000'],
     credentials: true,
     methods: ['GET', 'POST', 'OPTIONS']
   })
 );
 app.use(cookieParser());
 
-
-
-
-
 app.get('/user/userinfo/userimage', controllers.userinfo.userimage);
 app.get('/user/userinfo/userdata', controllers.userinfo.userdata);
 
 app.use('/image', express.static('images')); //정적이미지 제공
 
+app.post('/user/signup/login', upload.single('image'), controllers.signup.login);
+app.post('/user/signup/Oauthlogin', controllers.signup.Oauthlogin)
 
-app.post('/user/signup', upload.single('image'), controllers.signup);
 app.post('/user/login', controllers.login);
 app.post('/user/signout', controllers.signout);
 app.post('/user/change-password',controllers.changepassword);

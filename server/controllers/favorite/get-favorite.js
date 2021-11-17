@@ -4,7 +4,6 @@ const Sequelize = require('sequelize');
 
 module.exports= async(req,res)=>{
     
-    console.log(req.params)
     const data= await favorite.findAll({
 
         attributes:['perfume_name','brand_name','createdAt','perfume_img'],
