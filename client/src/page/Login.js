@@ -40,7 +40,7 @@ function Login() {
 
     const handleLogin = async () => {
         const data = await axios
-        .post('http://localhost:4000/user/login', 
+        .post('https://localhost:4000/user/login', 
             {
                 email: email,
                 password: password

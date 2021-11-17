@@ -1,28 +1,60 @@
-import React from 'react';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useHistory } from 'react-router-dom';
 
-const Logout = ({isOpen, onSubmit, onCancel}) => {
+import "./Logout.css"
 
-const handleClickSubmit = () => {
-    onSubmit();
-};
+const Logout = ({result}) => {
 
-const handleClickCancel = () => {
-    onCancel();
+const history = useHistory();
+
+const [hidden, setHidden] = useState('')
+
+const handleCloseModal = () => {
+    setHidden('logout_hidden')
+    result(false)
 }
 
+
+
+// 로그아웃 요청 구현
+const handleClickSubmit = async () => {
+    
+    const data = await axios
+        .post('https://localhost:4000/user/signout', 
+        
+            {
+                headers: { "Content-Type": "application/json" },
+                withCredentials: true
+            }
+        )
+
+       // console.log(data)
+    // 로그아웃 성공됐을시 해당 경로 자동이동 풀어줄것
+     history.push("/LanderPage")
+};
+
     return (
-        <body className="modal_container"
-              isOpen={isOpen}>
-            <div className="modal_backdrop">
-                <div className="logout_box">
-                    <span className="logout_question"> 로그아웃 하시겠습니까?</span>
-                    <button className="not_confirm"
-                            onClick={handleClickCancel}>취소</button>
-                    <button className="confirm"
-                            onClick={handleClickSubmit}>로그아웃</button>
+            <>
+                <div class={`logout_modal ${hidden}`}>
+                    <div class="logout_modal-overlay"></div>
+                    <div class="logout_modal-content">
+                        <h1>로그아웃 😴💤</h1>
+                        <button class="logout_modal-closeBtn" onClick={handleCloseModal}>❌</button>
+                        <section className="logout_box">
+                                
+                            <div className="logout_box-size">
+                                <h4 className="logout_box-word">로그아웃을 하시겠습니까?</h4>
+                                <div className="logout_box-inputline">
+                                    
+                                    <button className="logout_button" onClick={handleClickSubmit}>로그아웃</button>
+    
+                                </div>
+                            </div>                            
+                        </section>
+                    </div>
                 </div>
-            </div>
-        </body>
+            </>
     )
 }
 

@@ -13,8 +13,13 @@ const [isOpen, setIsOpen] = useState(false)
 const [isClick, setIsClick] = useState(false)
 const [myPageIcon, setMyPageIcon] = useState(false)
 
+// 로그아웃 모달
+const [logOutModal, setLogOutModal] = useState(false)
 
-const handleClick = () => setIsOpen(true);
+
+const handleClick = (el) => {
+    setLogOutModal(el);   
+}
 
 
     return (
@@ -22,37 +27,28 @@ const handleClick = () => setIsOpen(true);
             <div className='header_titlecontainer'>
                 <div className="header_title">
                     <Link to='/'
-                    style={{color: 'inherit',textDecoration: 'none'}}>
+                    style={{textDecoration: 'none'}}>
                         Nostalgia 
                     </Link>
                     </div>
             <div className="icon_container">
                 <div className="user_icon">
-                    <Link to='/mypage'
-                    style={{color: 'inherit',textDecoration: 'none'}}>
+                    <Link to='/mypage'>
                         <UilUser 
                         size={65}/>
                     </Link>
                     </div>
-                    <div className="signout_icon"
+                    <div className="zenii_LogOut_icon"
                             onClick={handleClick}>
                     <UilSignout size={65}
+
                                 isOpen={isOpen}/>
                     </div>
             </div>
             </div>
-            
+            {logOutModal ? <Logout result={handleClick}/> : ''}
         </header>
     )
 }
 
 export default Header
-
-
-{/* <header className="LukaHeader_container">
-    <div className="LukaHeader_main">
-    <div className="LukaHeader_project">
-    Nostelgia
-    </div>
-    </div>
-    </header> */}

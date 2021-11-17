@@ -32,7 +32,7 @@ function SignUp() {
     // 회원 가입 결과 메세지
     const [signUp, setSignUp] = useState(false)
 
-
+    
     const [blanc, setBlank] = useState(false)
 
     let checkEmail = (e) => {
@@ -59,23 +59,23 @@ function SignUp() {
     // console.log("패스워드 검사: ", password === pwCheck)
     // console.log("닉네임 중복검사: ", nameConfirm)
     // console.log("패스워드 유효성 검사: ", pwConfirm)
-    const handleLogin = async (e) => {   
+    const handleLogin = async () => {   
         // 비밀번호와 비밀번호 확인이 같아야 하고, nameConfirm 중복 닉네임 검사
         // 그리고 유효성 검사까지 합격 받아야 로그인 가능
         // #### nameConfirm도 조건문 검사에 있어야함!!! ####
             
             // append 메서드를 활용하여 key에 files, value에 uploadFile 각각 담아둔다.
-            e.preventDefault();
-            const uploadFile = e.target.files[0]
+            // e.preventDefault();
+            // const uploadFile = e.target.files[0]
             // 전송한 이미지가 담겨줘 있음.
-            console.log(uploadFile)
-            const formData = new FormData()
+            // console.log(uploadFile)
+            const formData = new FormData();
             // js 내장객체인 FormData를 사용하여 이미지파일을 formData형식으로 
             // append 메서드를 활용하여 key에 files, value에 uploadFile 각각 담아둔다.
-            formData.append('files',uploadFile)
             formData.append('email', email);
             formData.append('user_name', username);
             formData.append('password', password);
+            formData.append('image', image)
             
         if(password === pwCheck && pwConfirm && nameConfirm) {
        
@@ -143,19 +143,17 @@ function SignUp() {
     }
 
 
-    // const handleImg = (e) => {
-    //     e.preventDefault();
-  
-    //     if(e.target.files){
-    //         const uploadFile = e.target.files[0]
-    //         // 전송한 이미지가 담겨줘 있음.
-    //         console.log(uploadFile)
-    //         // js 내장객체인 FormData를 사용하여 이미지파일을 formData형식으로 
-    //         // append 메서드를 활용하여 key에 files, value에 uploadFile 각각 담아둔다.
-    //         formData.append('files',uploadFile)
+    const handleImg = (e) => {
+        e.preventDefault();
 
-    //     }
-    // }
+        if(e.target.files){
+            const uploadFile = e.target.files[0]
+            // 전송한 이미지가 담겨줘 있음.
+            setImage( uploadFile )
+            // js 내장객체인 FormData를 사용하여 이미지파일을 formData형식으로 
+            // append 메서드를 활용하여 key에 files, value에 uploadFile 각각 담아둔다.
+        }
+    }
 
        
       
@@ -220,7 +218,6 @@ function SignUp() {
     return(
         <>  
         <div className="parents_layer">
-        <div className="child_layer">
         <LukaHeader/>
             <main className="sign_main">
                 <section className="sign_container">
@@ -262,9 +259,9 @@ function SignUp() {
                                 <div className="profile_container">
                                     <h4 className="sign_info_font"> 🖼 아래 원하시는 프로필 이미지를 등록해주세요. </h4>
                                     <div className="profile_box">
-                                        <form>
-                                        <label htmlFor="profile-upload" />
-                                        <input type="file" id="profile-upload" accept="image/*" onChange={handleLogin} />
+                                        <form  encType='multipart/form-data' onSubmit={handleImg}>
+                                            <label htmlFor="profile-upload" />
+                                            <input type="file" id="profile-upload" accept="image/*" onChange={handleImg} />
                                         </form>
                                     </div>
                                     {signUp ? <h5 className="sign_blak-word-green"> 
@@ -313,7 +310,6 @@ function SignUp() {
                 </div> : ""
                 }
             </div>
-          </div>
           </div>
         </>
     )
