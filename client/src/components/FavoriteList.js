@@ -1,7 +1,11 @@
 import Star from '../components/Star'
 import './FavoriteListStyle.css'
 
-function FavoriteList() {
+function FavoriteList({avgList, item }) {
+
+
+    //console.log("제품 평점: ", avgList)
+    //console.log("제품 이름 정보: ", item)
 
     return(
         <>
@@ -20,7 +24,8 @@ function FavoriteList() {
                         Brand: CHANEL
                     </li>
                     <li className="favoriateList_totalList-box">
-                        <Star/>
+                        <Star />
+                        {/* <Star star={avgList.avg_rating}/> */}
                     </li>
                 </ul>
             </li>

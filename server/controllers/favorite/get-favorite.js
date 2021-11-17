@@ -7,7 +7,7 @@ module.exports= async(req,res)=>{
     console.log(req.params)
     const data= await favorite.findAll({
         attributes:['perfume_name','brand_name','createdAt'],
-        where:{user_id:req.params.user_id}
+        where:{user_id:req.body.user_id}
         //include:[ {model:user , required:true , attributes:['user_name'] ,where:{email: req.params.email} } ],
     })
     //일단 rating은 전체보내주는걸로

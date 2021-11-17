@@ -13,6 +13,8 @@ import LukaHeader from './components/LukaHeader';
 import Item from './page/Item'
 
 
+
+
 function App() {
   return(
     <BrowserRouter>
@@ -22,15 +24,22 @@ function App() {
       <Switch>
         <Route 
         exact path= '/'
-        render={() => <Main />}
+        render={() => <Mypage />}
         />
         <Route 
-        path= '/login'
-        component={Login}
+        path= '/main'
+        component={Main}/>
+        <Route 
+        path= '/LanderPage'
+        component={LanderPage}
         />
         <Route 
         path='/signup'
         component={SignUp}
+        />
+        <Route 
+        path='/Login'
+        component={Login}
         />
         <Route
         path='/loginSuccess'
