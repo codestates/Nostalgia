@@ -4,8 +4,8 @@ const Sequelize = require('sequelize');
 
 module.exports = async(req,res)=>{
     const data = await perfume_info.findOne({
-        where:{perfume_name : req.params.perfume_name}, 
-        attributes:['id','perfume_name','comment'],
+        where:{id : req.body.perfume_id}, 
+        attributes:['id','perfume_name','comment','perfume_img'],
         include:[
             {model:note_info, as:'top', required: true, attributes:[ ['note_name','top_note_name'] ]},
             {model:note_info, as:'middle', required: true, attributes:[ ['note_name','middle_note_name'] ]},
@@ -35,18 +35,5 @@ INNER JOIN note_infos AS middle ON perfume_infos.middle_note_id = middle.id
 INNER JOIN note_infos AS base ON perfume_infos.base_note_id = base.id
 INNER JOIN reviews ON perfume_infos.id = reviews.perfume_id 
 GROUP BY perfume_infos.id;
-
-
-SELECT `perfume_info`.`id`, `perfume_info`.`perfume_name`, `perfume_info`.`perfume_img`, `perfume_info`.`comment`, `top`.`id` AS `top.id`, `top`.`note_name` AS `top.top_note_name`, `middle`.`id` AS `middle.id`, `middle`.`note_name` AS `middle.middle_note_name`, `base`.`id` AS `base.id`, `base`.`note_name` AS `base.base_note_name`, `brand`.`id` AS `brand.id`, `brand`.`brand_name` AS `brand.brand_name`, `brand`.`country` AS `brand.country`, `brand`.`country_img` AS `brand.country_img`, `brand`.`logo_img` AS `brand.logo_img`, `reviews`.`id` AS `reviews.id`, `reviews`.`perfume_id` AS `reviews.perfume_id`, avg(`rating`) AS `reviews.avg_rating` 
-FROM `perfume_infos` AS `perfume_info` 
-INNER JOIN `note_infos` AS `top` ON `perfume_info`.`top_note_id` = `top`.`id` 
-INNER JOIN `note_infos` AS `middle` ON `perfume_info`.`middle_note_id` = `middle`.`id` 
-INNER JOIN `note_infos` AS `base` ON `perfume_info`.`base_note_id` = `base`.`id` 
-INNER JOIN `brands` AS `brand` ON `perfume_info`.`brand_id` = `brand`.`id` 
-INNER JOIN `reviews` AS `reviews` ON `perfume_info`.`id` = `reviews`.`perfume_id` 
-GROUP BY `perfume_id`
-
-
  */
 
-//! params로 GET 요청
