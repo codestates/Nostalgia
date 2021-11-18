@@ -9,7 +9,7 @@ function Rating({star}) {
     <>
       <div>
         <div className='star-rating'>
-          <span className={`star-background star-rating-size${1}`}></span>
+          <span className={`star-background star-rating-size${star}`}></span>
         </div>
       </div>
     </>

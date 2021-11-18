@@ -4,14 +4,14 @@ const { isAuthorized } = require('../tokenFunctions');
 
 module.exports= async(req,res)=>{
     const accessTokenData = isAuthorized(req);
-    const { user_id } = accessTokenData;
+    const { id } = accessTokenData;
 
     const data = await favorite.findOne({
-        where:{'user_id':user_id, 'perfume_name':req.body.perfume_name}
+        where:{'user_id':id, 'perfume_name':req.body.perfume_name}
     })
     if(!data){
         await favorite.create({
-            user_id:user_id,
+            user_id:id,
             perfume_name:req.body.perfume_name,
             perfume_img:req.body.perfume_img,
             brand_name:req.body.brand_name

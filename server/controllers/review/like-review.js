@@ -4,15 +4,15 @@ const {review_like}=require('../../models');
 
 module.exports= async(req,res)=>{
     const accessTokenData = isAuthorized(req);
-    const { user_id } = accessTokenData;
+    const { id } = accessTokenData;
 
     const data = await review_like.findOne({
-        where:{'user_id':user_id, 'review_id':req.body.review_id}
+        where:{'user_id':id, 'review_id':req.body.review_id}
     })
 
     if(!data){
         await review_like.create({
-            user_id:req.body.user_id,
+            user_id:id,
             review_id:req.body.review_id
         })
         res.status(201).json({"data":null ,"message":"review like success"})
