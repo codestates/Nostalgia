@@ -16,7 +16,7 @@ module.exports = {
       if (!authorization) {
         return null;
       }
-      const token = authorization.split('=')[2];
+      const token = authorization.split('=')[1];
       console.log(':::::::::::::::::::::::::',token)
       
       try {

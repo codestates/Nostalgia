@@ -95,7 +95,7 @@ const handleLogin = async (e) => {
             // }
 
             await axios
-                .post("https://localhost:4000/user/signup",
+                .post("https://localhost:4000/user/signup/login",
                   formData,
                     {
                         // ################################## Content-Type form 형식에 대해 보류 ##################################
@@ -156,22 +156,6 @@ const handleLogin = async (e) => {
         }
         
     }
-
-
-    const handleImg = (e) => {
-        e.preventDefault();
-
-        if(e.target.files){
-            const uploadFile = e.target.files[0]
-            // 전송한 이미지가 담겨줘 있음.
-            setImage( uploadFile )
-            // js 내장객체인 FormData를 사용하여 이미지파일을 formData형식으로 
-            // append 메서드를 활용하여 key에 files, value에 uploadFile 각각 담아둔다.
-        }
-    }
-
-       
-      
 
     useEffect(() => {
         // 비밀번호와 비밀번호 확인 검사 합격 여부

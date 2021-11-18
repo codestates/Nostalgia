@@ -14,15 +14,14 @@ const [review, setReiview] = useState('')
 const [count, setCount] = useState('')
 const [favorite, setFavorite] = useState(false)
 const [addFav, setAddFav] = useState(false)
-
+const [item, setItem] = useState({})
+const [rating, setRating] = useState(0)
 
 // 해당 제품에 대한 평점
 const [starAvg, setStarAvg] = useState('')
 
-
-let itemInfo;
-useEffect(() => {
-    axios.
+useEffect(async () => {
+    await axios.
     post("https://localhost:4000/perfume/get-perfume-info", 
     {
         perfume_id: 1
@@ -33,24 +32,29 @@ useEffect(() => {
     }
     )
     .then((res) => {
-        itemInfo = res.data.data
-        // console.log(itemInfo)
-        // setOtherReview(res.data.data)
-        // setStarAvg(res.data.avg_rating)
+        setItem(res.data.data)
+        setRating(res.data.avg_rating.avg_rating)
     })
 }, [])
 
+console.log(rating)
+console.log(item)
 
-useEffect(() => {
-    axios
-    .post("https://localhost:4000/reviews/get-review-info", {
+
+useEffect(async () => {
+    await axios
+    .post("https://localhost:4000/review/get-review-info", {
+        perfume_id: 1
+    },{
         headers: { "Content-Type": "application/json" },
         withCredentials: true
     }).then((res)=>{
         console.log(res.data.data)
+        setOtherReview(res.data.data)
     })
-})
+},[])
 
+    console.log(otherReview)
 // perfume_id, user_name, profile_img 'id','perfume_id','comment','rating','createdAt'
 
 
@@ -74,7 +78,6 @@ useEffect(() => {
             post("https://localhost:4000/review/add-review",
                 {   
                     // token으로 줄 예정이라 향후 user_id는 필요 없음.
-                    user_id: 2,
                     perfume_id: starAvg.perfume_id,
                     comment: review,
                     rating: count
@@ -91,20 +94,17 @@ useEffect(() => {
         const handleThumbup = async () =>{
             //add-favorite 
            await axios.post('https://localhost:4000/favorite/add-favorite',  
-           { user_id: 1,
-           perfume_name:itemInfo.perfume_name,
-           perfume_img:itemInfo.perfume_img,
-           brand_name:itemInfo.brand.brand_name}, 
+           { perfume_name:item.perfume_name,
+                perfume_img:item.perfume_img,
+                    brand_name:item.brand.brand_name}, 
             { headers: { "Content-Type": "application/json" },
             withCredentials: true
             }).then(res =>{
-                if(res.status === 201) setAddFav(true);
+                if(res === 201) setAddFav(true);
             })
         }
 
-        const handleLikeup = () => {
-            axios.post('https://localhost:4000/review/')
-        }
+    
 
     return (
         <>
@@ -118,35 +118,38 @@ useEffect(() => {
                         
                 <div className="item_info_box_brand">
                     <div className="item_info_brandname">
-                        <div> 브랜드명 : </div>
+                            브랜드: {item.brand.brand_name}
                         <div>
                             
-                            {/* {`${otherReview.brand.brand_name}`} */}
+        
                         </div>
                     </div>
                 </div>
 
                 <div className="item_info_box_brand">
                     <div className="item_info_brandname">
-                        <div> 상품명 : </div>
+                        <div> 
+                            상품: {item.perfume_name}
+                            </div>
                         <div>
-                            
-                            {/* {`${otherReview.perfume_name}`} */}
+                
                         </div>
                     </div>
                 </div>
 
                 <div className="item_info_box_brand">
                     <div className="item_info_brandname">
-                        <div> 평점 : </div>
-                        <Star/>
+                        <div> 평점 : {rating}</div>
+                        <Star star={String(rating)}/>
                         {/* <Star star={starAvg.avg_rating}> */}
                     </div>
                 </div>
 
                 <div className="item_info_box_prudect">
                     <div className="item_info_productname">
-                        <div> 국가 : </div>
+                        <div> 
+                            국가 : {item.brand.country}
+                            </div>
                         <div>
                             
                             {/* {`${otherReview.brand.country}`} */}
@@ -163,8 +166,6 @@ useEffect(() => {
                                     ) : 
                                     (<button className="favorite-btn"
                                     >B</button> )}
-                                        
-                                
                             </div>
                         <div>
                             
@@ -183,21 +184,20 @@ useEffect(() => {
                 <div>
                     top
                     <div className="item_information">
-                        
-                        {/* {`${otherReview.top.top_note_name}`} */}
+                        {item.top.top_note_id}
                     </div>
                 </div>
                 <div>
                     middle
                     <div className="item_information">
-                        
+                        {item.middle.middle_note_id}
                         {/* {`${otherReview.middle.middle_note_name}`} */}
                     </div>
                 </div>
                 <div>
                     base
                     <div className="item_information">
-                        
+                        {item.base.base_note_id}
                         {/* {`${otherReview.base.base_note_name}`} */}
                     </div>
                 </div>
@@ -207,7 +207,7 @@ useEffect(() => {
                     <div className="item_information-comment">
                         간략 설명
                         <div>
-                        
+                        {item.comment}
                         {/* {`${otherReview.comment}`} */}
                         </div>
                         
@@ -240,9 +240,10 @@ useEffect(() => {
 
                     {/* 작업하기 */}
                     <div className="item_container-review">
-                        {otherReview.map((rev) => {
-                          <OtherReviews otherReview={rev}/>  
-                        })}
+                        {/* <OtherReviews otherReview={otherReview[0]}/> */}
+                        {otherReview.map((rev) => 
+                          <OtherReviews otherReview={rev} />  
+                        )}
                     </div>
                     {/* <div className="item_container-review">
                         sdfsddfsf
