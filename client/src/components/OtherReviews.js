@@ -10,7 +10,7 @@ export default function OtherReviews({ otherReview }) {
   const [isLike,setIsLike]=useState(false);
 
   const handleLikeup = () => {
-    axios.post('https://localhost:4000/review/like-review', 
+    axios.post(`${process.env.REACT_APP_API_URL}/review/like-review`, 
     { review_id:otherReview.id }, 
     { headers: { "Content-Type": "application/json" },
                   withCredentials: true
@@ -18,7 +18,7 @@ export default function OtherReviews({ otherReview }) {
 }
 
   useEffect(() => {
-    axios.post('https://localhost:4000/review/number-of-like',
+    axios.post(`${process.env.REACT_APP_API_URL}/review/number-of-like`,
     {review_id:otherReview.id}, 
     { headers: { "Content-Type": "application/json" },
                   withCredentials: true
@@ -36,7 +36,7 @@ export default function OtherReviews({ otherReview }) {
 
         <div className="other_user_info">
           <span className="img_cont">
-            <img className="img" src={`https://localhost:4000/${otherReview.user.profile_img}`}/> 
+            <img className="img" src={`${process.env.REACT_APP_API_URL}/${otherReview.user.profile_img}`}/> 
           </span>
           <span className="other_user_name">{otherReview.user.user_name}</span>
         </div>

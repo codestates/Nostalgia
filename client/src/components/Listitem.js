@@ -9,7 +9,7 @@ const Listitem =({ itemList , specPage }) => {
       <Link to={{pathname:`/itempage/:${specPage.id}` , perfume_id : specPage.id}} style={{textDecoration: 'none'}}>
       <li className="listitem" key={itemList.id}>
           <img className="listitem_img" 
-                src={`https://localhost:4000/image/${itemList.perfume_img}`}/>
+                src={`${process.env.REACT_APP_API_URL}/image/${itemList.perfume_img}`}/>
             <div className="listitem_info_box">
               <div className="listitem_brand"
               style={{color: 'black',textDecoration: 'none'}}>

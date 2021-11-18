@@ -46,7 +46,7 @@ function Mypage () {
     //  ########### UserInfo 요청 ########### 
     useEffect(async() => {
         const userdata = await axios
-         .get("https://localhost:4000/user/userinfo/userdata",
+         .get(`${process.env.REACT_APP_API_URL}/user/userinfo/userdata`,
           {
               headers: { "Content-Type": "application/json" }, 
               withCredentials: true
@@ -54,7 +54,7 @@ function Mypage () {
         )
     
         const favoritedata = await axios
-        .get("https://localhost:4000/favorite/get-favorite",
+        .get(`${process.env.REACT_APP_API_URL}/favorite/get-favorite`,
             {
                 headers: { "Content-Type": "application/json" }, 
                 withCredentials: true
@@ -62,7 +62,7 @@ function Mypage () {
         )
 
         const myreviewdata = await axios
-        .get("https://localhost:4000/review/myreview",
+        .get(`${process.env.REACT_APP_API_URL}/review/myreview`,
          {
              headers: { "Content-Type": "application/json" }, 
              withCredentials: true
@@ -89,7 +89,7 @@ function Mypage () {
                         </div>
                         <div className="mypage_image-box">
                             <div className="mypage_image-size">
-                                <img className="mypage_image" src={`https://localhost:4000/${userInfo.profile_img}`}></img>
+                                <img className="mypage_image" src={`${process.env.REACT_APP_API_URL}/${userInfo.profile_img}`}></img>
                             </div>
                         </div>   
                         <div className="mypage_text-box">

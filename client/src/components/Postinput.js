@@ -6,7 +6,7 @@ import axios from 'axios'
 const Postinput = () => {
 
 const handleSubmit = () => {
-    axios.get('http://localhost:4000/review/add-review',)
+    axios.get(`${process.env.REACT_APP_API_URL}/review/add-review`)
 }
 
     return (
