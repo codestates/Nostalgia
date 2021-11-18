@@ -24,7 +24,7 @@ const [writereview,setWritereview] = useState(false);
 
  useEffect( async() => {
     const perfume_info = await axios.
-    post("https://localhost:4000/perfume/get-perfume-info", 
+    post(`${process.env.REACT_APP_API_URL}/perfume/get-perfume-info`, 
     {
         perfume_id: Number(match.params.perfume_id.slice(1))
     },
@@ -34,7 +34,7 @@ const [writereview,setWritereview] = useState(false);
     })
     
     const review_info = await axios
-    .post("https://localhost:4000/review/get-review-info",
+    .post(`${process.env.REACT_APP_API_URL}/review/get-review-info`,
      {
         perfume_id:  Number(match.params.perfume_id.slice(1))
     },{
@@ -61,7 +61,7 @@ const [writereview,setWritereview] = useState(false);
 
     const handleReview =  () => {
          axios.
-            post("https://localhost:4000/review/add-review",
+            post(`${process.env.REACT_APP_API_URL}/review/add-review`,
                 {   
                     // token으로 줄 예정이라 향후 user_id는 필요 없음.
                     perfume_id:  Number(match.params.perfume_id.slice(1,)),
@@ -78,7 +78,7 @@ const [writereview,setWritereview] = useState(false);
     const handleThumbup =  () =>{
             //add-favorite 
          axios
-        .post('https://localhost:4000/favorite/add-favorite',  
+        .post(`${process.env.REACT_APP_API_URL}favorite/add-favorite`,  
         { 
             perfume_name:item.perfume_name,
             perfume_img:item.perfume_img,
@@ -103,7 +103,7 @@ const [writereview,setWritereview] = useState(false);
        <section className="item_container-product">
 
             <div className="item_img-box">
-               <img className="item_img" src={`https://localhost:4000/image/${item.perfume_img}`} />
+               <img className="item_img" src={`${process.env.REACT_APP_API_URL}/image/${item.perfume_img}`} />
             </div>
        
             <div className="item_info_container">

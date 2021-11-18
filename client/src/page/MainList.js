@@ -20,10 +20,10 @@ const [count,setCount] = useState(0);
 
 useEffect(() => {
     axios
-    .all([axios.get('https://localhost:4000/brand/logo', 
+    .all([axios.get(`${process.env.REACT_APP_API_URL}/brand/logo`, 
     { headers: { "Content-Type": "application/json" },
         withCredentials: true}), 
-    axios.get('https://localhost:4000/perfume/get-perfume-info-all',
+    axios.get(`${process.env.REACT_APP_API_URL}/perfume/get-perfume-info-all`,
     { headers: { "Content-Type": "application/json" },
         withCredentials: true})
     ])

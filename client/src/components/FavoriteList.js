@@ -8,7 +8,7 @@ function FavoriteList({item }) {
             <li className="favoriateList_list">
                 <div className="favoriateList_img-border">
                     <div className="favoriateList_img-box">
-                        <img className="favoriateList_img" src={`https://localhost:4000/image/${item.perfume_img}`}></img>
+                        <img className="favoriateList_img" src={`${process.env.REACT_APP_API_URL}/image/${item.perfume_img}`}></img>
                     </div>
                 </div>
                 <ul className="favoriateList_totalList">

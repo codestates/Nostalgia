@@ -44,7 +44,7 @@ function Login() {
     const responseGoogle = async (response) => {
         console.log(response)
         const res = await axios
-        .post('https://localhost:4000/user/signup/Oauthlogin',
+        .post(`${process.env.REACT_APP_API_URL}user/signup/Oauthlogin`,
         {
             email: response.profileObj.email,
             user_name: response.profileObj.name
@@ -65,7 +65,7 @@ function Login() {
 
     const handleLogin = async () => {
         const data = await axios
-        .post('https://localhost:4000/user/login', 
+        .post(`${process.env.REACT_APP_API_URL}/user/login`, 
             {
                 email: email,
                 password: password

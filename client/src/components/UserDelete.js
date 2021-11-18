@@ -24,7 +24,7 @@ function UserDelete({result}) {
     const handleClick = async () => {
         //setUserDeleteFail(true)
         const data = await axios
-            .post("http://localhost:4000/user/delete-account", 
+            .post(`${process.env.REACT_APP_API_URL}/user/delete-account`, 
                 {
                     // 보류
                     password: password

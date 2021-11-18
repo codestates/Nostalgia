@@ -45,7 +45,7 @@ function NameUpdate({result,randering}) {
         if(!blanck) {
             // 이건 서버 측에서 중복있는 없는지 알려줘서 data 변수에 결정
             const data = await axios.
-                post("https://localhost:4000/user/change-username", 
+                post(`${process.env.REACT_APP_API_URL}/user/change-username`, 
                     {
                         username: username
                     },

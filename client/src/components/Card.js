@@ -6,7 +6,7 @@ const Card =({ logo,brand_sort }) => {
 
     return(
         <botton className="logo_list" onClick = { ()=>brand_sort(logo.brand_name)} >
-            <img className="logo_img" src={`https://localhost:4000/image/${logo.logo_img}`}/>
+            <img className="logo_img" src={`${process.env.REACT_APP_API_URL}/image/${logo.logo_img}`}/>
     </botton>
     );
 }

@@ -95,7 +95,7 @@ const handleLogin = async (e) => {
             // }
 
             await axios
-                .post("https://localhost:4000/user/signup/login",
+                .post(`${process.env.REACT_APP_API_URL}user/signup/login`,
                   formData,
                     {
                         // ################################## Content-Type form 형식에 대해 보류 ##################################
@@ -121,7 +121,7 @@ const handleLogin = async (e) => {
 
             const data = await axios
             // ################################## 닉네임 중복 검사 경로 보류 ##################################
-                .post("https://localhost:4000/user/check-username",
+                .post(`${process.env.REACT_APP_API_URL}/user/check-username`,
                     {
                         user_name: username,
                     },
