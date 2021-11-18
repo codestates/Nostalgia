@@ -27,7 +27,7 @@ const handleClick = (el) => {
             <div className='header_titlecontainer'>
                 <div className="header_title">
                     <Link to='/'
-                    style={{textDecoration: 'none'}}>
+                    style={{ color:'black',textDecoration: 'none'}}>
                         Nostalgia 
                     </Link>
                     </div>

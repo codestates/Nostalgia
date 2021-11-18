@@ -11,18 +11,19 @@ import ReviewList from "../components/ReviewList"
 import axios from 'axios'
 import Review from "../components/Review"
 
+
 function Mypage () {
     
     // 모달 제어하는 useState()
     const [pwModal, setPewModal] = useState(false)
     const [nameModal, setNameModal] = useState(false)
     const [deleteModal, setDeleteModal] = useState(false)
-
-
+    const [userRender, setUserRender] = useState(false);
 
     const [favoiList, setFavoiList] = useState([])
     const [reviewList, setreviewList] = useState([])   
     const [userInfo, setUserInfo] = useState([])
+    const [userInfoimage, setuserInfoimage] = useState([])
 
     const handlePwModal = (el) => {
         setPewModal(el)
@@ -36,70 +37,44 @@ function Mypage () {
         setDeleteModal(el)
     }
 
+    const handleNameRenderModal=(el)=>{
+        setUserRender(el);
+    }
 
-    
+    const image = '';
+
     //  ########### UserInfo 요청 ########### 
-    useEffect(() => {
-        axios
+    useEffect(async() => {
+        const userdata = await axios
          .get("https://localhost:4000/user/userinfo/userdata",
           {
               headers: { "Content-Type": "application/json" }, 
               withCredentials: true
           }
         )
-        .then((res) => {
-            console.log("유저 정보: ", res.data.data)
-            setUserInfo(res.data.data);    
-        })
-      }, [])
-
-
-
-      console.log("#########", userInfo)
-
-
-    //  ########### 찜하기 목록 요청 ###########
-    useEffect(() => {
-
-      axios
-        .post("https://localhost:4000/favorite/get-favorite",
-            {
-                user_id: 1
-            },
+    
+        const favoritedata = await axios
+        .get("https://localhost:4000/favorite/get-favorite",
             {
                 headers: { "Content-Type": "application/json" }, 
                 withCredentials: true
             }
         )
-       .then((data) => {
-           //console.log("찜하기 목록 요청13: ", data.data.data)
-           setFavoiList(data.data.data)
-        })
-    }, [])
 
+        const myreviewdata = await axios
+        .get("https://localhost:4000/review/myreview",
+         {
+             headers: { "Content-Type": "application/json" }, 
+             withCredentials: true
+         }
+       )
+        setUserRender(false);
+        setUserInfo(userdata.data.data);
+        setFavoiList(favoritedata.data.data)
+        setreviewList(myreviewdata.data.data)
+       
+      }, [userRender])
 
-
-
-    // ########### 리뷰 목록 요청 ########### 
-    useEffect(() => {
-        axios
-         .post("https://localhost:4000/review/myreview",
-          {
-              user_id: 1
-          },
-          {
-              headers: { "Content-Type": "application/json" }, 
-              withCredentials: true
-          }
-        ).then((data) => {
-          console.log("리뷰 목록 요청: ",data.data)
-          setreviewList(data.data.data)
-        })
-      }, [])
-
-     
-    
-    
 
     return (
         <>
@@ -114,7 +89,7 @@ function Mypage () {
                         </div>
                         <div className="mypage_image-box">
                             <div className="mypage_image-size">
-                                <img className="mypage_image" src={''}></img>
+                                <img className="mypage_image" src={`https://localhost:4000/${userInfo.profile_img}`}></img>
                             </div>
                         </div>   
                         <div className="mypage_text-box">
@@ -156,8 +131,7 @@ function Mypage () {
                             <ul className="favoriate_box">
                                 <h3 className="favoriate_list_title">찜하기 목록</h3>
                                  {/* ################## Component 분리해야 antipattern 벗어남 !! ################### */}    
-                                
-                                {favoiList.map((el) => <FavoriteList item={el}/>)}
+                                 {favoiList.map((el) => <FavoriteList item={el}/>)}
                             </ul>
                         </section>
 
@@ -165,7 +139,7 @@ function Mypage () {
                             <ul className="mypage_review_box">
                                 <h3 className="review_list_title">Review 목록</h3>
                                 {/* <ReviewList/> */}
-                            {reviewList.map((el) => <ReviewList list={el}/>)}
+                                {reviewList.map((el) => <ReviewList list={el}/>)}
                             </ul>
                         </section>
                     </div>
@@ -173,7 +147,7 @@ function Mypage () {
             </main>
             <Footer></Footer>
             {pwModal ? <PwUpdate result={handlePwModal}/> : ''}
-            {nameModal ? <NameUpdate result={handleNameModal}/> : ''}
+            {nameModal ? <NameUpdate result={handleNameModal} randering={handleNameRenderModal}/> : ''}
             {deleteModal ? <UserDelete result={hadleDelteModal}/> : ''}
           </div>
         </>

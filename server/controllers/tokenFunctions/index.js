@@ -12,12 +12,13 @@ module.exports = {
 
   isAuthorized: (req) => {
       const authorization = req.headers['cookie'];
-      
+      //console.log(req.headers)
+
       if (!authorization) {
         return null;
       }
-      const token = authorization.split('=')[1];
-      console.log(':::::::::::::::::::::::::',token)
+      const token = authorization.split('=')[2];
+      //console.log(':::::::::::::::::::::::::',token)
       
       try {
         return verify(token, process.env.ACCESS_SECRET);

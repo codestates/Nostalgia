@@ -2,11 +2,15 @@
 const {favorite}=require('../../models')
 const { QueryTypes } = require('sequelize');
 const { sequelize } = require('../../models')
+const { isAuthorized } = require('../tokenFunctions');
 
 module.exports= async(req,res)=>{
+    const accessTokenData = isAuthorized(req);
+    const { id } = accessTokenData;
+
     const data= await favorite.findAll({
         attributes:['perfume_name','brand_name','createdAt','perfume_img'],
-        where:{user_id:req.body.user_id}
+        where:{user_id:id}
     })
 
     for(let i=0;i<data.length;i++){
@@ -16,7 +20,12 @@ module.exports= async(req,res)=>{
                     GROUP BY (perfume_infos.perfume_name)`;
         
         const avg_rating_data = await sequelize.query(query,{type: QueryTypes.SELECT});
-        data[i].dataValues.avg_rating=avg_rating_data[0].avg_rating;
+        if(avg_rating_data.length===0){
+            data[i].dataValues.avg_rating = '0';
+        }
+        else{
+        data[i].dataValues.avg_rating = avg_rating_data[0].avg_rating;
+        }
     }
 
     if(!data) {
@@ -27,8 +36,8 @@ module.exports= async(req,res)=>{
     }
 }
 
-//select ROUND(AVG(reviews.rating)) AS avg from reviews INNER JOIN perfume_infos 
-//ON reviews.perfume_id = perfume_infos.id 
-//where perfume_infos.perfume_name= 'CHANEL CHANCE' 
-//GROUP BY (perfume_infos.perfume_name);
+// select ROUND(AVG(reviews.rating)) AS avg from reviews INNER JOIN perfume_infos 
+// ON reviews.perfume_id = perfume_infos.id 
+// where perfume_infos.perfume_name= 'CHANEL CHANCE' 
+// GROUP BY (perfume_infos.perfume_name);
 

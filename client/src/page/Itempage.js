@@ -4,10 +4,13 @@ import Review from '../components/Review'
 import axios from 'axios';
 import Star from '../components/Star'
 import './Item.css';
-import { UilFavorite } from '@iconscout/react-unicons'
+import { UilFavorite as White} from '@iconscout/react-unicons'
+import { UisFavorite as Black } from '@iconscout/react-unicons-solid'
+
 import OtherReviews from'../components/OtherReviews'
 
-const Item = () =>{
+const Item =({match}) =>{
+
 
 const [otherReview, setOtherReview] = useState([])
 const [review, setReiview] = useState('')
@@ -16,46 +19,33 @@ const [favorite, setFavorite] = useState(false)
 const [addFav, setAddFav] = useState(false)
 const [item, setItem] = useState({})
 const [rating, setRating] = useState(0)
+const [writereview,setWritereview] = useState(false);
 
-// 해당 제품에 대한 평점
-const [starAvg, setStarAvg] = useState('')
 
-useEffect(async () => {
-    await axios.
+ useEffect( async() => {
+    const perfume_info = await axios.
     post("https://localhost:4000/perfume/get-perfume-info", 
     {
-        perfume_id: 1
+        perfume_id: Number(match.params.perfume_id.slice(1))
     },
     {
         headers: { "Content-Type": "application/json" },
         withCredentials: true
-    }
-    )
-    .then((res) => {
-        setItem(res.data.data)
-        setRating(res.data.avg_rating.avg_rating)
     })
-}, [])
-
-console.log(rating)
-console.log(item)
-
-
-useEffect(async () => {
-    await axios
-    .post("https://localhost:4000/review/get-review-info", {
-        perfume_id: 1
+    
+    const review_info = await axios
+    .post("https://localhost:4000/review/get-review-info",
+     {
+        perfume_id:  Number(match.params.perfume_id.slice(1))
     },{
         headers: { "Content-Type": "application/json" },
         withCredentials: true
-    }).then((res)=>{
-        console.log(res.data.data)
-        setOtherReview(res.data.data)
     })
-},[])
 
-    console.log(otherReview)
-// perfume_id, user_name, profile_img 'id','perfume_id','comment','rating','createdAt'
+    setItem(perfume_info.data.data);
+    setRating(perfume_info.data.avg_rating.avg_rating);
+    setOtherReview(review_info.data.data);
+}, [writereview,addFav])
 
 
 
@@ -67,72 +57,69 @@ useEffect(async () => {
         setCount(e.target.value)
     }
 
-    console.log(count)
+    console.log(writereview);
 
-    // const toggleFavorite = async(e) => {
-    //     const res = await axios.post ()
-    // }
-
-    const handleReview = async () => {
-        await axios.
+    const handleReview =  () => {
+         axios.
             post("https://localhost:4000/review/add-review",
                 {   
                     // token으로 줄 예정이라 향후 user_id는 필요 없음.
-                    perfume_id: starAvg.perfume_id,
+                    perfume_id:  Number(match.params.perfume_id.slice(1,)),
                     comment: review,
-                    rating: count
-
+                    rating: Number(count)
                 },
                 {
                     headers: { "Content-Type": "application/json" },
                     withCredentials: true
                 }
-            )
-          
+            ).then(res=> {setWritereview(true)} )
         }
 
-        const handleThumbup = async () =>{
+    const handleThumbup =  () =>{
             //add-favorite 
-           await axios.post('https://localhost:4000/favorite/add-favorite',  
-           { perfume_name:item.perfume_name,
-                perfume_img:item.perfume_img,
-                    brand_name:item.brand.brand_name}, 
-            { headers: { "Content-Type": "application/json" },
+         axios
+        .post('https://localhost:4000/favorite/add-favorite',  
+        { 
+            perfume_name:item.perfume_name,
+            perfume_img:item.perfume_img,
+            brand_name:item.brand.brand_name
+        }, 
+        { 
+            headers: { "Content-Type": "application/json" },
             withCredentials: true
-            }).then(res =>{
-                if(res === 201) setAddFav(true);
-            })
-        }
+        }).then(res =>{
+            if(res.status === 201) setAddFav(true);
+        })
+    }
 
+    
     
 
     return (
         <>
+        
         <Header/>
-        <section className="item_container-product">
-            <div className="item_img-box">
-                <img className="item_img"/>
-            </div>
+    
+       <section className="item_container-product">
 
+            <div className="item_img-box">
+               <img className="item_img" src={`https://localhost:4000/image/${item.perfume_img}`} />
+            </div>
+       
             <div className="item_info_container">
-                        
+
+                    
                 <div className="item_info_box_brand">
                     <div className="item_info_brandname">
-                            브랜드: {item.brand.brand_name}
-                        <div>
-                            
-        
-                        </div>
-                    </div>
-                </div>
+                           브랜드: {item.brand!==undefined ? ( item.brand.brand_name  ):null }
+                    </div>   
+                </div> 
+            
 
                 <div className="item_info_box_brand">
                     <div className="item_info_brandname">
                         <div> 
-                            상품: {item.perfume_name}
-                            </div>
-                        <div>
-                
+                             상품: {item.perfume_name !==undefined ? ( item.perfume_name  ):null } 
                         </div>
                     </div>
                 </div>
@@ -140,20 +127,15 @@ useEffect(async () => {
                 <div className="item_info_box_brand">
                     <div className="item_info_brandname">
                         <div> 평점 : {rating}</div>
-                        <Star star={String(rating)}/>
-                        {/* <Star star={starAvg.avg_rating}> */}
+                        <Star star={rating}/>
                     </div>
                 </div>
 
                 <div className="item_info_box_prudect">
                     <div className="item_info_productname">
                         <div> 
-                            국가 : {item.brand.country}
+                             국가 : {item.brand!==undefined ? ( item.brand.country  ):null}
                             </div>
-                        <div>
-                            
-                            {/* {`${otherReview.brand.country}`} */}
-                        </div>
                     </div>
                 </div>
 
@@ -162,61 +144,62 @@ useEffect(async () => {
                         <div> 찜하기: 
                             {!addFav ? (
                                     <button className="favorite-btn"
-                                    onClick={handleThumbup}>A</button>
-                                    ) : 
+                                    onClick={handleThumbup}><White /></button>
+                                    ) 
+                                    : 
                                     (<button className="favorite-btn"
-                                    >B</button> )}
+                                    ><Black /></button> )}
                             </div>
-                        <div>
-                            
-                
                         </div>
-                    </div>
                 </div>
-
-            </div>   
+   
+            </div> 
+                                
         </section>
+ 
+                              
+
         <main className="item_container-main">
             <div className="item_info-title">
                 상세 소개
             </div>
+
             <div className="item_information-box">
+                
                 <div>
-                    top
+                    TOP NOTE
                     <div className="item_information">
-                        {item.top.top_note_id}
-                    </div>
-                </div>
-                <div>
-                    middle
-                    <div className="item_information">
-                        {item.middle.middle_note_id}
-                        {/* {`${otherReview.middle.middle_note_name}`} */}
-                    </div>
-                </div>
-                <div>
-                    base
-                    <div className="item_information">
-                        {item.base.base_note_id}
-                        {/* {`${otherReview.base.base_note_name}`} */}
+                        {item.top!==undefined ? ( item.top.top_note_name  ):null}
                     </div>
                 </div>
 
+                <div>
+                    MIDDLE NOTE
+                    <div className="item_information">
+                    {item.middle!==undefined ? ( item.middle.middle_note_name  ):null}
+                    </div>
+                </div>
+
+                <div>
+                    BASE NOTE
+                    <div className="item_information">
+                    {item.base!==undefined ? ( item.base.base_note_name  ):null}
+                    </div>
+                </div>
             </div>
+
                 <div className="item_information-box">
                     <div className="item_information-comment">
-                        간략 설명
+                        상품 설명
                         <div>
-                        {item.comment}
-                        {/* {`${otherReview.comment}`} */}
+                        {item.comment !==undefined ? ( item.comment  ):null}
                         </div>
                         
                     </div>
                 </div>
-            <div>
 
-            </div>
         </main>
+
 
         <main className="item_container-main2">
             <div className="item_container-title-box">
@@ -228,31 +211,27 @@ useEffect(async () => {
                     <input type="number" className="item-rating-count" onChange={typingCount}></input>
                 </div>
             </div>
+
             <input className="review_contanier-typing" onChange={typingReview}></input>
-            <button className="review_contanier-button" onClick={() => handleReview}>리뷰 쓰기</button>
+            <button className="review_contanier-button" onClick={handleReview}>리뷰 쓰기</button>
         </main>
+
+
         <section className="item_container-section">
             <div className="item_container-reviewbox">
                 <div className="item_container-reviewtitle">
                     Review List
                 </div>
                 <div>
-
-                    {/* 작업하기 */}
                     <div className="item_container-review">
-                        {/* <OtherReviews otherReview={otherReview[0]}/> */}
                         {otherReview.map((rev) => 
                           <OtherReviews otherReview={rev} />  
                         )}
                     </div>
-                    {/* <div className="item_container-review">
-                        sdfsddfsf
-                    </div>   */}
-
                 </div>
             </div>
         </section>
-        </>
+    </>
     )
 }
 

@@ -294,69 +294,85 @@ module.exports = {
         user_name: "SH",
         email: "SH@codestates.com",
         password:"password1!",
-        profile_img:"2",
+        profile_img:"uploads/5df7b4821d0f15cd9daa69ecec3662e3",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        user_name: "test2",
-        email: "email2",
-        password:"password2",
-        profile_img:"1",
+        user_name: "SON",
+        email: "SON@codestates.com",
+        password:"password2!",
+        profile_img:"uploads/9bdf397138fd968d3427fe5745d96648",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        user_name: "test3",
-        email: "email3",
-        password:"password3",
-        profile_img:"3",
+        user_name: "Zeenii",
+        email: "Zeenii@codestates.com",
+        password:"password3!",
+        profile_img:"uploads/0101c9a6ae062869df724a4456812877",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        user_name: "Luka",
+        email: "Luka@codestates.com",
+        password:"password4!",
+        profile_img:"uploads/263ffe7434d605b8999ebbb89a50a748",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
     ]
   );
-  
-  await queryInterface.bulkInsert("review_likes", [
-    {
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      user_id: 1,
-    },
-  ]);
 
   await queryInterface.bulkInsert("reviews", [
     {
-      comment: '좋아요!',
-      rating: 5,
+      comment: '정말 좋아요!',
+      rating: 7,
       createdAt: new Date(),
       updatedAt: new Date(),
       user_id: 1,
       perfume_id: 1
     },
     {
-      comment: '좋아요!',
-      rating: 6,
+      comment: '향이 너무 좋아서 놀랐습니다!',
+      rating: 7,
       createdAt: new Date(),
       updatedAt: new Date(),
       user_id: 2,
       perfume_id: 1
     },
     {
-      comment: '좋아요!',
-      rating: 7,
+      comment: '추천하고 싶은 향수!!',
+      rating: 8,
       createdAt: new Date(),
       updatedAt: new Date(),
       user_id: 3,
       perfume_id: 1
     },
     {
-      comment: '좋아요!',
-      rating: 8,
+      comment: '누구에게나 어울릴법한 향이에요~',
+      rating: 9,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      user_id: 4,
+      perfume_id: 1
+    },
+    {
+      comment: '정말 좋아요!',
+      rating: 10,
       createdAt: new Date(),
       updatedAt: new Date(),
       user_id: 1,
       perfume_id: 2
+    },
+    {
+      comment: '추천해요!!',
+      rating: 9,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      user_id: 1,
+      perfume_id: 3
     },
     {
       comment: '좋아요!',
@@ -364,7 +380,44 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
       user_id: 1,
-      perfume_id: 3
+      perfume_id: 4
+    },
+    {
+      comment: '정말 좋아요!',
+      rating: 9,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      user_id: 1,
+      perfume_id: 11
+    },
+    {
+      comment: '정말 좋아요!',
+      rating: 8,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      user_id: 1,
+      perfume_id: 13
+    },
+  ]);
+
+  await queryInterface.bulkInsert("review_likes", [
+    {
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      user_id: 1,
+      review_id:2
+    },
+    {
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      user_id: 1,
+      review_id:3
+    },
+    {
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      user_id: 1,
+      review_id:4
     },
   ]);
 
@@ -391,6 +444,22 @@ module.exports = {
       perfume_img:"/perfume_img/CHANEL COCO NOIR.jpg",
       brand_name:'CHANEL',
       perfume_name: 'CHANEL COCO NOIR',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      user_id:1,
+      perfume_img:"/perfume_img/JO MALONE London BLACKBERRY & BAY.png",
+      brand_name:'Jo malone',
+      perfume_name: 'JO MALONE London BLACKBERRY & BAY',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      user_id:1,
+      perfume_img:"/perfume_img/VERSACE EROS.jpg",
+      brand_name:'VERSACE',
+      perfume_name: 'VERSACE EROS',
       createdAt: new Date(),
       updatedAt: new Date(),
     },

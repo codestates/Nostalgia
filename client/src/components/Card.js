@@ -2,12 +2,12 @@ import React from 'react'
 import './Card.css'
 
 
-const Card =({ logoList }) => {
-console.log(logoList)
+const Card =({ logo,brand_sort }) => {
+
     return(
-        <a className="logo_list" >
-            <img className="logo_img" src={`https://localhost:4000/image/${logoList.logo_img}`}/>
-    </a>
+        <botton className="logo_list" onClick = { ()=>brand_sort(logo.brand_name)} >
+            <img className="logo_img" src={`https://localhost:4000/image/${logo.logo_img}`}/>
+    </botton>
     );
 }
 

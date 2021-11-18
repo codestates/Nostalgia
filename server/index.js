@@ -23,6 +23,9 @@ app.use(
 );
 app.use(cookieParser());
 
+
+app.use('/uploads', express.static('uploads'));
+
 app.get('/user/userinfo/userimage', controllers.userinfo.userimage);
 app.get('/user/userinfo/userdata', controllers.userinfo.userdata);
 
@@ -30,6 +33,7 @@ app.use('/image', express.static('images')); //정적이미지 제공
 
 app.post('/user/signup/login', upload.single('image'), controllers.signup.login);
 app.post('/user/signup/Oauthlogin', controllers.signup.Oauthlogin)
+
 
 app.post('/user/login', controllers.login);
 app.post('/user/signout', controllers.signout);
@@ -40,16 +44,16 @@ app.post('/user/delete-account', controllers.deleteaccount);
 app.post('/user/check-username',controllers.checkusername);
 
 app.post('/favorite/add-favorite', controllers.addfavorite);
-app.post('/favorite/get-favorite', controllers.getfavorite);
+app.get('/favorite/get-favorite', controllers.getfavorite);
 
- app.post('/perfume/get-perfume-info', controllers.getperfumeinfo);
- app.get('/perfume/get-perfume-info-all', controllers.getperfumeinfoall);
+app.post('/perfume/get-perfume-info', controllers.getperfumeinfo);
+app.get('/perfume/get-perfume-info-all', controllers.getperfumeinfoall);
 
 app.post('/review/add-review', controllers.addreview);
 app.post('/review/get-review-info', controllers.getreviewinfo);
 app.post('/review/like-review', controllers.likereview);
 app.post('/review/number-of-like', controllers.numberoflike);
-app.post('/review/myreview', controllers.myreview);
+app.get('/review/myreview', controllers.myreview);
 
 app.post('/search/get-recent-search', controllers.getrecentsearch);
 app.post('/search/delete-recent-search', controllers.deleterecentsearch);
@@ -70,3 +74,5 @@ if (fs.existsSync('./key.pem') && fs.existsSync('./cert.pem')) {
   server = app.listen(HTTPS_PORT, () => console.log('http server runnning'));
 }
 module.exports = server;
+
+

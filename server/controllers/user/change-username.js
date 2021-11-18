@@ -3,13 +3,13 @@ const { isAuthorized } = require('../tokenFunctions');
 
 module.exports = async (req, res) => {
     const accessTokenData = isAuthorized(req);
-    
+    console.log(accessTokenData)
+
     if(!accessTokenData){
       return res.status(401).json({ message: 'fail to get user info' });
     }
     const { email } = accessTokenData;
     const data = await user.findOne({ where: { email } })
-    
     //console.log("!!!$$$$$$$$$", data.dataValues)
       if (!data){
         return res.status(401).json({ message: 'Invalid user' })
