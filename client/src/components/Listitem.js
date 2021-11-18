@@ -6,8 +6,7 @@ import "./Listitem.css";
 const Listitem =({ itemList , specPage }) => {
 
     return (
-      <Link to={`/itempage/${specPage.id}`}
-            style={{textDecoration: 'none'}}>
+      <Link to={{pathname:`/itempage/:${specPage.id}` , perfume_id : specPage.id}} style={{textDecoration: 'none'}}>
       <li className="listitem" key={itemList.id}>
           <img className="listitem_img" 
                 src={`https://localhost:4000/image/${itemList.perfume_img}`}/>

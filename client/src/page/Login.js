@@ -47,7 +47,7 @@ function Login() {
         .post('https://localhost:4000/user/signup/Oauthlogin',
         {
             email: response.profileObj.email,
-            user_name: response.profileObj.username
+            user_name: response.profileObj.name
         },
         {
             headers: { "Content-Type": "application/json" }, 
@@ -152,7 +152,6 @@ function Login() {
                                     로그인    
                                 </button> 
                             </form> 
-                            <img src="/google_oAuth.png" className="login_OAuth-btn"></img> 
                             <GoogleLogin
                                 clientId="371793436066-b0eq26h3d3tirbnqapjp0p9bgkecc8ae.apps.googleusercontent.com"
                                 buttonText="Login"

@@ -13,16 +13,10 @@ import axios from 'axios'
 
 const Main = ({}) => {
 
-
-const [item, setItem] = useState(null)
-const [logo, setLogo] = useState(null);
 const [itemList, setItemList] = useState([]);
+const [filterItem , setFilteritem] = useState([]);
 const [logoList, setLogoList] = useState([]);
-const [filterItem, setFilterItem] = useState(null);
-const [error, setError] = useState(null);
-const [isFilter, setIsFilter] = useState(false);
-
-const [specPage, setSpecPage] = useState([])
+const [count,setCount] = useState(0);
 
 useEffect(() => {
     axios
@@ -38,6 +32,9 @@ useEffect(() => {
             console.log(res1.data.data, res2.data.data);
             const logores = res1.data.data
             const itemres = res2.data.data
+            const result = itemres.sort(function (a, b) {
+                return a.id - b.id;
+            });
             setLogoList(logores);
             setItemList(itemres);
         })
@@ -45,7 +42,90 @@ useEffect(() => {
 },[])
 
 
+useEffect(()=>{
+
+},[count])
+
+
+
+
+const sortreviewup =()=>{
+    if(filterItem.length!==0){
+        const result = filterItem.sort(function (a, b) {
+            return b.number_review - a.number_review;
+        });
+        setCount(count+1);
+        setFilteritem(result);
+    }  
+    else{
+        const result = itemList.sort(function (a, b) {
+            return b.number_review - a.number_review;
+        });
+        setCount(count+1);
+        setItemList(result);
+    } 
+}
+
+const sortreviewdown =()=>{
+    if(filterItem.length!==0){
+        const result = filterItem.sort(function (a, b) {
+            return a.number_review - b.number_review;
+        });
+        setCount(count+1);
+        setFilteritem(result);
+    }  
+    else{
+        const result = itemList.sort(function (a, b) {
+            return a.number_review - b.number_review;
+        });
+        setCount(count+1);
+        setItemList(result);
+    } 
+}
+
+const sortratingup =()=>{
+    if(filterItem.length!==0){
+        const result = filterItem.sort(function (a, b) {
+            return b.number_review - a.number_review;
+        });
+        setCount(count+1);
+        setFilteritem(result);
+    }  
+    else{
+        const result = itemList.sort(function (a, b) {
+            return b.number_review - a.number_review;
+        });
+        setCount(count+1);
+        setItemList(result);
+    } 
+}
+
+const sortratingdown =()=>{
+    if(filterItem.length!==0){
+        const result = filterItem.sort(function (a, b) {
+            return a.number_review - b.number_review;
+        });
+        setCount(count+1);
+        setFilteritem(result);
+    }  
+    else{
+        const result = itemList.sort(function (a, b) {
+            return a.number_review - b.number_review;
+        });
+        setCount(count+1);
+        setItemList(result);
+    } 
+}
+
+
+const brand_sort= (brand_name)=>{
+    const filter = itemList.filter(el => el.brand.brand_name === brand_name)
+    setCount(count+1);
+    setFilteritem(filter);
+}
+
 console.log("Itme 담은 곳 : ", itemList)
+console.log("filterItem",filterItem);
 
     return (
         <>
@@ -58,29 +138,36 @@ console.log("Itme 담은 곳 : ", itemList)
                     </div>
                 <div className="brand_logo_container">             
                     {logoList.map(logo => (
-                        <Card logoList={logo}/>
+                        <Card logo={logo} brand_sort={brand_sort}/>
                     ))}
                 </div>
 
                     <div className="filterwithcount_container">
-                        <div className="checkbox_blank">리뷰 많은 순</div>
-                        <div className="checkbox_blank">리뷰 적은 순</div>
-                        <div className="checkbox_blank">평정 많은 순</div>
-                        <div className="checkbox_blank">평점 적은 순</div>
-                        <div className="count_item"> {`TOTAL : ${itemList.length}`}</div>
+                        <div className="checkbox_blank"> <button onClick={sortreviewup}>리뷰 많은 순 </button> </div>
+                        <div className="checkbox_blank"> <button onClick={sortreviewdown}>리뷰 적은 순 </button> </div>
+                        <div className="checkbox_blank"> <button onClick={sortratingup}>평점 높은 순 </button> </div>
+                        <div className="checkbox_blank"> <button onClick={sortratingdown}>평점 낮은 순 </button> </div>
+
+                       { filterItem.length!==0 ? <div className="count_item"> {`TOTAL : ${filterItem.length}`}</div> 
+                       : <div className="count_item"> {`TOTAL : ${itemList.length}`}</div>  }
+
                     </div>
                     
                     <ui className="perfume_container">
-                        {itemList.map(item => {
-                            return (
-                            <Link 
-                            to='/item'
-                            style={{textDecoration: 'none'}}>
-                                <Listitem 
-                                itemList={item}
-                                specPage={item}/>
-                                </Link>
-                            )})}
+                        
+                      {
+                        filterItem.length!==0 ? 
+                                    filterItem.map(filterItem => {
+                                        return (
+                                            <Listitem itemList={filterItem} specPage={filterItem}/>
+                                        )})  
+                                    : 
+                                    itemList.map(item => {
+                                    return (
+                                        <Listitem itemList={item} specPage={item}/>
+                                    )})
+                        }
+
                         </ui>
             </div>
             </>

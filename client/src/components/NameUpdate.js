@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
 
-function NameUpdate({result}) {
+function NameUpdate({result,randering}) {
     
     const [hidden, setHidden] = useState('')
     const [confirmSuccess, setConfirmSuccess] = useState(false)
@@ -31,7 +31,7 @@ function NameUpdate({result}) {
     const handleCloseModal = () => {
         setHidden('NameUpdate_hidden')
         result(false)
-        window.location.replace('/mypage')
+        randering(true)
     }
 
     const handleUserName = (e) => {
@@ -45,7 +45,7 @@ function NameUpdate({result}) {
         if(!blanck) {
             // 이건 서버 측에서 중복있는 없는지 알려줘서 data 변수에 결정
             const data = await axios.
-                post("http://localhost:4000/user/change-username", 
+                post("https://localhost:4000/user/change-username", 
                     {
                         username: username
                     },

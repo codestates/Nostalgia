@@ -70,7 +70,7 @@ function App() {
         path= '/mainpage'
         component={MainList}/>
         <Route
-        path='/itempage'
+        path='/itempage/:perfume_id'
         component={Itempage}/>
       </Switch>
      </div>

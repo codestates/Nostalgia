@@ -1,31 +1,27 @@
 import Star from '../components/Star'
 import './FavoriteListStyle.css'
 
-function FavoriteList({avgList, item }) {
-
-
-    //console.log("제품 평점: ", avgList)
-    //console.log("제품 이름 정보: ", item)
+function FavoriteList({item }) {
 
     return(
         <>
             <li className="favoriateList_list">
                 <div className="favoriateList_img-border">
                     <div className="favoriateList_img-box">
-                        <img className="favoriateList_img" src="/perfume_login_1.jpeg"></img>
+                        <img className="favoriateList_img" src={`https://localhost:4000/image/${item.perfume_img}`}></img>
                     </div>
                 </div>
                 <ul className="favoriateList_totalList">
-                    <div className="favoriateList_list_day-favoriate">2021-11-12</div> 
+                    <div className="favoriateList_list_day-favoriate">{item.createdAt.slice(0, 10)}</div> 
                     <li className="favoriateList_totalList-box">
-                        Product: CHANEL No.5
+                        제품명: {item.perfume_name}
                     </li>
                     <li className="favoriateList_totalList-box">
-                        Brand: CHANEL
+                        Brand: {item.brand_name}
                     </li>
                     <li className="favoriateList_totalList-box">
-                        <Star />
-                        {/* <Star star={avgList.avg_rating}/> */}
+                      
+                        <Star star={item.avg_rating}/>
                     </li>
                 </ul>
             </li>
@@ -34,4 +30,4 @@ function FavoriteList({avgList, item }) {
     )
 }
 
-export default FavoriteList
+export default FavoriteList 
