@@ -1,0 +1,241 @@
+
+.main {
+    padding: 0 1rem;
+}
+
+.mypage_container {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1500px;
+    height: 1000px;
+    background-color: white;
+}
+
+.mypage_info {
+    width: 50%;
+    transition: 0.8s;
+}
+
+.mypage_info:hover {
+    box-shadow: 0 7px 105px rgb(0 0 0 / 70%);
+}
+
+.mypage_record {
+    width: 50%;
+    display: flex;
+    flex-direction: column; 
+    transition: 0.8s;
+}
+
+.mypage_record:hover {
+    box-shadow: 0 7px 105px rgb(0 0 0 / 70%);
+}
+
+.mypage_header {
+    margin: 45px 190px;
+}
+
+.mypage_title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 50px;
+    border-bottom: 2px solid var(--font-color);
+}
+
+
+.mypage_image-box {
+    margin: 65px auto;
+}
+
+.mypage_image-size {
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+}
+
+.mypage_image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+}
+
+.mypage_text-box {
+    margin: 65px auto;
+    width: 300px;
+    height: 90px;
+    text-align: center;
+    box-shadow: 1px 1px 3px 1px #dadce0;
+}
+
+.mypage_font {
+    padding: 5px;
+    border-bottom: 1px solid black;
+    background-color:#dadce0
+}
+
+.mypage_info_font {
+    padding: 18px;   
+}
+
+.mypage_button-box {
+    margin: 100px auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.mypage_change-button {
+    margin: 0 60px;
+    background:black;
+    color:#fff;
+    border:none;
+    position:relative;
+    height:60px;
+    font-size:1.1em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms  ease all;
+    outline:none;
+}
+
+.mypage_change-button:hover{
+    background:#fff;
+    color: black;
+}
+
+.mypage_change-button:before,.mypage_change-button:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: black;
+    transition:400ms ease all;
+}
+
+.mypage_change-button:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+}
+
+.mypage_change-button:hover:before,.mypage_change-button:hover:after{
+    width:100%;
+    transition:800ms ease all;
+}
+
+.mypage_delete-button {
+    /* background-color: white; */
+    background-color: white;
+    color: black;
+    font-size: 35px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+}
+
+.mypage_delete-button:after {    
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 3px;
+    left: 50%;
+    position: absolute;
+    background: #ff1900;
+    transition: width 0.4s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.mypage_delete-button:hover:after { 
+    width: 100%; 
+    left: 0; 
+}
+
+.mypage_favoriate {
+    margin: 40px auto;
+    width: 30.5rem;
+    height: 27.0rem;
+}
+
+.mypage_review {
+    margin: 40px auto;
+    width: 30.5rem;
+    height: 27.0rem;
+}
+
+.favoriate_list_title {
+    font-size: 25px;
+    padding: 15px;
+    text-align: center;
+    background-color: #d0c79f;
+    border-bottom: 4px solid black;
+}
+
+.favoriate_box {
+    height: 100%;
+    overflow: scroll;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+    transition: .3s;
+}
+
+.favoriate_box:hover{
+    box-shadow: 0 7px 15px rgba(0, 0, 0, .7);
+}
+
+.mypage_review_box {
+    height: 100%;
+    overflow: scroll;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+    transition: .3s;
+}
+
+.mypage_review_box:hover{
+    box-shadow: 0 7px 15px rgba(0, 0, 0, .7);
+}
+
+.review_list {
+    list-style: none;
+    border-bottom: 1px solid orangered;
+}
+
+.review_list-box {
+    display: flex;
+    justify-content: space-between; 
+    border-bottom: 1px solid black;
+}
+
+.mypage_list_day-review {
+    text-align: right;
+    color: gray;
+    margin-top: 2px;
+    padding-right: 15px;
+}
+
+.review_product_font {
+    font-size: 23px;
+    margin: 10px;
+}
+
+.review_comment {
+    margin: 15px 20px;
+}
+
+.review_comment_good {
+    text-align: right;
+    padding: 0 40px 5px 0;
+}
+
+
+.review_list_title {
+    font-size: 25px;
+    padding: 15px;
+    text-align: center;
+    border-bottom: 4px solid black;
+    background-color: #d0c79f;
+}

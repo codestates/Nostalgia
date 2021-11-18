@@ -1,0 +1,71 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+body{
+  background-color: #ece6cc;
+}
+
+.parents_layer {
+  position:relative;
+  
+}
+
+.child_layer {
+  position:absolute;
+}
+
+@font-face {
+  font-family: "UUC";
+  src: url(../src/font/Univers-UltraCondensed.woff)
+}
+
+@font-face {
+  font-family: "Playfair";
+  src: url(../src/font/PlayfairDisplay-Black.woff);
+}
+
+@font-face {
+  font-family: "BlackHanSans";
+  src: url(../src/font/BlackHanSans-Regular.woff);
+  font-weight: 80;
+  font-style: normal;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,28 @@
+.LukaHeader_container {
+    height: 300px;
+    width: 100%;
+    margin-bottom: 150px;
+    border-bottom: 8px solid black;
+    background-color: #d0c79f
+}
+
+.LukaHeader_main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.LukaHeader_project {
+    font-size: 150px;
+    font-family: "UUC";
+    letter-spacing: 7px;
+    padding-bottom: 15px;
+    border-bottom: 6px double rgb(114, 108, 108);
+    -ms-user-select: none; 
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+

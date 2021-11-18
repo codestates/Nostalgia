@@ -1,0 +1,111 @@
+.Footer_container {
+    display: flex;
+    margin-top: 200px;
+    background-color: #000000;
+    height: 300px;
+}
+
+.Footer_img {
+    width: 440px;
+    height: 100%;
+}
+
+.Footer_team-box {
+    display: flex;
+    width: 100%;
+    height: 100%;;
+    color: white;
+}
+
+.Footer_team-position {
+    display: flex;
+    flex-direction: column;
+    margin: 40px 0 0 150px;
+}
+
+.Footer_team-front {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.Footer_team-back {
+    font-size: 40px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.Footer_team-name {
+    font-size: 20px;
+}
+
+.Footer_project {
+    width: 100%;
+}
+
+.Footer_project-name {
+   text-align:right;
+   font-family: "UUC";
+   font-size: 150px;
+   padding-top: 120px;
+   padding-right: 200px;
+   color: white;
+   -ms-user-select: none; 
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   user-select: none;    
+}
+
+
+@media screen and (max-width: 1380px) {
+    .Footer_project-name {
+        text-align:right;
+        font-family: "UUC";
+        font-size: 110px;
+        padding-top: 120px;
+        padding-right: 50px;
+        color: white;
+        -ms-user-select: none; 
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;    
+     }
+}
+
+@media screen and (max-width: 1380px) {
+    .Footer_team-position {
+        display: flex;
+        flex-direction: column;
+        margin: 60px;
+    }
+    .Footer_project-name {
+        text-align:right;
+        font-family: "UUC";
+        font-size: 100px;
+        padding-top: 120px;
+        padding-right: 50px;
+        color: white;
+        -ms-user-select: none; 
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;    
+     }
+
+     .Footer_team-front {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    
+    .Footer_team-back {
+        font-size: 20px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    
+    .Footer_team-name {
+        font-size: 20px;
+    }
+}
+
