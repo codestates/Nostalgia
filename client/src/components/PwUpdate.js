@@ -35,7 +35,7 @@ function PwUpdate({result}) {
         // 비번이 서로 동일하고, 유효성 검사 또한 합격 여부 되어야 button으로 비번 변경 가능
         if(password === pwCheck && passwordConfirm) {
             const data = await axios
-                .post('http://localhost:4000/user/change-password',
+                .post('https://localhost:4000/user/change-password',
                 {
                     password: password,
                 },
